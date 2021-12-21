@@ -1,0 +1,35 @@
+<select id="product-select-{{ product.id }}" name="id" data-title="{{ product.title }}">
+{% for v in product.variants %}
+    {% assign v_option1 = v.option1 %}
+    {% if v_option1 == blank %}
+        {% assign v_option1 = "undefined" %}
+    {% endif %}
+    {% assign v_option2 = v.option2 %}
+    {% if v_option2 == blank %}
+        {% assign v_option2 = "undefined" %}
+    {% endif %}
+    {% assign v_option3 = v.option3 %}
+    {% if v_option3 == blank %}
+        {% assign v_option3 = "undefined" %}
+    {% endif %}
+    {% assign v_m_color = 'White' %}
+    {% if v.metafields.sf_calculator.colour != blank %} 
+        {% assign v_m_color = v.metafields.sf_calculator.colour %}
+    {% endif %}>
+    <option value="{{ v.id }}" data-image="{{ v.featured_media | product_img_url: '100x100' }}" data-price="{{ v.price }}" data-option-0='{{v_option1}}' data-option-1='{{v_option2}}' data-option-2='{{v_option3}}' data-color="{{v_m_color}}">{{ v.title }}</option>
+{% endfor %}
+</select>
+
+<div class="sf-system__variants--item-image">
+    <picture>
+        <img src="{{ product | img_url: '300x300', crop: 'center' }}" alt="{{ product.featured_image.alt | escape }}" itemprop="image" />
+    </picture>
+</div>
+
+{% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
+<div class="swatch_options">
+    {% for option in product.options %}
+        {% render 'sf-product-swatch', option: option, product: product %}
+    {% endfor %}
+</div>
+{% endif %}

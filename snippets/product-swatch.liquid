@@ -14,7 +14,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
     {%- assign option_index = forloop.index0 -%}
     {%- assign downcased_option = swatch | downcase -%}
 
-    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+    {% if downcased_option contains 'color' or downcased_option contains 'colour'  or downcased_option contains 'type' %}
       {%- assign is_color = true -%}
     {% endif %}
   {% endif %}
@@ -37,7 +37,11 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
 
       <div tabindex="0"  value="{{ value | escape }}" data-value="{{ value | escape }}" data-id="{{ variant.id }}" class="swatch-element {% if is_color %}color{% endif %} {{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
         {% if is_color %}
+          {% if product.title == 'Glitter' %}
+          <div class="tooltip"> {{ value | split: "-" | first | strip | capitalize }}</div>
+          {% else %}
           <div class="tooltip">{{ value }}</div>
+          {% endif %}
         {% endif %}
 
         {% if is_color %}
