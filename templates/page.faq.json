@@ -1,0 +1,159 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-faq-template",
+      "blocks": {
+        "block-2": {
+          "type": "Content",
+          "settings": {
+            "title": "What are Epoxies?",
+            "subtitle": "<p>Epoxy systems contain two components, resins and hardeners, which get mixed together creating a chemical reaction that converts them from liquid to solid. A two-part epoxy based polymer system is mechanically strong, chemically resistant to degradation of the chemical elements in the solid form and highly adhesive during conversion from liquid to solid. When these two components are mixed together they will react chemically and link together irreversibly forming a rigid plastic like material.<\/p>"
+          }
+        },
+        "block-3": {
+          "type": "Content",
+          "settings": {
+            "title": "What are Urethanes?",
+            "subtitle": "<p>Somewhat similar to epoxies but more durable, has excellent gloss and color retention and has UV resistance. Many epoxies tend to yellow in direct sunlight over time. A top coat of Urethane prevents this yellowing. Urethanes also have superior resistance to engine fluids, acids and alkalies. Our MCU  super UV are the best in preventing these ocurrencies, super UV is a single component unlike other two part systems.<\/p>"
+          }
+        },
+        "block-4": {
+          "type": "Content",
+          "settings": {
+            "title": "What are VOC’s and should I be concerned about them?",
+            "subtitle": "<p>Volatile Organic Compounds and yes you should be at least aware of what they are. They are gases that are emitted from certain materials like paints and sealers that do pose a health risk if exposed for a certain length of time. They generally come from solvents that act as carriers for the actual material you are putting down such as an epoxy. The carrier flash dries off and leaves behind the epoxy. However, the epoxies we use are VOC free, 100% solids. You can work all day inside with 100% solids epoxies without a problem.<\/p>"
+          }
+        },
+        "block-6": {
+          "type": "Content",
+          "settings": {
+            "title": "Will I have to shut down my operation for the installation?",
+            "subtitle": "<p>A common concern when buying a new floor involves the disruption of your normal operations. Epoxies do need a couple of days to cure completely. You can walk on the floors the next day but may need to wait a couple of days before you can move furniture back on it. Epoxy will dry in approximately 8-12 Hours over night at 60 Degree temperature on up.<\/p>"
+          }
+        },
+        "block-7": {
+          "type": "Content",
+          "settings": {
+            "title": "What type of maintenance should I expect to perform?",
+            "subtitle": "<p>With epoxy floors cleaning couldn’t be easier. A simple mopping with water and I tiny bit of ammonia cleans the floors great. On larger areas we recommend an auto-scrubber. We also recommend an easily applied floor wax be applied as a protective coating periodically.<\/p>"
+          }
+        },
+        "block-8": {
+          "type": "Content",
+          "settings": {
+            "title": "Why wouldn’t I just install a big box store epoxy product?",
+            "subtitle": "<p>If you read the properties, the resin is typically filled with 65% saline, a waterdown solvent and is a one to one ratio.<\/p><p><br\/><\/p><p>Big box store generally sell low solid epoxies which are not as strong. Comparing a store bought epoxy vs. a commercial grade epoxy is like comparing a Pickup to a Peterbuilt…<\/p>"
+          }
+        },
+        "bb799f05-1f72-4a4a-a8a8-53b7d4273155": {
+          "type": "Content",
+          "settings": {
+            "title": "Does regular concrete need to be sealed?",
+            "subtitle": "<p>Yes, it needs to be sealed with our epoxy first. You should use our epoxy after you prepped the floor, vacuum well, as a pre-coat sealer thinly applied, this way you can apply final finish coat over any repaired imperfections, from contaminated floor, dust, fisheye, orange peels. This will guarantee the best results. 100% epoxies bond best to each other. You can use any of our epoxies as the sealer Clear or Colored.<\/p>"
+          }
+        },
+        "07a7cbe5-db93-4e84-94e5-02b04ff013c2": {
+          "type": "Content",
+          "settings": {
+            "title": "How dry do the floors have to be to put Epoxy down?",
+            "subtitle": "<p>All concrete floors not poured over a proper moisture barrier, are subject to possible moisture vapor transmission or hydrostatic pressure problems which can cause a coating system to blister or fail. Be sure concrete is fully cured, apply pre-coat sealer of epoxy ”clear” or “colored”<\/p>"
+          }
+        },
+        "de7ee385-08a1-4bb5-a206-7904d061b653": {
+          "type": "Content",
+          "settings": {
+            "title": "How much does it cost?",
+            "subtitle": "<p>Our epoxies cost roughly $0.50 per Square Feet, estimate based on 125 Sq.Ft per gallon rolled applied or $0.85 Sq.Ft covers 75 Sq.Ft squeegee and back roll applied.<\/p>"
+          }
+        },
+        "f5ff05ba-789d-46ac-b391-1f42888c73f5": {
+          "type": "Content",
+          "settings": {
+            "title": "What other benefits are there to concrete resurfacing?",
+            "subtitle": "<p>1) All surfaces sealed with a high strength epoxies makes it extremely resistant to salts, oils and other stains. It’s virtually non-porous which makes it mold resistant and simple to clean. Usually just a garden hose and maybe a little mild detergent will clean it fine.<\/p><p><br\/><\/p><p>2) It adds value to your home. No doubt about it!<\/p><p><br\/><\/p><p>3) You will save thousands, not hundreds doing it yourself not having to pay a contractor.<\/p>"
+          }
+        },
+        "6dc868d0-e4fc-4d01-83d3-e2f6ba3f6461": {
+          "type": "Content",
+          "settings": {
+            "title": "How do you recommend prepping any concrete floor?",
+            "subtitle": "<p>The most important part of any concrete surface application is surface preparation. We use top quality planetary and hand-held diamond grinding equipment and shot-blasters to properly profile the floors. Call your local rental and request Diamond grinder 60\/80 grit.<\/p>"
+          }
+        },
+        "ffd766df-383b-480f-b7ad-a2eb18287c96": {
+          "type": "Content",
+          "settings": {
+            "title": "Can I make my epoxy floor less slippery?",
+            "subtitle": "<p>Yes, By adding our omni Non-skid. This product is translucent, will not be seen. Add 4oz to epoxy mix and roll. For added texture broadcast in air then back roll.<\/p>"
+          }
+        },
+        "3edf5fac-ae83-45c0-8aa0-ecd9294bc5bc": {
+          "type": "Content",
+          "settings": {
+            "title": "How dry do the floors have to be to put Epoxy down?",
+            "subtitle": "<p>All concrete must be 100% dry.<\/p>"
+          }
+        },
+        "0cddc88a-daec-49b7-bb50-12bb0b7c0795": {
+          "type": "Content",
+          "settings": {
+            "title": "Should I acid was my floor?",
+            "subtitle": "<p>No, It does not work on sealed or old floors.<\/p>"
+          }
+        },
+        "324e2b88-229f-4bae-9d35-09993c57aed4": {
+          "type": "Content",
+          "settings": {
+            "title": "Okay, what’s the difference between concrete and cement?",
+            "subtitle": "<p>Concrete and cement are often confused with each other. Think of Cement as glue with sand. More specifically, it’s a hydraulic product that sets and hardens when it chemically reacts with water. It’s kind of considered the glue that holds everything together. Concrete then, is cement that has some form of aggregate, like gravel or crushed stone, in it. Pretty much everything you see, from sidewalks to pool patios to house foundations, is concrete.<\/p>"
+          }
+        },
+        "b7792e02-76b9-4fd3-92cf-26ee06ec9db1": {
+          "type": "Content",
+          "settings": {
+            "title": "What if my concrete has cracks in it?",
+            "subtitle": "<p>We recommend RS-88 Polyurea joint filler, super flexible, sandable, epoxy bonds to it well.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "block-2",
+        "block-3",
+        "block-4",
+        "block-6",
+        "block-7",
+        "block-8",
+        "bb799f05-1f72-4a4a-a8a8-53b7d4273155",
+        "07a7cbe5-db93-4e84-94e5-02b04ff013c2",
+        "de7ee385-08a1-4bb5-a206-7904d061b653",
+        "f5ff05ba-789d-46ac-b391-1f42888c73f5",
+        "6dc868d0-e4fc-4d01-83d3-e2f6ba3f6461",
+        "ffd766df-383b-480f-b7ad-a2eb18287c96",
+        "3edf5fac-ae83-45c0-8aa0-ecd9294bc5bc",
+        "0cddc88a-daec-49b7-bb50-12bb0b7c0795",
+        "324e2b88-229f-4bae-9d35-09993c57aed4",
+        "b7792e02-76b9-4fd3-92cf-26ee06ec9db1"
+      ],
+      "settings": {
+        "wide_display": true,
+        "show_banner": false,
+        "mobile_image_crop": "none",
+        "caption_content_background": "original",
+        "pretext": "",
+        "title": "Page FAQ Template",
+        "subtitle": "<p>Create an amazing FAQ page with a full-width banner<\/p>",
+        "text_position": "center",
+        "text_align": "center",
+        "button1": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

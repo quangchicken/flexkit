@@ -1,0 +1,491 @@
+{
+  "sections": {
+    "16323330574dcd1a9b": {
+      "type": "slideshow",
+      "blocks": {
+        "16323330574dcd1a9b-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Header_website_1700x.progressive_a8d1cdec-2238-4196-9a4c-0c7e902e77b5.jpg",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "button1": "",
+            "button1_link": "",
+            "button1_style": "global-button--banner",
+            "button2": "",
+            "button2_link": "",
+            "button2_style": "global-button--banner",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original",
+            "mobile_image_crop": "none"
+          }
+        },
+        "16323330574dcd1a9b-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Metallic_coloredepoxies_1400x.progressive_08ff4226-d652-4050-9e7f-bc401dcfafcf.jpg",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "button1": "",
+            "button1_link": "",
+            "button1_style": "global-button--banner",
+            "button2": "",
+            "button2_link": "",
+            "button2_style": "global-button--banner",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original",
+            "mobile_image_crop": "none"
+          }
+        },
+        "33a78c13-262a-416d-ab36-f32dbf0c8229": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/header_2_website_1700x.progressive_d3e55438-e773-46a9-b3ad-53df14edc001.jpg",
+            "pretext": "",
+            "title": "",
+            "subtitle": "",
+            "button1": "",
+            "button1_link": "",
+            "button1_style": "global-button--banner",
+            "button2": "",
+            "button2_link": "",
+            "button2_style": "global-button--banner",
+            "text_position": "center",
+            "text_align": "center",
+            "caption_content_background": "original",
+            "mobile_image_crop": "none"
+          }
+        }
+      },
+      "block_order": [
+        "16323330574dcd1a9b-0",
+        "16323330574dcd1a9b-1",
+        "33a78c13-262a-416d-ab36-f32dbf0c8229"
+      ],
+      "settings": {
+        "wide_display": true,
+        "slideshow_text_animation": "fadeInDown",
+        "slideshow_animation": "fade",
+        "slideshow_speed": 6,
+        "activate_adaptiveHeight": false,
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "featured-text-1": {
+      "type": "featured-text",
+      "settings": {
+        "title": "America’s # 1 Epoxy D.I.Y. fast shipping",
+        "content": "<p>Use this text to share information about your brand with your customers.<\/p><p><br\/><\/p><p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "text_size": "regular_text",
+        "text_alignment": "center",
+        "css_class": "fast_shipping",
+        "custom_css": ""
+      }
+    },
+    "featured-collection-1": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "collection_description": false,
+        "collection": "epoxies",
+        "collection_style": "grid",
+        "products_per": 3,
+        "products_limit": 12,
+        "css_class": "home_featured_collection",
+        "custom_css": ""
+      }
+    },
+    "16323351559408be20": {
+      "type": "content-page",
+      "settings": {
+        "content_page": "reviews",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16323351616bb79103": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Metallic Pigments",
+        "collection_description": true,
+        "collection": "pigments",
+        "collection_style": "slider",
+        "products_per": 5,
+        "products_limit": 48,
+        "css_class": "metallic_pigments",
+        "custom_css": ""
+      }
+    },
+    "163233523963052cc7": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Flakes",
+        "collection_description": true,
+        "collection": "color-flakes",
+        "collection_style": "slider",
+        "products_per": 6,
+        "products_limit": 20,
+        "css_class": "home_flakes",
+        "custom_css": ""
+      }
+    },
+    "featured-promotions-1": {
+      "type": "featured-promotions",
+      "blocks": {
+        "block-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Stone_Basalt_1400x_b2441703-2145-44eb-a8dc-0dea4e00f22a.jpg",
+            "link": "shopify:\/\/products\/stone-series",
+            "title": "Stone Series",
+            "text": "",
+            "button_label": "Shop now"
+          }
+        },
+        "block-2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/0007_Zebra_480x_e1c715ab-1ead-4536-90b6-76e3105eddf7.jpg",
+            "link": "shopify:\/\/products\/woodchips",
+            "title": "Woodchips",
+            "text": "",
+            "button_label": "Shop now"
+          }
+        },
+        "block-3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/GlitterFlakes_Random-G2020_1400x_91a38ac4-d9d1-43db-8f2c-639c15957841.jpg",
+            "link": "shopify:\/\/products\/crystal-flake",
+            "title": "Crystal Flake",
+            "text": "",
+            "button_label": "Shop now"
+          }
+        },
+        "block-4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/F4000-B.L.S.-BLAZE-ORANGE-1.4_1400x_1403781c-071c-4fd8-bab5-5f767f992ca5.jpg",
+            "link": "shopify:\/\/products\/fluorescent",
+            "title": "Fluorescent",
+            "text": "",
+            "button_label": "Shop now"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3",
+        "block-4"
+      ],
+      "settings": {
+        "wide_display": false,
+        "promo_text_on_image_enabled": true,
+        "featured_promos_per_row": 4,
+        "featured_links_animation": "fadeInDown",
+        "feature_style": "rounded",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1632335326b72426ae": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "More Additives",
+        "collection_description": true,
+        "collection": "homepage-collection",
+        "collection_style": "slider",
+        "products_per": 4,
+        "products_limit": 12,
+        "css_class": "more_additives",
+        "custom_css": ""
+      }
+    },
+    "16325008478edb06a5": {
+      "type": "featured-product",
+      "blocks": {
+        "16325008478edb06a5-0": {
+          "type": "title",
+          "settings": {}
+        },
+        "16325008478edb06a5-1": {
+          "type": "price",
+          "settings": {
+            "display_savings": true
+          }
+        },
+        "16325008478edb06a5-2": {
+          "type": "description",
+          "settings": {}
+        },
+        "16325008478edb06a5-3": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "16325008478edb06a5-0",
+        "16325008478edb06a5-1",
+        "16325008478edb06a5-2",
+        "16325008478edb06a5-3"
+      ],
+      "settings": {
+        "product": "omni-non-skid-oxide",
+        "wide_display": true,
+        "media_position": "is-flex-row",
+        "set_product_height": false,
+        "product_height": 500,
+        "video_looping": false,
+        "product_thumbs": false,
+        "gallery_arrows": false,
+        "enable_product_lightbox": true,
+        "activate_zoom": true,
+        "slideshow_speed": 0,
+        "slideshow_animation": "slide",
+        "thumbnail_position": "bottom",
+        "enable_thumbnail_slider": true,
+        "css_class": "home_product_featured",
+        "custom_css": ""
+      }
+    },
+    "newsletter-1": {
+      "type": "newsletter",
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "Subscribe",
+        "newsletter_text": "<p>Sign up to receive EXCLUSIVE EMAIL DEALS<\/p>",
+        "newsletter_section_text_align": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16336401176d143c95": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/youtu.be\/Czd-svEK8v4",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "16336405960bbc4bc0": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/youtu.be\/-38IatRgBLY",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "163364066202837e99": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/youtu.be\/HBHruiAQ1Kg",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1633640731f6175769": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/youtu.be\/qPHEgm_MtlQ",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1633640838bd38f005": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/youtu.be\/d21q1POyuQk",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    },
+    "1633640888c8483fcb": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/youtu.be\/uotqxn6uAes",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
+    }
+  },
+  "order": [
+    "16323330574dcd1a9b",
+    "featured-text-1",
+    "featured-collection-1",
+    "16323351559408be20",
+    "16323351616bb79103",
+    "163233523963052cc7",
+    "featured-promotions-1",
+    "1632335326b72426ae",
+    "16325008478edb06a5",
+    "newsletter-1",
+    "16336401176d143c95",
+    "16336405960bbc4bc0",
+    "163364066202837e99",
+    "1633640731f6175769",
+    "1633640838bd38f005",
+    "1633640888c8483fcb"
+  ]
+}

@@ -1,0 +1,2193 @@
+{
+  "presets": {},
+  "current": {
+    "performance": "sport",
+    "image_loading_style": "blur-up",
+    "custom_scripts": "",
+    "logo_color": "#ffffff",
+    "regular_color": "#333333",
+    "headline_color": "#333333",
+    "headline_footer_text_color": "#7f8c8d",
+    "sub_footer_text_color": "#6b6b6b",
+    "sale_color": "#d54d4d",
+    "was_price_color": "#8c8b8b",
+    "product_hover_text_color": "#ffffff",
+    "promo_text_color": "#333333",
+    "shop_home_page_content_text_color": "#363636",
+    "newsletter_popup_color": "#363636",
+    "newsletter_section_color": "#444444",
+    "top_bar_color": "#f4f4f4",
+    "top_bar_color_hover": "#03a196",
+    "nav_color": "#454545",
+    "nav_color_home": "#d9d9d9",
+    "nav_color_hover": "#383737",
+    "link_color": "#d54d4d",
+    "link_hover_color": "#b63030",
+    "sidebar_nav_color": "#363636",
+    "sidebar_nav_color_hover": "#89a0ba",
+    "sub_footer_link_color": "#7f8c8d",
+    "sub_footer_link_color_hover": "#ffffff",
+    "btn_color": "#f97373",
+    "btn_hover_color": "#96b5cb",
+    "btn_text_color": "#ffffff",
+    "button_style": "rounded",
+    "read_more_style": "button",
+    "banner_color": "#ffffff",
+    "banner_background_color": "#8fa5bb",
+    "swatch_style": "square",
+    "table_styles_enabled": true,
+    "slideshow_arrow_size": "light",
+    "slideshow_button_style": true,
+    "border_color": "#cccccc",
+    "headline_border_color": "#aaaaaa",
+    "headline_border": "thin",
+    "sub_footer_border_color": "#1b1f23",
+    "sale_banner_color": "#d54d4d",
+    "new_banner_color": "#03a196",
+    "testimonial_color": "#ffffff",
+    "testimonial_bg_color": "#666666",
+    "modal_background_color": "#ffffff",
+    "shop_bg_color": "rgba(0,0,0,0)",
+    "custom_bg": "",
+    "repeat_bg": "repeat",
+    "bg_fixed": false,
+    "bg_stretched": false,
+    "top_bar_bg_color": "#8fa5bb",
+    "top_bar_cart_bg_color": "#d54d4d",
+    "header_bg_color": "#f2f2f2",
+    "header_background": true,
+    "transparent_header": false,
+    "promo_bg_color": "#f2f2f2",
+    "shop_home_page_content_bg_color": "#f6f7f9",
+    "featured_links_background": "#dfdfdf",
+    "product_hover_bg_color": "#000000",
+    "sub_footer_color": "#1b1f23",
+    "footer_bg": "",
+    "footer_bg_stretched": false,
+    "newsletter_popup_background_color": "#ffffff",
+    "newsletter_section_background_color": "#cccccc",
+    "password_page_text_color": "#ffffff",
+    "password_page_background_color": "#000000",
+    "logo__font": "oswald_n4",
+    "logo_font_style": "uppercase",
+    "logo_font_size": 20,
+    "top_bar_font_size": 12,
+    "top_bar_letter_spacing": 2,
+    "nav__font": "oswald_n7",
+    "nav_font_style": "uppercase",
+    "nav_font_size": 15,
+    "nav_letter_spacing": 1,
+    "nav_shadow": true,
+    "button_weight": "bold",
+    "button_font_style": "uppercase",
+    "button_font_size": 14,
+    "headline__font": "oswald_n4",
+    "headline_font_style": "uppercase",
+    "headline_font_size": 24,
+    "headline_letter_spacing": 2,
+    "slideshow_headline__font": "oswald_n3",
+    "slideshow_headline_size": 50,
+    "slideshow_subtitle__font": "roboto_n3",
+    "slideshow_subtitle_font_style": "uppercase",
+    "slideshow_subtitle_size": 18,
+    "slideshow_subtitle_letter_spacing": 1,
+    "slideshow_shadow": false,
+    "regular__font": "roboto_n4",
+    "regular_font_style": "none",
+    "regular_font_size": 15,
+    "footer_font_size": 13,
+    "search_option": "products",
+    "product_form_style": "radio",
+    "show_dynamic_checkout_button": false,
+    "display_product_quantity": true,
+    "limit_quantity": true,
+    "display_inventory_left": true,
+    "notify_me_form": true,
+    "notify_me_richtext": "",
+    "enable_shopify_review_comments": false,
+    "enable_shopify_product_badges": false,
+    "enable_shopify_collection_badges": false,
+    "display_vendor": false,
+    "collection_swatches": true,
+    "sale_banner_enabled": true,
+    "thumbnail_hover_enabled": false,
+    "mobile_products_per_row": "2",
+    "pagination_type": "load_more",
+    "sold_out_text": "Sold Out",
+    "free_price_text": "Out of stock",
+    "collection_secondary_image": false,
+    "align_height": true,
+    "collection_height": 200,
+    "quick_shop_enabled": true,
+    "cart_action": "ajax",
+    "display_tos_checkbox": false,
+    "tos_page": "",
+    "go_to_checkout": false,
+    "display_special_instructions": false,
+    "cart_message": "",
+    "show_shipping_calculator": false,
+    "shipping_calculator_default_country": "United States",
+    "currency_format": "money_format",
+    "show_multiple_currencies": false,
+    "supported_currencies": "USD CAD AUD GBP EUR JPY",
+    "default_currency": "USD",
+    "mailchimp_link": "",
+    "secondary_newsletter_banner": true,
+    "newsletter_popup": false,
+    "newsletter_popup_mobile": true,
+    "newsletter_popup_form": true,
+    "display_first_name": false,
+    "display_last_name": false,
+    "use_newsletter_border": false,
+    "newsletter_bg": "",
+    "newsletter_popup_image_align": "left",
+    "newsletter_popup_title": "Sign up today!",
+    "newsletter_popup_text": "<p>You can write the headline and text for your newsletter popup in the theme settings (Popup section). You can also control how often the popup is displayed or disable it entirely.<\/p>",
+    "newsletter_popup_text_align": "left",
+    "newsletter_popup_seconds": 0,
+    "newsletter_popup_days": "14",
+    "twitter_link": "https:\/\/twitter.com\/cepoxies",
+    "facebook_link": "https:\/\/www.facebook.com\/coloredepoxies\/",
+    "youtube_link": "",
+    "vimeo_link": "",
+    "pinterest_link": "https:\/\/www.pinterest.com\/coloredepoxies\/",
+    "tumblr_link": "",
+    "instagram_link": "https:\/\/www.instagram.com\/Colored__Epoxies\/",
+    "snapchat_link": "",
+    "houzz_link": "https:\/\/www.houzz.com\/pro\/jason960\/colored-epoxies",
+    "linkedin_link": "",
+    "email_link": "",
+    "favicon": "shopify:\/\/shop_images\/footer-logo_19356112-8eeb-48bf-8e57-0e0af25d7c00.png",
+    "disqus_enabled": false,
+    "disqus_shortname": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#03a196",
+    "checkout_button_color": "#03a196",
+    "checkout_error_color": "#e1255f",
+    "featured_promos_text_color": "#2b73e3",
+    "banner_style": "square",
+    "custom_logo": "shopify:\/\/shop_images\/footer-logo_19356112-8eeb-48bf-8e57-0e0af25d7c00.png",
+    "password-page-background": "",
+    "pagework_page_bg_stretched": true,
+    "logo_font": "Google_Oswald",
+    "logo_weight": "normal",
+    "headline_font": "Google_Oswald",
+    "headline_weight": "normal",
+    "headline_font_text": "normal",
+    "nav_font": "Google_Oswald",
+    "nav_weight": "bold",
+    "regular_font": "Google_Roboto",
+    "regular_weight": "normal",
+    "slideshow_headline_weight": "lighter",
+    "slideshow_subtitle_font": "Google_Roboto",
+    "slideshow_subtitle_weight": "lighter",
+    "slideshow_subtitle_font_text": "normal",
+    "size_chart": "",
+    "quick_shop_full_description": false,
+    "review_position": "next_to_gallery",
+    "quick_shop_display_vendor": false,
+    "description_words": "25",
+    "quick_shop_product_description_position": "top",
+    "quick_shop_gallery_arrows": true,
+    "quick_shop_slideshow_animation": "slide",
+    "quick_shop_product_images_position": "left",
+    "quick_shop_product_thumbs": true,
+    "quick_shop_thumbnail_position": "bottom-thumbnails",
+    "google_link": "https:\/\/plus.google.com\/u\/0\/107188425081949347254",
+    "use_custom_bg_image": false,
+    "use_custom_footer_image": false,
+    "use_password_bg_image": "1",
+    "use_logo": false,
+    "logo_alignment": "center",
+    "logo_position": "center",
+    "use_logo_home": false,
+    "use_logo_mobile": false,
+    "logo_width": "160",
+    "promo_text": "",
+    "phone_number": "",
+    "top_bar_menu": "",
+    "main_linklist": "main-menu",
+    "main_linklist2": "",
+    "menu_position": "inline",
+    "menu_alignment": "align_left",
+    "fixed_header": true,
+    "logo_top_padding": "15",
+    "menu_top_padding": "10",
+    "cart_icon": "cart",
+    "search_enabled": true,
+    "collection_sidebar": false,
+    "product_sidebar": false,
+    "collection_top_sidebar_page": "",
+    "collection_sidebar_linklist": "",
+    "collection_sidebar_linklist2": "",
+    "filter_by_category": false,
+    "filter_by_tag": true,
+    "collection_sidebar_products": true,
+    "collection_sidebar_vendors": false,
+    "collection_sidebar_page": "",
+    "footer_logo": false,
+    "footer_linklist_1": "footer",
+    "footer_linklist_2": "main-menu",
+    "footer_linklist_3": "",
+    "footer_content_page": "",
+    "copyright_text": "",
+    "display_designed_by": true,
+    "display_payment_methods": true,
+    "behind_menu": true,
+    "position_1": "1",
+    "position_2": "12",
+    "position_3": "7",
+    "position_4": "9",
+    "position_5": "16",
+    "position_6": "15",
+    "position_7": "0",
+    "position_8": "0",
+    "position_9": "0",
+    "position_10": "0",
+    "position_11": "0",
+    "position_12": "0",
+    "position_13": "0",
+    "position_14": "0",
+    "position_15": "0",
+    "position_16": "0",
+    "position_17": "0",
+    "position_18": "0",
+    "caption_background": false,
+    "image_1_pretext": "Introducing the",
+    "image_1_headline": "Turbo Shopify theme",
+    "image_1_subtitle": "from Out of the Sandbox",
+    "image_1_text_position": "center",
+    "image_1_text_align": "center",
+    "image_1_button1_text": "",
+    "image_1_button1_link": "",
+    "image_1_button1_highlight": false,
+    "image_1_button2_text": "",
+    "image_1_button2_link": "",
+    "image_1_button2_highlight": false,
+    "image_2_pretext": "",
+    "image_2_headline": "",
+    "image_2_subtitle": "",
+    "image_2_text_position": "left",
+    "image_2_text_align": "center",
+    "image_2_button1_text": "",
+    "image_2_button1_link": "",
+    "image_2_button1_highlight": false,
+    "image_2_button2_text": "",
+    "image_2_button2_link": "",
+    "image_2_button2_highlight": false,
+    "image_3_pretext": "",
+    "image_3_headline": "",
+    "image_3_subtitle": "",
+    "image_3_text_position": "left",
+    "image_3_text_align": "center",
+    "image_3_button1_text": "",
+    "image_3_button1_link": "",
+    "image_3_button1_highlight": false,
+    "image_3_button2_text": "",
+    "image_3_button2_link": "",
+    "image_3_button2_highlight": false,
+    "image_4_pretext": "",
+    "image_4_headline": "",
+    "image_4_subtitle": "",
+    "image_4_text_position": "left",
+    "image_4_text_align": "center",
+    "image_4_button1_text": "",
+    "image_4_button1_link": "",
+    "image_4_button1_highlight": false,
+    "image_4_button2_text": "",
+    "image_4_button2_link": "",
+    "image_4_button2_highlight": false,
+    "image_5_pretext": "",
+    "image_5_headline": "",
+    "image_5_subtitle": "",
+    "image_5_text_position": "left",
+    "image_5_text_align": "center",
+    "image_5_button1_text": "",
+    "image_5_button1_link": "",
+    "image_5_button1_highlight": false,
+    "image_5_button2_text": "",
+    "image_5_button2_link": "",
+    "image_5_button2_highlight": false,
+    "image_6_pretext": "",
+    "image_6_headline": "",
+    "image_6_subtitle": "",
+    "image_6_text_position": "left",
+    "image_6_text_align": "left",
+    "image_6_button1_text": "",
+    "image_6_button1_link": "",
+    "image_6_button1_highlight": false,
+    "image_6_button2_text": "",
+    "image_6_button2_link": "",
+    "image_6_button2_highlight": false,
+    "featured_promos_per_row": "4",
+    "featured_promos_grid": "full_width",
+    "feature_title_on_image_enabled": true,
+    "featured_links_style": "",
+    "feature1_enabled": true,
+    "feature1_link": "",
+    "feature1_title": "Promo 1",
+    "feature1_description": "Optional description can go here",
+    "feature1_button": "",
+    "feature2_enabled": true,
+    "feature2_link": "http:\/\/support.outofthesandbox.com\/",
+    "feature2_title": "Promo 2",
+    "feature2_description": "Visit the Out of the Sandbox Support Center for Turbo-related articles and how-tos",
+    "feature2_button": "",
+    "feature3_enabled": true,
+    "feature3_link": "",
+    "feature3_title": "Promo 3",
+    "feature3_description": "Publish Turbo as your main theme when you're ready to launch!",
+    "feature3_button": "",
+    "feature4_enabled": true,
+    "feature4_link": "https:\/\/twitter.com\/outofthesandbox",
+    "feature4_title": "Promo 4",
+    "feature4_description": "Let us know when your new shop launches on Twitter",
+    "feature4_button": "",
+    "feature5_enabled": false,
+    "feature5_link": "",
+    "feature5_title": "",
+    "feature5_description": "",
+    "feature5_button": "",
+    "feature6_enabled": false,
+    "feature6_link": "",
+    "feature6_title": "",
+    "feature6_description": "",
+    "feature6_button": "",
+    "feature7_enabled": false,
+    "feature7_link": "",
+    "feature7_title": "",
+    "feature7_description": "",
+    "feature7_button": "",
+    "feature8_enabled": false,
+    "feature8_link": "",
+    "feature8_title": "",
+    "feature8_description": "",
+    "feature8_button": "",
+    "frontpage_linklist": "",
+    "frontpage_collections_per_row": "1",
+    "frontpage_text_align": "left",
+    "frontpage_collection": "frontpage",
+    "frontpage_collection_style": "slider",
+    "frontpage_products_per_row": "4",
+    "frontpage_collection2": "",
+    "frontpage_collection_style2": "grid",
+    "frontpage_products_per_row2": "4",
+    "frontpage_collection_full": "",
+    "frontpage_display_description": false,
+    "frontpage_product_stagger": true,
+    "homepage1": "frontpage",
+    "homepage2": "",
+    "homepage3": "",
+    "blog_widget_select": "news",
+    "home_page_articles": "4",
+    "slideshow_text_animation": "fadeIn",
+    "slideshow_text_background": false,
+    "slidespeed": "6000",
+    "slide1_enabled": true,
+    "slide1_alt_text": "",
+    "slide1_pretext": "A full-width slideshow",
+    "slide1_headline": "This is a big heading",
+    "slide1_subtitle": "This is a subheading where you can include more text if you wish",
+    "slide1_text_position": "right",
+    "slide1_text_align": "right",
+    "slide1_button1_text": "",
+    "slide1_button1_link": "",
+    "slide1_button1_highlight": false,
+    "slide1_button2_text": "",
+    "slide1_button2_link": "",
+    "slide1_button2_highlight": false,
+    "slide2_enabled": true,
+    "slide2_alt_text": "",
+    "slide2_pretext": "",
+    "slide2_headline": "Just a banner heading here",
+    "slide2_subtitle": "",
+    "slide2_text_position": "center",
+    "slide2_text_align": "center",
+    "slide2_button1_text": "Button 1",
+    "slide2_button1_link": "",
+    "slide2_button1_highlight": true,
+    "slide2_button2_text": "Button 2",
+    "slide2_button2_link": "",
+    "slide2_button2_highlight": false,
+    "slide3_enabled": false,
+    "slide3_alt_text": "",
+    "slide3_pretext": "",
+    "slide3_headline": "",
+    "slide3_subtitle": "",
+    "slide3_text_position": "left",
+    "slide3_text_align": "left",
+    "slide3_button1_text": "",
+    "slide3_button1_link": "",
+    "slide3_button1_highlight": false,
+    "slide3_button2_text": "",
+    "slide3_button2_link": "",
+    "slide3_button2_highlight": false,
+    "slide4_enabled": false,
+    "slide4_alt_text": "",
+    "slide4_pretext": "",
+    "slide4_headline": "",
+    "slide4_subtitle": "",
+    "slide4_text_position": "left",
+    "slide4_text_align": "left",
+    "slide4_button1_text": "",
+    "slide4_button1_link": "",
+    "slide4_button1_highlight": false,
+    "slide4_button2_text": "",
+    "slide4_button2_link": "",
+    "slide4_button2_highlight": false,
+    "slide5_enabled": false,
+    "slide5_alt_text": "",
+    "slide5_pretext": "",
+    "slide5_headline": "",
+    "slide5_subtitle": "",
+    "slide5_text_position": "left",
+    "slide5_text_align": "left",
+    "slide5_button1_text": "",
+    "slide5_button1_link": "",
+    "slide5_button1_highlight": false,
+    "slide5_button2_text": "",
+    "slide5_button2_link": "",
+    "slide5_button2_highlight": false,
+    "slide6_enabled": false,
+    "slide6_alt_text": "",
+    "slide6_pretext": "",
+    "slide6_headline": "",
+    "slide6_subtitle": "",
+    "slide6_text_position": "left",
+    "slide6_text_align": "left",
+    "slide6_button1_text": "",
+    "slide6_button1_link": "",
+    "slide6_button1_highlight": false,
+    "slide6_button2_text": "",
+    "slide6_button2_link": "",
+    "slide6_button2_highlight": false,
+    "banner_video_source": "youtube",
+    "aspect_ratio": "16:9",
+    "banner_video_autoloop": false,
+    "banner_video_autoplay": false,
+    "banner_video_text": false,
+    "video_dark_overlay": false,
+    "banner_video_id": "eGyhA-DIYvg",
+    "banner_video_mp4": "",
+    "banner_video_ogv": "",
+    "video_pretext": "Full-width video section",
+    "video_headline": "Optional heading here",
+    "video_subtitle": "",
+    "video_text_position": "center",
+    "video_text_align": "center",
+    "video_button1_text": "Play Video",
+    "video_button1_link": "",
+    "video_button1_highlight": true,
+    "video_button2_text": "",
+    "video_button2_link": "",
+    "video_button2_highlight": false,
+    "twitter_widget": false,
+    "twitter_username": "",
+    "twitter_theme": "light",
+    "tweet_count": "3",
+    "instagram_widget": false,
+    "instagram_client_id": "",
+    "instagram_title": "Instagram",
+    "instagram_count": "4",
+    "product_breadcrumb": true,
+    "display_tags": true,
+    "display_type": true,
+    "display_sku": false,
+    "display_collections": true,
+    "display_related_products": true,
+    "products_per_slide": "3",
+    "gallery_arrows": true,
+    "product_thumbs": true,
+    "activate_zoom": true,
+    "activate_autoplay": false,
+    "product_images_position": "left",
+    "thumbnail_position": "left-thumbnails",
+    "product_description_position": "bottom",
+    "products_per_row": "4",
+    "pagination_limit": "24",
+    "collection_breadcrumb": true,
+    "collection_tags": true,
+    "collection_sort": true,
+    "display_collection_title": true,
+    "display_vendor_collection": false,
+    "collection_banner_enabled": false,
+    "display_collection_header_title": false,
+    "contact_address": "",
+    "zoom_level": "15",
+    "contact_banner_enabled": true,
+    "image_contact_headline": "",
+    "image_contact_subtitle": "",
+    "blog_posts_per_page": "6",
+    "blog_articles_per_row": "3",
+    "blog_breadcrumb": true,
+    "blog_tags": true,
+    "blog_author": true,
+    "blog_date": true,
+    "blog_comment_count": true,
+    "read_more_link": true,
+    "blog_additional_articles": true,
+    "sidebar_enabled": false,
+    "blog_search": true,
+    "blog_newsletter": true,
+    "display_recent_articles": false,
+    "blog_sidebar_tags": true,
+    "blog_content_page": "",
+    "article_banner_enabled": false,
+    "article_banner_darken": true,
+    "blog_banner_enabled": false,
+    "image_blog_headline": "",
+    "image_blog_subtitle": "",
+    "use_newsletter_image": true,
+    "newsletter_img_alt_text": "",
+    "newsletter_banner": true,
+    "use_newsletter_section_bg_image": false,
+    "newsletter_section_text_align": "center",
+    "display_social_buttons": true,
+    "social_icons_header": true,
+    "social_icons_footer": true,
+    "checkout_use_header_image": false,
+    "checkout_logo": "",
+    "checkout_use_body_background_image": false,
+    "checkout_use_sidebar_background_image": false,
+    "icon_btn_color": "#969696",
+    "icon_btn_text_color": "#FFFFFF",
+    "quick_shop_color": "#000000",
+    "slideshow_arrows": "0",
+    "home_blog_slider": "0",
+    "promo_banner_global": false,
+    "side_cart_position": "right",
+    "slideshow_subtitle_typeface_method": "google_webfonts",
+    "headline_animation": "fadeIn",
+    "share_banner_color": "#007a87",
+    "dropdown_column_links": "10",
+    "content_top_padding": "100",
+    "tab_background_color": "#ffffff",
+    "mobile_header_bg_color": "#666666",
+    "mobile_menu_color": "black",
+    "shop_use_content_bg_color": false,
+    "shop_content_bg_color": "",
+    "shop_use_home_page_content_bg_color": true,
+    "logo_typeface_method": "google_webfonts",
+    "logo_websafe_font": "Helvetica, Arial, sans-serif",
+    "logo_color_home": "#ffffff",
+    "headline_typeface_method": "google_webfonts",
+    "headline_websafe_font": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "nav_typeface_method": "google_webfonts",
+    "nav_websafe_font": "'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Lucida, Helvetica, Arial, sans-serif",
+    "regular_typeface_method": "websafe",
+    "regular_websafe_font": "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "slideshow_1_enabled": true,
+    "homepage_arrow": true,
+    "image_1_height": "550",
+    "image_1_alt_text": "",
+    "image_1_text_color": "#ffffff",
+    "image_1_button_text": "",
+    "image_1_link": "",
+    "slideshow_2_enabled": false,
+    "image_2_position": "3",
+    "image_2_height": "550",
+    "image_2_alt_text": "",
+    "image_2_text_color": "#ffffff",
+    "image_2_button_text": "",
+    "image_2_link": "",
+    "slideshow_3_enabled": false,
+    "image_3_position": "5",
+    "image_3_height": "550",
+    "image_3_alt_text": "",
+    "image_3_text_color": "#ffffff",
+    "image_3_button_text": "",
+    "image_3_link": "",
+    "slideshow_4_enabled": false,
+    "image_4_position": "7",
+    "image_4_height": "600",
+    "image_4_alt_text": "",
+    "image_4_text_color": "#ffffff",
+    "image_4_button_text": "",
+    "image_4_link": "",
+    "slideshow_5_enabled": false,
+    "image_5_position": "10",
+    "image_5_height": "550",
+    "image_5_alt_text": "",
+    "image_5_text_color": "#ffffff",
+    "image_5_button_text": "",
+    "image_5_link": "",
+    "slideshow_6_enabled": false,
+    "image_6_position": "2",
+    "image_6_height": "550",
+    "image_6_alt_text": "",
+    "image_6_text_color": "#ffffff",
+    "image_6_button_text": "",
+    "image_6_link": "",
+    "content_1_position": "4",
+    "content_2_position": "6",
+    "content_3_position": "10",
+    "featured_links_position": "2",
+    "featured_links": true,
+    "featured_links_count": "3",
+    "featured_collections_position": "15",
+    "featured_products_position": "8",
+    "featured_product_position": "9",
+    "featured_blog_position": "13",
+    "featured_social_position": "14",
+    "instagram_username": "",
+    "product_slideshow_animation": "slide",
+    "add_to_cart_text": "Add to Cart",
+    "related_products_title": "Related Items",
+    "inventory_left_text": "items left",
+    "homepage_sidebar": false,
+    "collection_sidebar_vendor_text": "Vendors",
+    "tags_text": "Filter",
+    "side_cart_enabled": true,
+    "tax_included": false,
+    "shipping_calculator_heading": "Shipping rates calculator",
+    "shipping_calculator_submit_button_label": "Calculate shipping rates",
+    "shipping_calculator_submit_button_label_disabled": "Calculating...",
+    "constrain_logo": true,
+    "total_text": "TOTAL",
+    "display_social_buttons_blog": true,
+    "newsletter_enabled": true,
+    "newsletter_description": "Sign up to get the latest on sales, new releases and more …",
+    "newsletter_success_text": "Thank you for joining our mailing list!",
+    "newsletter_system": "shopify",
+    "flickr_link": "",
+    "newsletter_popup_page": "",
+    "newsletter_popup_max_width": "600",
+    "blog_widget": "false",
+    "instagram_tag_name": "",
+    "slideshow_animation": "fade",
+    "slideshow_menu": "true",
+    "cart_return": "checkout",
+    "side_cart_button_position": "bottom",
+    "nav_active_color": "#B8C6C6",
+    "quick_shop_text": "Quick View",
+    "newsletter_text": "News & Updates",
+    "footer_link_color": "#55c0d4",
+    "footer_link_color_hover": "#fc4c02",
+    "footer_color": "#16161d",
+    "footer_text_color": "#ffffff",
+    "featured_text": "#ffffff",
+    "feature1_text": "420x265",
+    "feature2_text": "420x265",
+    "feature3_text": "420x265",
+    "featured_links_weight": "bold",
+    "social_icons_enabled": "true",
+    "headline_sub_footer_text_color": "#404040",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "promo_text": "",
+          "social_icons_header": true,
+          "phone_number": "1-866-608-7625",
+          "top_bar_menu": "",
+          "show_cart": true,
+          "cart_icon": "bag",
+          "show_locale_selector": false,
+          "show_currency_selector": false,
+          "logo_display_width": 205,
+          "logo": "shopify:\/\/shop_images\/logo-03.png",
+          "logo_mobile": "shopify:\/\/shop_images\/logo-03_faf2cd27-1604-4708-824d-94ad9ac77b03.png",
+          "main_linklist": "main-menu",
+          "main_linklist2": "",
+          "vertical_menu": false,
+          "dropdown_click": false,
+          "search_enabled": true,
+          "fixed_header": true,
+          "logo_position": "left",
+          "logo_alignment": "left",
+          "menu_position": "inline",
+          "menu_alignment": "align_left"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "logo",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/footer-logo.png",
+              "text_align": "left",
+              "social_icons_footer": false
+            }
+          },
+          "1495561145549": {
+            "type": "link_list",
+            "settings": {
+              "menu": "footer",
+              "social_icons_footer": false
+            }
+          },
+          "1495587455958": {
+            "type": "text",
+            "settings": {
+              "title": "COLORED EPOXIES BENEFITS:",
+              "content": "<p>Very Flexible - 100% Solids Zero VOC - Chemical Resistant -  Impact and Abrasion Resistant - Ultra Premium Non Cracking Resistant - Mold and Mildew Resistant  - Saves Time &amp; Money - Easy to Use DIY Kits - Available in Many Colors<\/p>",
+              "social_icons_footer": false
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "1495561145549",
+          "1495587455958"
+        ],
+        "settings": {
+          "copyright_text": "",
+          "display_designed_by": false,
+          "display_payment_methods": true,
+          "show_locale_selector": false,
+          "show_currency_selector": false
+        }
+      },
+      "1489283660007": {
+        "type": "featured-text",
+        "settings": {
+          "title": "America’s # 1 Epoxy D.I.Y.  <br> fast shipping",
+          "content": "<p><\/p><p><\/p>",
+          "button_label": "",
+          "button_link": "",
+          "text_size": "regular_text",
+          "text_alignment": "center"
+        }
+      },
+      "1489284011497": {
+        "type": "slideshow",
+        "blocks": {
+          "1489284011497-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Header_website_a962eb8f-e153-4e04-90b9-82166a5b3158.jpg",
+              "pretext": "",
+              "title": "",
+              "subtitle": "",
+              "button1": "",
+              "button1_link": "",
+              "button2": "",
+              "button2_link": "",
+              "text_position": "center",
+              "text_align": "center"
+            }
+          },
+          "1585781590329": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Metallic_coloredepoxies_74cad436-e04e-4ab8-bfeb-2142529f8fb9.jpg",
+              "pretext": "",
+              "title": "",
+              "subtitle": "",
+              "button1": "",
+              "button1_link": "",
+              "button2": "",
+              "button2_link": "",
+              "text_position": "center",
+              "text_align": "center"
+            }
+          },
+          "1585832483035": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/header_2_website.jpg",
+              "pretext": "",
+              "title": "",
+              "subtitle": "",
+              "button1": "",
+              "button1_link": "",
+              "button2": "",
+              "button2_link": "",
+              "text_position": "center",
+              "text_align": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1489284011497-0",
+          "1585781590329",
+          "1585832483035"
+        ],
+        "settings": {
+          "slideshow_text_animation": "fadeInDown",
+          "slideshow_animation": "slide"
+        }
+      },
+      "1489284503681": {
+        "type": "image-text",
+        "disabled": true,
+        "blocks": {
+          "1489284503681-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_5839.JPG",
+              "title": "beautiful and vibrant",
+              "text": "<p><\/p><p>Our Colored Epoxies&#x27; <strong><em>Nano-Composite Technology<\/em><\/strong> exhibits a higher transmission of visible light which makes our colors more beautiful and vibrant and your buildings more energy efficient.<\/p><p><\/p><p><\/p>",
+              "button_label": "View all",
+              "link": "shopify:\/\/collections\/epoxies"
+            }
+          }
+        },
+        "block_order": [
+          "1489284503681-1"
+        ],
+        "settings": {
+          "featured_links_per_row": "1",
+          "frontpage_text_align": "left",
+          "frontpage_image_position": "left"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "featured_collection_image": false,
+          "image": "",
+          "display_collection_title": true,
+          "collection_breadcrumb": true,
+          "collection_tags": true,
+          "collection_sort": false,
+          "products_per_row": 3,
+          "pagination_limit": 36,
+          "toggle": false
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "wide_display": true,
+          "display_first_name": false,
+          "display_last_name": false,
+          "newsletter_title": "Subscribe",
+          "newsletter_text": "<p>Sign up to get the latest on sales, new releases and more &hellip;<\/p>",
+          "newsletter_section_text_align": "center",
+          "css_class": "",
+          "custom_css": ""
+        }
+      },
+      "1494381994748": {
+        "type": "image-text",
+        "disabled": true,
+        "blocks": {
+          "1494381994748-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/fullsizeoutput_4ea.jpeg",
+              "title": "Trust In",
+              "text": "<p><span style=\"text-decoration:underline\"><strong>Colored Epoxies High Performance Architectural Coatings<\/strong><\/span> to protect your investments from UV degradation and damage from the environment.  Our durable coatings provide abrasion resistance for long wear resistance and color retention<\/p>",
+              "button_label": "View all",
+              "link": "shopify:\/\/collections\/epoxies"
+            }
+          }
+        },
+        "block_order": [
+          "1494381994748-0"
+        ],
+        "settings": {
+          "featured_links_per_row": "1",
+          "frontpage_text_align": "left",
+          "frontpage_image_position": "left"
+        }
+      },
+      "1494382709691": {
+        "type": "image-with-text-overlay",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/shutterstock_13126822_2.jpg",
+          "pretext": "",
+          "title": "It's One Step Away",
+          "subtitle": "",
+          "button1": "Get Started right Now",
+          "button1_link": "shopify:\/\/collections\/epoxies",
+          "button2": "",
+          "button2_link": "",
+          "text_position": "center",
+          "text_align": "center"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_breadcrumb": false,
+          "product_thumbs": false,
+          "gallery_arrows": true,
+          "enable_product_lightbox": false,
+          "activate_zoom": false,
+          "slideshow_animation": "slide",
+          "thumbnail_position": "bottom-thumbnails"
+        }
+      },
+      "1494386496739": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "",
+          "collection": "epoxies",
+          "collection_style": "grid",
+          "products_per": 3,
+          "products_limit": 12
+        }
+      },
+      "1494388913057": {
+        "type": "image-text",
+        "disabled": true,
+        "blocks": {
+          "1494388913057-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/180427040425lc605b4C-s-1.jpeg",
+              "title": "From start to finish,",
+              "text": "<p>Colored Epoxies is your home for the only custom colored epoxy coatings on the market. We manufacture an array of color finishes for a variety of uses. From start to finish, whatever your project, Colored Epoxies has you covered!<\/p>",
+              "button_label": "View all",
+              "link": "shopify:\/\/collections\/epoxies"
+            }
+          }
+        },
+        "block_order": [
+          "1494388913057-0"
+        ],
+        "settings": {
+          "featured_links_per_row": "1",
+          "frontpage_text_align": "left",
+          "frontpage_image_position": "right"
+        }
+      },
+      "1495582718463": {
+        "type": "newsletter",
+        "settings": {
+          "display_first_name": false,
+          "display_last_name": false,
+          "newsletter_title": "Subscribe",
+          "newsletter_text": "<p>Sign up to receive EXCLUSIVE EMAIL DEALS<\/p>",
+          "newsletter_section_text_align": "center"
+        }
+      },
+      "page-banner-template": {
+        "type": "page-banner-template",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/about-banner.jpg"
+        }
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "settings": {
+          "image": "",
+          "zoom_level": 12
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "image": "",
+          "collection_breadcrumb": true,
+          "display_collection_title": false,
+          "collections_per_row": 3,
+          "pagination_limit": 24,
+          "toggle": false
+        }
+      },
+      "product-description-bottom-template": {
+        "type": "product-description-bottom-template",
+        "settings": {
+          "gallery_arrows": true,
+          "activate_zoom": true,
+          "enable_product_lightbox": true,
+          "activate_autoplay": false,
+          "slideshow_animation": "slide",
+          "product_images_position": "left",
+          "product_thumbs": false,
+          "thumbnail_position": "left-thumbnails",
+          "product_breadcrumb": false,
+          "display_vendor": false,
+          "display_sku": false,
+          "display_collections": false,
+          "display_type": false,
+          "display_tags": false,
+          "display_social_buttons": true,
+          "display_related_products": true,
+          "related_products_style": "slider",
+          "related_products_limit": "12",
+          "products_per": "3",
+          "toggle": false
+        }
+      },
+      "page-gallery-template": {
+        "type": "page-gallery-template",
+        "settings": {
+          "show_divider": true,
+          "gallery_type": "horizontal",
+          "enable_lightbox": true
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "page-faq-template-1": {
+            "type": "Content",
+            "settings": {
+              "title": "What are Epoxies?",
+              "subtitle": "<p>Epoxy systems contain two components, resins and hardeners, which get mixed together creating a chemical reaction that converts them from liquid to solid. A two-part epoxy based polymer system is mechanically strong, chemically resistant to degradation of the chemical elements in the solid form and highly adhesive during conversion from liquid to solid. When these two components are mixed together they will react chemically and link together irreversibly forming a rigid plastic like material.<\/p>"
+            }
+          },
+          "page-faq-template-2": {
+            "type": "Content",
+            "settings": {
+              "title": "What are Urethanes?",
+              "subtitle": "<p>Somewhat similar to epoxies but more durable, has excellent gloss and color retention and has UV resistance. Many epoxies tend to yellow in direct sunlight over time. A top coat of Urethane prevents this yellowing. Urethanes also have superior resistance to engine fluids, acids and alkalies. Our MCU&nbsp; super UV are the best in preventing these ocurrencies, super UV is a single component unlike other two part systems.<\/p>"
+            }
+          },
+          "page-faq-template-3": {
+            "type": "Content",
+            "settings": {
+              "title": "What are VOC’s and should I be concerned about them?",
+              "subtitle": "<p>Volatile Organic Compounds and yes you should be at least aware of what they are. They are gases that are emitted from certain materials like paints and sealers that do pose a health risk if exposed for a certain length of time. They generally come from solvents that act as carriers for the actual material you are putting down such as an epoxy. The carrier flash dries off and leaves behind the epoxy. However, the epoxies we use are VOC free, 100% solids. You can work all day inside with 100% solids epoxies without a problem.<\/p>"
+            }
+          },
+          "page-faq-template-5": {
+            "type": "Content",
+            "settings": {
+              "title": "Will I have to shut down my operation for the installation?",
+              "subtitle": "<p>A common concern when buying a new floor involves the disruption of your normal operations. Epoxies do need a couple of days to cure completely. You can walk on the floors the next day but may need to wait a couple of days before you can move furniture back on it. Epoxy will dry in approximately 8-12 Hours over night at 60 Degree temperature on up.<\/p>"
+            }
+          },
+          "page-faq-template-6": {
+            "type": "Content",
+            "settings": {
+              "title": "What type of maintenance should I expect to perform?",
+              "subtitle": "<p>With epoxy floors cleaning couldn&rsquo;t be easier. A simple mopping with water and I tiny bit of ammonia cleans the floors great. On larger areas we recommend an auto-scrubber. We also recommend an easily applied floor wax be applied as a protective coating periodically.<\/p>"
+            }
+          },
+          "page-faq-template-7": {
+            "type": "Content",
+            "settings": {
+              "title": "Why wouldn’t I just install a big box store epoxy product?",
+              "subtitle": "<p>If you read the properties, the resin is typically filled with 65% saline, a waterdown solvent and is a one to one ratio.<\/p>\n<p>Big box store generally sell low solid epoxies which are not as strong. Comparing a store bought epoxy vs. a commercial grade epoxy is like comparing a Pickup to a Peterbuilt&hellip;<\/p>"
+            }
+          },
+          "1520377372052": {
+            "type": "Content",
+            "settings": {
+              "title": "Does regular concrete need to be sealed?",
+              "subtitle": "<p>Yes, it needs to be sealed with our epoxy first. You should use our epoxy after you prepped the floor, vacuum well, as a pre-coat sealer thinly applied, this way you can apply final finish coat over any repaired imperfections, from contaminated floor, dust, fisheye, orange peels. This will guarantee the best results. 100% epoxies bond best to each other. You can use any of our epoxies as the sealer Clear or Colored.<\/p>"
+            }
+          },
+          "1520377389747": {
+            "type": "Content",
+            "settings": {
+              "title": "How dry do the floors have to be to put Epoxy down?",
+              "subtitle": "<p>All concrete floors not poured over a proper moisture barrier, are subject to possible moisture vapor transmission or hydrostatic pressure problems which can cause a coating system to blister or fail. Be sure concrete is fully cured, apply pre-coat sealer of epoxy &rdquo;clear&rdquo; or &ldquo;colored&rdquo;<\/p>"
+            }
+          },
+          "1520377406410": {
+            "type": "Content",
+            "settings": {
+              "title": "How much does it cost?",
+              "subtitle": "<p>Our epoxies cost roughly $0.50 per Square Feet, estimate based on 125 Sq.Ft per gallon rolled applied or $0.85 Sq.Ft covers 75 Sq.Ft squeegee and back roll applied.<\/p>"
+            }
+          },
+          "1520377409555": {
+            "type": "Content",
+            "settings": {
+              "title": "What other benefits are there to concrete resurfacing?",
+              "subtitle": "<p>1) All surfaces sealed with a high strength epoxies makes it extremely resistant to salts, oils and other stains. It&rsquo;s virtually non-porous which makes it mold resistant and simple to clean. Usually just a garden hose and maybe a little mild detergent will clean it fine.<\/p>\n<p>2) It adds value to your home. No doubt about it!<\/p>\n<p>3) You will save thousands, not hundreds doing it yourself not having to pay a contractor.<\/p>"
+            }
+          },
+          "1520377411506": {
+            "type": "Content",
+            "settings": {
+              "title": "How do you recommend prepping any concrete floor?",
+              "subtitle": "<p>The most important part of any concrete surface application is surface preparation. We use top quality planetary and hand-held diamond grinding equipment and shot-blasters to properly profile the floors. Call your local rental and request Diamond grinder 60\/80 grit.<\/p>"
+            }
+          },
+          "1520377414951": {
+            "type": "Content",
+            "settings": {
+              "title": "Can I make my epoxy floor less slippery?",
+              "subtitle": "<p>Yes, By adding our omni Non-skid. This product is translucent, will not be seen. Add 4oz to epoxy mix and roll. For added texture broadcast in air then back roll.<\/p>"
+            }
+          },
+          "1520377488747": {
+            "type": "Content",
+            "settings": {
+              "title": "How dry do the floors have to be to put Epoxy down?",
+              "subtitle": "<p>All concrete must be 100% dry.<\/p>"
+            }
+          },
+          "1520377490925": {
+            "type": "Content",
+            "settings": {
+              "title": "Should I acid was my floor?",
+              "subtitle": "<p>No, It does not work on sealed or old floors.<\/p>"
+            }
+          },
+          "1520377493091": {
+            "type": "Content",
+            "settings": {
+              "title": "Okay, what’s the difference between concrete and cement?",
+              "subtitle": "<p>Concrete and cement are often confused with each other. Think of Cement as glue with sand. More specifically, it&rsquo;s a hydraulic product that sets and hardens when it chemically reacts with water. It&rsquo;s kind of considered the glue that holds everything together. Concrete then, is cement that has some form of aggregate, like gravel or crushed stone, in it. Pretty much everything you see, from sidewalks to pool patios to house foundations, is concrete.<\/p>"
+            }
+          },
+          "1520377495244": {
+            "type": "Content",
+            "settings": {
+              "title": "What if my concrete has cracks in it?",
+              "subtitle": "<p>We recommend RS-88 Polyurea joint filler, super flexible, sandable, epoxy bonds to it well.<\/p>"
+            }
+          },
+          "1520377497732": {
+            "type": "Content",
+            "settings": {
+              "title": "Can’t I just buy some paint at a big box store and paint it?",
+              "subtitle": "<p>PLEASE don&rsquo;t do this. First of all, it will never adhere properly. The other common problem customers encounter is that they don&rsquo;t understand all that&rsquo;s involved in preparing the surface to accept new material. The surface needs to be prepped with a mechanical grinder. Short of that, it&rsquo;s kind of like trying to ice a cake that&rsquo;s all full of crumbs. customers finally gives up after painting their concrete every year because it never stops flaking or peeling, and faced looking at the old underneath coat, or concrete.<\/p>"
+            }
+          },
+          "1520377500240": {
+            "type": "Content",
+            "settings": {
+              "title": "What tools and accessories will I need to epoxy my floor?",
+              "subtitle": "<p>&bull;&nbsp;Squirel Mixer with low speed drill 3\/8&rdquo; x 18&rdquo;woven roller <br>&bull; 5 gallon deep roller bucket fro dip and roll <br>&bull; Duck tape Denatured alcohol for cleaning using Spray bottle <br>&bull; Spiked shoes <br>&bull; Empty clean buckets; one gallon and 5 gallon measured containers for 2:1 ratio<\/p>"
+            }
+          },
+          "1520377502640": {
+            "type": "Content",
+            "settings": {
+              "title": "How do I use flake or glitter in my epoxy flooring?",
+              "subtitle": "<p>Once your epoxy is down, use your spiked shoes to walk on top of fresh epoxy, broadcast flake and glitter, let dry over night, then use leaf blower to collect excess of loose material from floor. If any touch up is needed repeat process using excess material. Once dry use a floor scraper to remove any high points. Same day apply clear coat over epoxy to encapsulate and protect.<\/p>"
+            }
+          },
+          "1520378101910": {
+            "type": "Content",
+            "settings": {
+              "title": "When do I use MCU Super UV?",
+              "subtitle": "<p>In well ventilated areas only, use a final finish top coat over epoxy.<\/p>"
+            }
+          },
+          "1520378106365": {
+            "type": "Content",
+            "settings": {
+              "title": "Can I use colored epoxies over plywood or bar tops?",
+              "subtitle": "<p>Yes, always fill joints with wood filler first, sand out rough spots, primer first before finish coat. For bar tops; mix slowly, do not introduce air, can pour up to 1&rdquo;-2&rdquo; thick, to cover coins, nautical objects, lures, etc.. Use torch or lightly spray denatured alcohol to pop any bubbles, that may surface during curing process<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "page-faq-template-1",
+          "page-faq-template-2",
+          "page-faq-template-3",
+          "page-faq-template-5",
+          "page-faq-template-6",
+          "page-faq-template-7",
+          "1520377372052",
+          "1520377389747",
+          "1520377406410",
+          "1520377409555",
+          "1520377411506",
+          "1520377414951",
+          "1520377488747",
+          "1520377490925",
+          "1520377493091",
+          "1520377495244",
+          "1520377497732",
+          "1520377500240",
+          "1520377502640",
+          "1520378101910",
+          "1520378106365"
+        ],
+        "settings": {
+          "show_banner": false,
+          "image": "",
+          "pretext": "",
+          "title": "Page FAQ Template",
+          "subtitle": "<p>Create an amazing FAQ page with a full-width banner<\/p>",
+          "text_position": "center",
+          "text_align": "center",
+          "button1": "",
+          "button1_link": "",
+          "button2": "",
+          "button2_link": ""
+        }
+      },
+      "pigment-page": {
+        "type": "pigment-page",
+        "settings": {
+          "title": "",
+          "collection": "",
+          "collection_style": "grid",
+          "products_per": "3",
+          "products_limit": "12"
+        }
+      },
+      "1533944643768": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Metallic Pigments",
+          "collection": "pigments",
+          "collection_style": "slider",
+          "products_per": 5,
+          "products_limit": 48
+        }
+      },
+      "1533944811162": {
+        "type": "featured-products",
+        "blocks": {
+          "1533944811162-0": {
+            "type": "product",
+            "settings": {
+              "featured_product": "omni-non-skid-oxide"
+            }
+          }
+        },
+        "block_order": [
+          "1533944811162-0"
+        ],
+        "settings": {
+          "frontpage_product_stagger": true,
+          "gallery_arrows": false,
+          "activate_zoom": false,
+          "activate_autoplay": false,
+          "slideshow_animation": "slide",
+          "display_vendor": false,
+          "frontpage_display_description": true,
+          "product_description_position": "top"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "display_special_instructions": false,
+          "cart_message": ""
+        }
+      },
+      "1543021236651": {
+        "type": "content-page",
+        "settings": {
+          "content_page": "reviews"
+        }
+      },
+      "1543615117451": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Flakes",
+          "collection": "color-flakes",
+          "collection_style": "slider",
+          "products_per": 6,
+          "products_limit": 20
+        }
+      },
+      "1543616028944": {
+        "type": "featured-promotions",
+        "blocks": {
+          "1543616028944-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Stone_Basalt.jpg",
+              "link": "shopify:\/\/products\/stone-series",
+              "title": "Stone Series",
+              "text": "",
+              "button_label": "Shop now"
+            }
+          },
+          "1543616028944-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/0007_Zebra.jpg",
+              "link": "shopify:\/\/products\/woodchips",
+              "title": "Woodchips",
+              "text": "",
+              "button_label": "Shop Now"
+            }
+          },
+          "1543616189295": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/GlitterFlakes_Random-G2020.jpg",
+              "link": "shopify:\/\/products\/crystal-flake",
+              "title": "Crystal Flake",
+              "text": "",
+              "button_label": "Shop Now"
+            }
+          },
+          "1592808764277": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/F4000-B.L.S.-BLAZE-ORANGE-1.4_71694130-3b2a-494e-8aa1-2b119ac8254f.jpg",
+              "link": "shopify:\/\/products\/fluorescent",
+              "title": "Fluorescent",
+              "text": "",
+              "button_label": "Shop Now"
+            }
+          }
+        },
+        "block_order": [
+          "1543616028944-0",
+          "1543616028944-1",
+          "1543616189295",
+          "1592808764277"
+        ],
+        "settings": {
+          "promo_text_on_image_enabled": true,
+          "featured_promos_per_row": 4,
+          "featured_links_animation": "fadeInDown",
+          "feature_style": "rounded"
+        }
+      },
+      "1543617396049": {
+        "type": "pigment-page",
+        "settings": {
+          "title": "More Additives",
+          "collection": "homepage-collection",
+          "collection_style": "slider",
+          "products_per": "4",
+          "products_limit": "12"
+        }
+      },
+      "wood_signature": {
+        "type": "wood_signature",
+        "blocks": {
+          "1588258572214": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q1.jpg",
+              "maintitle": "QB-1001"
+            }
+          },
+          "1588258594838": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q2.jpg",
+              "maintitle": "QB-1002"
+            }
+          },
+          "1588258611055": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q3.jpg",
+              "maintitle": "QB-1003"
+            }
+          },
+          "1588258618936": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q4.jpg",
+              "maintitle": "QB-1004"
+            }
+          },
+          "1588258627307": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q5.jpg",
+              "maintitle": "QB-1005"
+            }
+          },
+          "1588258783437": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q6.jpg",
+              "maintitle": "QB-1006"
+            }
+          },
+          "1588258793953": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q7.jpg",
+              "maintitle": "QB-1007"
+            }
+          },
+          "1588258799148": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q8.jpg",
+              "maintitle": "QB-1008"
+            }
+          },
+          "1588258805450": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q9.jpg",
+              "maintitle": "QB-1009"
+            }
+          },
+          "1588258811844": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q10.jpg",
+              "maintitle": "QB-1010"
+            }
+          },
+          "1588258923187": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q11.jpg",
+              "maintitle": "QB-1011"
+            }
+          },
+          "1588258934281": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q12.jpg",
+              "maintitle": "QB-1012"
+            }
+          },
+          "1588258940532": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q13.jpg",
+              "maintitle": "QB-1013"
+            }
+          },
+          "1588258947827": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q14.jpg",
+              "maintitle": "QB-1014"
+            }
+          },
+          "1588258953235": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q15.jpg",
+              "maintitle": "QB-1015"
+            }
+          },
+          "1588258966149": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q16.jpg",
+              "maintitle": "QB-1016"
+            }
+          },
+          "1588259056785": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q17.jpg",
+              "maintitle": "QB-1017"
+            }
+          },
+          "1588259062569": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q18.jpg",
+              "maintitle": "QB-1018"
+            }
+          },
+          "1588259070034": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q19.jpg",
+              "maintitle": "QB-1019"
+            }
+          },
+          "1588259075424": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q20.jpg",
+              "maintitle": "QB-1020"
+            }
+          },
+          "1588259161435": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q21.jpg",
+              "maintitle": "QB-1021"
+            }
+          },
+          "1588259172079": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q22.jpg",
+              "maintitle": "QB-1022"
+            }
+          },
+          "1588259179208": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q23.jpg",
+              "maintitle": "QB-1023"
+            }
+          },
+          "1588259187274": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q24.jpg",
+              "maintitle": "QB-1024"
+            }
+          },
+          "1588259193447": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/q25.jpg",
+              "maintitle": "QB-1025"
+            }
+          }
+        },
+        "block_order": [
+          "1588258572214",
+          "1588258594838",
+          "1588258611055",
+          "1588258618936",
+          "1588258627307",
+          "1588258783437",
+          "1588258793953",
+          "1588258799148",
+          "1588258805450",
+          "1588258811844",
+          "1588258923187",
+          "1588258934281",
+          "1588258940532",
+          "1588258947827",
+          "1588258953235",
+          "1588258966149",
+          "1588259056785",
+          "1588259062569",
+          "1588259070034",
+          "1588259075424",
+          "1588259161435",
+          "1588259172079",
+          "1588259179208",
+          "1588259187274",
+          "1588259193447"
+        ],
+        "settings": {
+          "title": "ENHANCE YOUR ENVIRONMENTTM",
+          "content": "At TORGINOL®, we inspire the creativity and design of resinous performance flooring by engineering materials to enhance the aesthetic and ergonomic qualities of the most challenging flooring environments. Either choose a color pattern from our expert designed Signature Collection or use the FLOOR DESIGN VISUALIZER to customize a floor that perfectly complements your décor."
+        }
+      },
+      "catelog-traditional": {
+        "type": "catelog-traditional",
+        "blocks": {
+          "1588519266358": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-411.jpg",
+              "traditional_img_title": "FB-411"
+            }
+          },
+          "1588519322178": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-412.jpg",
+              "traditional_img_title": "FB-412"
+            }
+          },
+          "1588519334625": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-413.jpg",
+              "traditional_img_title": "FB-413"
+            }
+          },
+          "1588519357271": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-414.jpg",
+              "traditional_img_title": "FB-414"
+            }
+          },
+          "1588519368695": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-416.jpg",
+              "traditional_img_title": "FB-416"
+            }
+          },
+          "1588519381766": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-417.jpg",
+              "traditional_img_title": "FB-417"
+            }
+          },
+          "1588519395958": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-418.jpg",
+              "traditional_img_title": "FB-418"
+            }
+          },
+          "1588519409815": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-421.jpg",
+              "traditional_img_title": "FB-421"
+            }
+          },
+          "1588519425806": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-422.jpg",
+              "traditional_img_title": "FB-422"
+            }
+          },
+          "1588519443405": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-423.jpg",
+              "traditional_img_title": "FB-423"
+            }
+          },
+          "1588519454263": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-424.jpg",
+              "traditional_img_title": "FB-424"
+            }
+          },
+          "1588519465680": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-425.jpg",
+              "traditional_img_title": "FB-425"
+            }
+          },
+          "1588519504793": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-426.jpg",
+              "traditional_img_title": "FB-426"
+            }
+          },
+          "1588519523352": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-427.jpg",
+              "traditional_img_title": "FB-427"
+            }
+          },
+          "1588519534128": {
+            "type": "heading",
+            "settings": {
+              "traditional_img": "shopify:\/\/shop_images\/FB-428.jpg",
+              "traditional_img_title": "FB-428"
+            }
+          }
+        },
+        "block_order": [
+          "1588519266358",
+          "1588519322178",
+          "1588519334625",
+          "1588519357271",
+          "1588519368695",
+          "1588519381766",
+          "1588519395958",
+          "1588519409815",
+          "1588519425806",
+          "1588519443405",
+          "1588519454263",
+          "1588519465680",
+          "1588519504793",
+          "1588519523352",
+          "1588519534128"
+        ],
+        "settings": {}
+      },
+      "catelog-insignia": {
+        "type": "catelog-insignia",
+        "blocks": {
+          "1588519645776": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-201.jpg",
+              "insignia_img_title": "FB-201"
+            }
+          },
+          "1588522912800": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-202.jpg",
+              "insignia_img_title": "FB-202"
+            }
+          },
+          "1588522947389": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-203.jpg",
+              "insignia_img_title": "FB-203"
+            }
+          },
+          "1588522977443": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-204.jpg",
+              "insignia_img_title": "FB-204"
+            }
+          },
+          "1588522989012": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-205.jpg",
+              "insignia_img_title": "FB-205"
+            }
+          },
+          "1588523015154": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-206.jpg",
+              "insignia_img_title": "FB-206"
+            }
+          },
+          "1588523145140": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-207.jpg",
+              "insignia_img_title": "FB-207"
+            }
+          },
+          "1588523154758": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-209.jpg",
+              "insignia_img_title": "FB-209"
+            }
+          },
+          "1588523225817": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-210.jpg",
+              "insignia_img_title": "FB-210"
+            }
+          },
+          "1588523237694": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-211.jpg",
+              "insignia_img_title": "FB-211"
+            }
+          },
+          "1588523251129": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-212.jpg",
+              "insignia_img_title": "FB-212"
+            }
+          },
+          "1588523282940": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-213.jpg",
+              "insignia_img_title": "FB-213"
+            }
+          },
+          "1588523296054": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-214.jpg",
+              "insignia_img_title": "FB-214"
+            }
+          },
+          "1588523382079": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-215.jpg",
+              "insignia_img_title": "FB-215"
+            }
+          },
+          "1588523391774": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-216.jpg",
+              "insignia_img_title": "FB-216"
+            }
+          },
+          "1588523402701": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-217.jpg",
+              "insignia_img_title": "FB-217"
+            }
+          },
+          "1588523464187": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-218.jpg",
+              "insignia_img_title": "FB-218"
+            }
+          },
+          "1588523474902": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-219.jpg",
+              "insignia_img_title": "FB-219"
+            }
+          },
+          "1588523485110": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-220.jpg",
+              "insignia_img_title": "FB-220"
+            }
+          },
+          "1588523557264": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-221.jpg",
+              "insignia_img_title": "FB-221"
+            }
+          },
+          "1588523577886": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-222.jpg",
+              "insignia_img_title": "FB-222"
+            }
+          },
+          "1588523595670": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-223.jpg",
+              "insignia_img_title": "FB-223"
+            }
+          },
+          "1588523661640": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-224.jpg",
+              "insignia_img_title": "FB-224"
+            }
+          },
+          "1588523673502": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-225.jpg",
+              "insignia_img_title": "FB-225"
+            }
+          },
+          "1588523683551": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-226.jpg",
+              "insignia_img_title": "FB-226"
+            }
+          },
+          "1588523702239": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-227.jpg",
+              "insignia_img_title": "FB-227"
+            }
+          },
+          "1588523730678": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-228.jpg",
+              "insignia_img_title": "FB-228"
+            }
+          },
+          "1588523832104": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-229.jpg",
+              "insignia_img_title": "FB-229"
+            }
+          },
+          "1588523848470": {
+            "type": "heading",
+            "settings": {
+              "insignia_img": "shopify:\/\/shop_images\/FB-230.jpg",
+              "insignia_img_title": "FB-230"
+            }
+          }
+        },
+        "block_order": [
+          "1588519645776",
+          "1588522912800",
+          "1588522947389",
+          "1588522977443",
+          "1588522989012",
+          "1588523015154",
+          "1588523145140",
+          "1588523154758",
+          "1588523225817",
+          "1588523237694",
+          "1588523251129",
+          "1588523282940",
+          "1588523296054",
+          "1588523382079",
+          "1588523391774",
+          "1588523402701",
+          "1588523464187",
+          "1588523474902",
+          "1588523485110",
+          "1588523557264",
+          "1588523577886",
+          "1588523595670",
+          "1588523661640",
+          "1588523673502",
+          "1588523683551",
+          "1588523702239",
+          "1588523730678",
+          "1588523832104",
+          "1588523848470"
+        ],
+        "settings": {}
+      },
+      "catelog-surreal": {
+        "type": "catelog-surreal",
+        "blocks": {
+          "1588524561407": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-301.jpg",
+              "surreal_img_title": "FB-301"
+            }
+          },
+          "1588524669512": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-302.jpg",
+              "surreal_img_title": "FB-302"
+            }
+          },
+          "1588524763379": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-303.jpg",
+              "surreal_img_title": "FB-303"
+            }
+          },
+          "1588524775446": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-304.jpg",
+              "surreal_img_title": "FB-304"
+            }
+          },
+          "1588524786237": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-305.jpg",
+              "surreal_img_title": "FB-305"
+            }
+          },
+          "1588524796606": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-306.jpg",
+              "surreal_img_title": "FB-306"
+            }
+          },
+          "1588524808113": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-307.jpg",
+              "surreal_img_title": "FB-307"
+            }
+          },
+          "1588524820387": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-308.jpg",
+              "surreal_img_title": "FB-308"
+            }
+          },
+          "1588524971257": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-309.jpg",
+              "surreal_img_title": "FB-309"
+            }
+          },
+          "1588524984042": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-310.jpg",
+              "surreal_img_title": "FB-310"
+            }
+          },
+          "1588524995083": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-311.jpg",
+              "surreal_img_title": "FB-311"
+            }
+          },
+          "1588525004820": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-312.jpg",
+              "surreal_img_title": "FB-312"
+            }
+          },
+          "1588525018045": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-313.jpg",
+              "surreal_img_title": "FB-313"
+            }
+          },
+          "1588525030158": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-314.jpg",
+              "surreal_img_title": "FB-314"
+            }
+          },
+          "1588525266376": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-315.jpg",
+              "surreal_img_title": "FB-315"
+            }
+          },
+          "1588525279180": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-316.jpg",
+              "surreal_img_title": "FB-316"
+            }
+          },
+          "1588525295311": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-317.jpg",
+              "surreal_img_title": "FB-317"
+            }
+          },
+          "1588525328130": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-318.jpg",
+              "surreal_img_title": "FB-318"
+            }
+          },
+          "1588525340728": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-319.jpg",
+              "surreal_img_title": "FB-319"
+            }
+          },
+          "1588525355599": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-320.jpg",
+              "surreal_img_title": "FB-320"
+            }
+          },
+          "1588525468191": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-321.jpg",
+              "surreal_img_title": "FB-321"
+            }
+          },
+          "1588525481950": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-322.jpg",
+              "surreal_img_title": "FB-322"
+            }
+          },
+          "1588525493255": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-323.jpg",
+              "surreal_img_title": "FB-323"
+            }
+          },
+          "1588525504830": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-324.jpg",
+              "surreal_img_title": "FB-324"
+            }
+          },
+          "1588525521495": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-325.jpg",
+              "surreal_img_title": "FB-325"
+            }
+          },
+          "1588525536624": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-326.jpg",
+              "surreal_img_title": "FB-326"
+            }
+          },
+          "1588525603029": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-327.jpg",
+              "surreal_img_title": "FB-327"
+            }
+          },
+          "1588525624415": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-328.jpg",
+              "surreal_img_title": "FB-328"
+            }
+          },
+          "1588525636333": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-329.jpg",
+              "surreal_img_title": "FB-329"
+            }
+          },
+          "1588525647983": {
+            "type": "heading",
+            "settings": {
+              "surreal_img": "shopify:\/\/shop_images\/FB-330.jpg",
+              "surreal_img_title": "FB-330"
+            }
+          }
+        },
+        "block_order": [
+          "1588524561407",
+          "1588524669512",
+          "1588524763379",
+          "1588524775446",
+          "1588524786237",
+          "1588524796606",
+          "1588524808113",
+          "1588524820387",
+          "1588524971257",
+          "1588524984042",
+          "1588524995083",
+          "1588525004820",
+          "1588525018045",
+          "1588525030158",
+          "1588525266376",
+          "1588525279180",
+          "1588525295311",
+          "1588525328130",
+          "1588525340728",
+          "1588525355599",
+          "1588525468191",
+          "1588525481950",
+          "1588525493255",
+          "1588525504830",
+          "1588525521495",
+          "1588525536624",
+          "1588525603029",
+          "1588525624415",
+          "1588525636333",
+          "1588525647983"
+        ],
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1489284011497",
+      "1489283660007",
+      "1494386496739",
+      "1543021236651",
+      "1533944643768",
+      "1543615117451",
+      "1543616028944",
+      "1543617396049",
+      "1533944811162",
+      "1489284503681",
+      "1494388913057",
+      "1494381994748",
+      "1494382709691",
+      "1495582718463"
+    ]
+  }
+}

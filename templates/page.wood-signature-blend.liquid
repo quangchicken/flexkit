@@ -1,0 +1,61 @@
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="sixteen columns page clearfix">
+  <h1>
+    {{ page.title }}
+  </h1>
+  <div class="feature_divider"></div>
+	<div class="wood_signature_box">
+      <h2>HARMONIZE YOUR ENVIRONMENT</h2>
+<p>TORGINOL® Natural WoodChipsTM combine the warming charm of natural hardwood with the resilience of resinous flooring to enhance the aesthetic and ergonomic qualities of the most challenging flooring environments. Explore our collection of WOOD Signature Blends to find a design style that complements the ambiance of your décor.
+      </p>
+      <div class="wood_signature">
+        <div class="wood_signature_block ">
+          	<a href="{{ "1.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "1.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1001</h5>
+        </div>
+        <div class="wood_signature_block ">
+          	<a href="{{ "2.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "2.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1002</h5>
+        </div>
+        <div class="wood_signature_block ">
+          	<a href="{{ "3.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "3.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1003</h5>
+        </div>
+        <div class="wood_signature_block ">
+          	<a href="{{ "4.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "4.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1004</h5>
+        </div>
+        <div class="wood_signature_block ">
+          	<a href="{{ "5.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "5.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1005</h5>
+        </div>
+        <div class="wood_signature_block ">
+          	<a href="{{ "6.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "6.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1006</h5>
+        </div>
+        <div class="wood_signature_block ">
+          	<a href="{{ "7.jpg" | asset_url }}" class="fancybox">
+        	<img src="{{ "7.jpg" | asset_url }}" alt="">
+          </a>
+          	<h5>WB-1007</h5>
+        </div>
+        
+      </div>
+  </div>
+  <div>
+    {% include 'page-multi-column', content: page.content %}
+  </div>
+</div>

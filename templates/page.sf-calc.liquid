@@ -1,0 +1,505 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/1.0.1/rivets-cart.min.js"></script>
+{{ 'cart.js' | asset_url | script_tag }}
+{{ 'js.storage.min.js' | asset_url | script_tag }}
+<a name="pagecontent" id="pagecontent"></a>
+<input type="hidden" name="current_product_name" id="current_product_name" />
+<input type="hidden" name="current_product" id="current_product" />
+<input type="hidden" name="current_product_options" id="current_product_options" />
+<input type="hidden" name="current_variant" id="current_variant" />
+<input type="hidden" name="current_data_unit" id="current_data_unit" />
+<input type="hidden" name="mycalcsqft" id="mycalcsqft" />
+<div class="sixteen columns page clearfix">
+  <h1>
+    {{ page.title }}
+  </h1>
+  <div class="rte">{{ page.description }}</div>
+  <div class="feature_divider"></div>
+
+  <div>
+    <div class="custom-mix-holder custom-mix">    
+      <div class="mainoption">
+        <div class="optionselect">
+          <label>
+			<input type="radio" name="radio" class="optionselect" id="solidcolorepoxy" name="optionselect" value="1" checked/>
+			<span>Solid Color Epoxy</span>
+		</label>
+        </div>
+        <div class="optionselect">
+          <label>
+			<input type="radio" name="radio" class="optionselect" id="decorative" name="optionselect" value="2"/>
+			<span>Decorative Epoxy Flake Chips</span>
+		</label>
+        </div>
+        <div class="optionselect">
+          <label>
+			<input type="radio" name="radio" class="optionselect" id="multicolor" name="optionselect" value="3"/>
+			<span>Multi Color Marbleized Metallic Epoxy</span>
+		</label>
+        </div>        
+      </div>
+      <div class="selection-panel">
+        <h2 class="longprimer">SF Calculator</h2>
+        <div class="product-holder item-selection">
+          <div class="formcontainer">
+          <div class="inputcontainer">          
+          <input type="number" id="length" min="0" max="9999" onKeyDown="if(this.value.length==4) return false;" length="4" maxlength="4" name="length" placeholder="Length(feet)*" value="" required="required">
+        </div>
+        <div class="inputcontainer">          
+          <input type="number" id="width" min="0" max="9999" onKeyDown="if(this.value.length==4) return false;" length="4" maxlength="4" name="width" placeholder="Width(feet)*" value="" required="required">
+        </div>        
+        <div class="inputcontainer">
+          <button id="calculatesq" name="calculatesq" class="btn">Calculate</button>
+        </div>
+        <div class="clearfix">&nbsp;</div>
+          <div class="sqft"></div>
+          <div class="showrequireddata"></div>         
+          <button id="addtocart" name="addtocart" class="btn" style="display:none;">Add in cart</button>
+        </div>
+        </div>      	    	
+      </div>
+      <div class="mix-design-panel">
+      <div class="custom-mix-container">         
+        </div>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var storage=Storages.sessionStorage;
+//console.log(storage);
+var myproductsdata = [];
+refreshcartcustom();
+$(".collectionlink").click(function(){
+   //alert('test');
+   var colhandle = $(this).data('collection-id');  
+   var prodid = $(this).data('product-id');
+   var prodoptions = $(this).data('product-options');
+   var myunit = $(this).data('unit');
+   var producname = $(this).data('collection-title');
+  	$('.myproddetails').hide('slow');
+    $('.customize').hide('slow');  
+  	$('.prod_'+colhandle).show('slow');
+ 	$('.custom-mix-container').show('slow');
+    $('#current_product').val(prodid);
+    $('#current_product_options').val(prodoptions);
+    $('#current_data_unit').val(myunit);
+  	$('#current_product_name').val(producname);  
+    /*$.getJSON('/products/'+colhandle+'.json', function(response) {    
+    var myproducts = response;
+    console.log(myproducts);
+   var html ='<ul class="items">';
+    $.each( response.product.variants, function( index, value ){
+      //console.log(value);
+      	//var fvariant = value.variants[0];
+      	console.log(value);
+      	var varimage = value.image_id;
+      	var imgsrc = response.product.image.src;
+      	$.each( response.product.images, function( imageindex, imagevalue ){
+          if(varimage == imagevalue.id)
+          {
+            imgsrc = imagevalue.src;
+          }
+        });
+        var mytitle = value.title;        
+    	html = html + '<li><a class="addtocartlink" data-variant-id="'+ value.id +'" data-price="'+ value.price +'" data-grams="'+value.weight+'" data-sku="'+value.sku+'" data-title="'+mytitle+'" href="javascript:void(0);"><img alt="'+mytitle+'" class="photo" src="'+imgsrc+'"><span class="name">'+mytitle+'</span> <span class="price"></span></a></li>';                
+	});
+    html = html +'</ul>';
+    $('.item-selection').html(html);*/
+    //console.log(html);
+});  
+$('body').on('click', '.addtocartlink', function() {
+  //alert('test');
+  var variantid = $(this).data('variant-id');
+  var title = $(this).data('title');
+  var fprice = $(this).data('price');
+  var favailable = $(this).data('available');
+  var fgrams = $(this).data('grams');
+  var fsku = $(this).data('sku');
+  var ffeatured_image = $(this).data('featured_image');
+  var qty = 1;
+  var pro_com_arr = myproductsdata;
+  var tempcomparedata = pro_com_arr;
+  //console.log(tempcomparedata);
+  for (var i=0; i<pro_com_arr.length; i++) {	
+    if(pro_com_arr[i].id == variantid)
+    {
+      qty = pro_com_arr[i].quantity + 1
+      tempcomparedata.splice(i, 1);
+    }
+  }
+  storage.removeAll();  	  
+  storage.set('foo',tempcomparedata);
+  myproductsdata.push({id:variantid,name:title,price:fprice,status:favailable,weight:fgrams,sku:fsku,image:ffeatured_image,quantity:qty});
+  storage.set('foo',myproductsdata);
+  //CartJS.addItem(variantid);  
+  //window.setTimeout( refreshcartcustom(),50000 );  
+  refreshcartcustom();
+});
+function refreshcartcustom()
+{  
+  //console.log('called');
+  if(storage.isSet('foo'))
+  {
+    myproductsdata = storage.get('foo');
+    var tempdata = storage.get('foo');      
+  	var carthtml = '';
+    var total = 0;
+    var element =0;
+    for (var i=0; i<tempdata.length; i++)
+    {
+    var cartitem = tempdata[i];
+    var itemid = cartitem.id;    
+    var disableclass = '';
+    if(cartitem.quantity == 1)
+    {
+      disableclass = 'disabled';
+    }
+    total = total + (cartitem.price * cartitem.quantity );         
+    element = element + cartitem.quantity;
+    carthtml = carthtml + '<li id="'+cartitem.id+'"><div class="image" style="background-image:url('+cartitem.image+')"><a href="javascript:removeitem('+cartitem.id+');" class="remove" title="Remove"><img src="https://nuts.com/images/custom-gifts/mix-remove.png" alt="X"></a></div><div class="name">'+cartitem.name+'</div><div class="meta"><span class="parts">'+cartitem.quantity+' part</span> <a href="javascript:increaseitem('+cartitem.id+')" class="increase" title="Increase"><img src="https://nuts.com/images/custom-gifts/mix-increase.gif" alt="+"></a> <a href="javascript:decreaseitem('+cartitem.id+')" class="decrease '+disableclass+'" title="Decrease"><img src="https://nuts.com/images/custom-gifts/mix-decrease.gif" alt="-"></a></div></li>';
+    }
+  	$('.custom-mix-container .mix').html(carthtml);
+    var subtotal = parseFloat(total / element).toFixed(2);
+    var perlb = parseFloat(subtotal / 2.20462).toFixed(2);
+    $('#weight-5,.total-price').html('$'+subtotal);
+    $('#weight-5-per-lb').html('$'+perlb+ '/LB' );
+  }
+}
+function removeitem(itemid)
+{
+  var pro_com_arr = myproductsdata;
+  var tempcomparedata = pro_com_arr;
+  console.log(tempcomparedata);
+  for (var i=0; i<pro_com_arr.length; i++) {	
+    if(pro_com_arr[i].id == itemid)
+    {
+      tempcomparedata.splice(i, 1);
+    }
+  }
+  storage.removeAll();  	
+  //console.log(tempcomparedata);
+  storage.set('foo',tempcomparedata);
+  refreshcartcustom();
+}
+function increaseitem(itemid)
+{
+  var qty = 1;
+  var vid,vname,vprice,vstatus,vweight,vsku,vimage,vquantity;
+  var pro_com_arr = myproductsdata;
+  var tempcomparedata = pro_com_arr;  
+  var location = 0;
+  for (var i=0; i<pro_com_arr.length; i++) {	
+    if(pro_com_arr[i].id == itemid)
+    {
+      location = i;
+      vid = pro_com_arr[i].id;
+      vname = pro_com_arr[i].name;
+      vprice = pro_com_arr[i].price;
+      vstatus = pro_com_arr[i].status;
+      vweight = pro_com_arr[i].weight;
+      vsku = pro_com_arr[i].sku;
+      vimage = pro_com_arr[i].image;
+      vquantity = pro_com_arr[i].quantity;
+      qty = pro_com_arr[i].quantity + 1
+      tempcomparedata.splice(i, 1);     
+    }
+  }
+  tempcomparedata.splice(location, 0,{id:vid,name:vname,price:vprice,status:vstatus,weight:vweight,sku:vsku,image:vimage,quantity:qty});
+  //tempcomparedata.push();
+  storage.removeAll();  	  
+  storage.set('foo',tempcomparedata);
+  refreshcartcustom();
+  
+}
+function decreaseitem(itemid)
+{
+  var qty = 1;
+  var vid,vname,vprice,vstatus,vweight,vsku,vimage,vquantity;
+  var pro_com_arr = myproductsdata;
+  var tempcomparedata = pro_com_arr;  
+  var location = 0;
+  for (var i=0; i<pro_com_arr.length; i++) {	
+    if(pro_com_arr[i].id == itemid)
+    {
+      location = i;
+      vid = pro_com_arr[i].id;
+      vname = pro_com_arr[i].name;
+      vprice = pro_com_arr[i].price;
+      vstatus = pro_com_arr[i].status;
+      vweight = pro_com_arr[i].weight;
+      vsku = pro_com_arr[i].sku;
+      vimage = pro_com_arr[i].image;
+      vquantity = pro_com_arr[i].quantity;
+      qty = pro_com_arr[i].quantity - 1
+      tempcomparedata.splice(i, 1);     
+    }
+  }
+  tempcomparedata.splice(location, 0,{id:vid,name:vname,price:vprice,status:vstatus,weight:vweight,sku:vsku,image:vimage,quantity:qty});
+  //tempcomparedata.push({id:vid,name:vname,price:vprice,status:vstatus,weight:vweight,sku:vsku,image:vimage,quantity:qty});
+  storage.removeAll();  	  
+  storage.set('foo',tempcomparedata);
+  refreshcartcustom();
+} 
+function setError(type) {
+    //alert('testasdf ');
+    $('#' + type+'lable').after('<span class="error">' + type + ' must be a number.</span>');
+  }
+function isValid(width, height) {
+    var isValid = true;
+    
+    //
+    // Reset errors
+    //
+    $('.field').find('.error').remove();
+    if (isNaN(height)) {
+      setError('height');
+      isValid = false;
+    }
+    
+    if (isNaN(width)) {
+      setError('width');
+      isValid = false;
+    }
+    
+    return isValid;
+  }
+    //alert('testasdf ');    
+$("#addtocart").click(function(){
+  var vid = 31731181813833;
+  //alert('test');
+  $(this).prop('disabled', true);
+  if(storage.isSet('foo'))
+  {
+    myproductsdata = storage.get('foo');
+    var tempdata = storage.get('foo');      
+  	var carthtml = '';
+    var total = 0;
+    var element =0;
+    var property = '';
+    var quantitytoadd = $('#unit-quantity').val();
+    for (var i=0; i<tempdata.length; i++)
+    {
+    var cartitem = tempdata[i];
+    var itemid = cartitem.id;  
+    property = property + ', '+ cartitem.quantity +' X '+ cartitem.name;
+    total = total + (cartitem.price * cartitem.quantity );
+    element = element + cartitem.quantity;    
+    }
+    var subtotal = parseFloat(total / element).toFixed(2);
+    var perlb = parseFloat(subtotal / 2.20462).toFixed(2);
+    var sizeofbag = '1 KG / 2.2 LB BAG - $'+subtotal+ ' each';  
+    var qtytoadd = (subtotal*100).toFixed(0);
+    if(quantitytoadd > 1 )
+    {
+      for(i=1;i<=quantitytoadd;i++)
+      {
+        CartJS.addItem(vid, qtytoadd, {"Size of bag": sizeofbag,"items":property,"Quantity Index":i});
+      }
+    }
+    else
+    {
+        CartJS.addItem(vid, qtytoadd, {"Size of bag": sizeofbag,"items":property});
+    }
+    setTimeout(function () {storage.removeAll(); window.location.replace("/cart");}, 2000);
+  }  
+});
+$('#calculatesq').click(function () {      	
+    var inputs = {
+      height: $('#length').val(),
+      width:  $('#width').val()
+    };
+    
+    var values = {
+      height: parseFloat(inputs.height),
+      width: parseFloat(inputs.width)
+    };
+    var optionselected = $('input[name="radio"]:checked').val();
+  
+    if (isValid(values.width, values.height)) {
+      $('#mycalcsqft').val((values.width * values.height).toFixed(2));
+      $('.sqftsqft').val('Calculated area (sqft): ' + (values.width * values.height).toFixed(2));
+      var sqftneeded = (values.width * values.height).toFixed(2);
+      var sqftneed = $("#mycalcsqft").val();  
+      if(optionselected == '1' )
+      {
+        var cerk = (sqftneeded / 85).toFixed(2);
+        var clerk = (sqftneeded / 115).toFixed(2);
+        var metalic = (sqftneeded / 28.80).toFixed(2);
+        var html ="<h2>Square feet ratio by gallon for "+sqftneed+" :- </h2><ul class='reneeded'><li><span class='lbl'>Colored Epoxy Resin Kit:-</span><span class='val'>"+ cerk +" gallons.</span></li><li><span class='lbl'>Clear Epoxy Resin Kit:- </span><span class='val'>"+clerk+" gallons.</span></li><li><span class='lbl'>Metallic Powder Pigment :- </span><span class='val'>"+metalic+" oz total.</span></li></ul><br />";
+        html = html + "<h2>Important Notes:</h2><ul class='notes'><li>Enter quantity amounts into the shopping cart for total cost, plus shipping.</li><li>Our epoxy is a 2:1 mix ratio, you will only be able to enter full kits only.</li><li>Divide material cost with your Square footage to get exact Square toot material cost.</li><li>We are always here to help, call us with any questions at 866-608-7625 or start a chat today.</li></ul>";
+      }
+      if(optionselected == '2' )
+      {
+        var cerk = (sqftneeded / 250).toFixed(2);
+        var clerk = (sqftneeded / 125).toFixed(2);
+        var metalic = (sqftneeded / 13).toFixed(2);
+        var html ="<h2>Square feet ratio by gallon  for "+sqftneed+" :- </h2><ul class='reneeded'><li><span class='lbl'>Colored Epoxy Resin Kit:-</span><span class='val'>"+ cerk +" gallons.</span></li><li><span class='lbl'>Clear Epoxy Resin Kit:- </span><span class='val'>"+clerk+" gallons.</span></li><li><span class='lbl'>Metallic Powder Pigment :- </span><span class='val'>"+metalic+" Pounds.</span></li></ul><br />";
+        html = html + "<h2>Important Notes:</h2><ul class='notes'><li>Enter the quantity amounts into the shipping cart for total cost, plus shipping.</li><li>Our epoxy is a 2:1 mix ratio, you will be able to enter full kits only.</li><li>Pricing is based on our standard flakes only $3.99 per pound sold in increments of 5Lbs only i.e, 15, 20,25,30,35,40 and so on.</li></ul>";
+        html = html + "<h2>Pro tip:</h2><ul class='notes'><li>Save even more money by replacing colored resin with clear resin using clear as the adhesive coat.</li><li>Divide material costs with you square footage to get exact Sq.Ft material costs.</li><li>We are always here to help, call us with any questions at 866-608-7625 or start a chat today.</li></ul>"
+      }
+      if(optionselected == '3' )
+      {
+        var cerk = (sqftneeded / 250).toFixed(2);
+        var clerk = (sqftneeded / 125).toFixed(2);
+        var metalic = (sqftneeded / 13).toFixed(2);
+        var html ="<h2>Square feet ratio by gallon  for "+sqftneed+" :- </h2><ul class='reneeded'><li><span class='lbl'>Colored Epoxy Resin Kit:-</span><span class='val'>"+ cerk +" gallons.</span></li><li><span class='lbl'>Clear Epoxy Resin Kit:- </span><span class='val'>"+clerk+" gallons.</span></li><li><span class='lbl'>Metallic Powder Pigment :- </span><span class='val'>"+metalic+" Pounds.</span></li></ul><br />";
+        html = html + "<h2>Important Notes:</h2><ul class='notes'><li>Enter the quantity amount into the shopping cart for the total cost, plus shipping.</li><li>Our epoxy is a 2:1 mix ratio, you will be able to enter full kits only.</li><li>This quantity is for dip and roll application with 18” x 3/8” nap roll at 225Sq.Ft per gallon. Apply two coats day1 primer, day 2 final finish. </li><li>Divide material cost with your square footage to get exact square foot material costs.</li><li>We are always here to help, call us with any questions at 866-608-7625 or start a chat today.</li></ul>";
+      }
+      var datunit = $("#current_data_unit").val();
+        
+      var requriedepoxy = (sqftneed / datunit).toFixed(2);
+      var typeofepoxy = $( "#current_product_name" ).val();      
+      var variant1 = $('.mycustomswatch0').find('.selected').data('value');
+      var variant2 = $('.mycustomswatch1').find('.selected').data('value');
+      var variant3 = $('.mycustomswatch2').find('.selected').data('value');
+      if(variant1)
+      {
+        typeofepoxy = typeofepoxy +" - " +variant1;
+      }
+      if(variant2)
+      {
+        typeofepoxy = typeofepoxy +" - " +variant2;
+      }
+      if(variant3)
+      {
+        typeofepoxy = typeofepoxy +" - " +variant3;
+      }
+      
+      $('.showrequireddata').html('');
+      var showdata = "For "+sqftneed+" feets "+ html;
+      $('.showrequireddata').html(html);
+      console.log(showdata);
+      $('#calculateepoxy').show();
+      //$('#addtocart').show();
+    }
+    
+    return false;
+  });  
+$('#calculateepoxy').click(function () {
+    //alert('in ccall');
+     var datunit = $("#seal-coat").find(':selected').attr('data-unit');
+     var sqftneed = $("#mycalcsqft").val();    
+     var requriedepoxy = (sqftneed / datunit).toFixed(2);
+     var typeofepoxy = $( "#seal-coat option:selected" ).text();
+     $('.showrequireddata').html('');
+     var showdata = "For "+sqftneed+" feets, you need <b>"+requriedepoxy+"</b> gallons of "+typeofepoxy+".";
+    $('.showrequireddata').html(showdata);
+    
+    console.log(showdata);
+    return false;
+  });
+$('.optionselect').click(function () {
+  $('.showrequireddata').html('');
+});  
+$(document).ready(function() {
+//var myid = $('#product-select-1375486181461 option:contains(1.5 Gallon Kit / Mongoose Beige)').val();
+//alert(myid);
+  
+  $('.mycustomswatch0 .swatch-element').click(function () {    
+    $('.mycustomswatch0 .swatch-element').removeClass('selected');
+    $(this).addClass('selected');
+    var variant1 = $('.mycustomswatch0').find('.selected').data('value');
+    var variant2 = $('.mycustomswatch1').find('.selected').data('value');    
+    var variantidfinder = '';
+    if(variant1)
+    {
+      variantidfinder =  variant1 +" / " +variant2;
+    }   
+    var prodid = $('#current_product').val();
+    var myid = $('#product-select-'+prodid+' option:contains('+variantidfinder+')').val();
+    //alert(myid);
+  });
+  $('.mycustomswatch1 .swatch-element').click(function () {    
+    $('.mycustomswatch1 .swatch-element').removeClass('selected');
+    $(this).addClass('selected');
+    var variant1 = $('.mycustomswatch0').find('.selected').data('value');
+    var variant2 = $('.mycustomswatch1').find('.selected').data('value');    
+    var variantidfinder = '';
+    if(variant1)
+    {
+      variantidfinder =  variant1 +" / " +variant2;
+    }   
+    var prodid = $('#current_product').val();
+    var myid = $('#product-select-'+prodid+' option:contains('+variantidfinder+')').val();
+    //alert(myid);
+  });
+  $('.mycustomswatch3 .swatch-element').click(function () {    
+    $('.mycustomswatch3 .swatch-element').removeClass('selected');
+    $(this).addClass('selected');
+  });
+  $('.optionselect').click(function () {        
+    var curid = $("input[type='radio'].optionselect:checked").attr('id');
+    //alert(curid);
+    $('.productselectionlist').hide();
+    $('#'+curid+'_list').show('slow');
+  });
+});
+  
+</script>
+<script type="text/javascript">
+  jQuery(function() {
+    CartJS.init({{ cart | json }});
+  });
+</script>  
+<style>.error{display:block;color:red;font-size:16px;font-weight:bold;}#calculateepoxy{display:none;}
+  .sqft{font-size: 20px;line-height: 1.5;font-weight:bold;}
+  .clearfix{clear:both;float:none;}
+  .showrequireddata{font-size:24px;margin:15px 0;clear:both;float:none;font-weight:bold;}
+  .optionselect{display: inline;width: 25%;margin:0 20px;}
+  .mainoption{background: #27b34b;padding: 15px 0 0;}
+</style>
+<style>
+label {
+  display: flex;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.375em;
+  /* Accessible outline */
+  /* Remove comment to use */
+  /*
+  	&:focus-within {
+  			outline: .125em solid $primary-color;
+  	}
+  */
+}
+label input {
+  position: absolute;
+  left: -9999px;
+}
+label input:checked + span {
+  background-color: #7a4c92;
+}
+label input:checked + span:before {
+  box-shadow: inset 0 0 0 0.4375em #00005c;
+}
+label span {
+  display: flex;
+  align-items: center;
+  padding: 0.375em 0.75em 0.375em 0.375em;
+  border-radius: 99em;
+  transition: 0.25s ease;color:#fff;
+}
+label span:hover {
+  background-color:#8fa5bb;
+}
+label span:before {
+  display: flex;
+  flex-shrink: 0;
+  content: "";
+  background-color: #fff;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  margin-right: 0.375em;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 0 0.125em #00005c;
+}
+.page .feature_divider, h2.title+.feature_divider {
+    padding-bottom: 0px;
+}
+</style>

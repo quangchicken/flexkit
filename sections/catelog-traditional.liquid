@@ -1,0 +1,39 @@
+<div class="catelog-traditional">
+  <h2>Traditional</h2>
+  <div class="wood_signature">
+    {% for block in section.blocks %}
+    <div class="wood_signature_block ">
+      <a href="{{ block.settings.traditional_img  | img_url: 'master' }}" class="fancybox">
+        <img src="{{ block.settings.traditional_img  | img_url: 'master' }}" alt="">
+      </a>
+      <h5>{{ block.settings.traditional_img_title }}</h5>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Traditional",
+	"class": "traditional_main",
+    "settings": [],
+    "blocks": [
+        {
+          "name": "Image",
+          "type": "heading",
+          "settings": [
+			{
+              "type": "image_picker",
+              "id": "traditional_img",
+              "label": "Select Image"
+            },
+            {
+              "type": "text",
+              "id": "traditional_img_title",
+              "label": "Title"
+            }
+          ]
+        }
+	 ]
+  }
+{% endschema %}

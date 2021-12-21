@@ -1,0 +1,69 @@
+
+
+
+<div>
+
+  <div>
+
+
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+      {% endif %}
+
+      {% if form.errors %}
+        <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+       {% assign message = 'contact.form.message' | t %}
+        <ul class="center">
+          {% for field in form.errors %}
+            {% if field == 'form' %}
+              <li>
+                {{ form.errors.messages[field] }}
+              </li>
+            {% else %}
+              <li>
+                {% assign field_name = field | replace: 'body', message %}
+                {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+              </li>
+            {% endif %}
+          {% endfor %}
+         </ul>
+      {% endif %}
+
+       <br class="clear" />
+       <div >
+        {% assign name_attr = 'contact.form.name' | handle %}
+        <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label>
+        <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+       </div>
+       <div >
+        <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label>
+        <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+       </div>
+     
+        {% assign name_attr = 'contact.form.phone' | t | handle %}
+        <label for="contactFormPhone" >{{ 'contact.form.phone' | t }}<span class="red">*</span></label>
+        <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}" required="required">
+       
+
+
+      <label for="contactFormMessage">{{ 'contact.form.message' | t }} <span class="red">*</span></label>
+      <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="Please provide additional questions or information regarding the inquery about our Quartz products; E.g. granule size, quantity in lbs etc..." required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+      <input class="action_button sign_up" type="submit"  value="{{ 'contact.form.send' | t }}" />
+    {% endform %}
+  </div>
+</div>
+
+
+
+<style>
+  .five.columns.omega input#contactFormEmail {
+    margin-left: -10px;
+}
+</style>
+
+
+
+

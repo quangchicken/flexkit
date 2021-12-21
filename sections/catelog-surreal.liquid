@@ -1,0 +1,39 @@
+<div class="catelog-surreal">
+    <h2>Surreal</h2>
+  <div class="wood_signature">
+    {% for block in section.blocks %}
+    <div class="wood_signature_block ">
+        <a href="{{ block.settings.surreal_img  | img_url: 'master' }}" class="fancybox">
+        <img src="{{ block.settings.surreal_img  | img_url: 'master' }}" alt="">
+      </a>
+      <h5>{{ block.settings.surreal_img_title }}</h5>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Surreal",
+	"class": "surreal_main",
+    "settings": [],
+    "blocks": [
+        {
+          "name": "Image",
+          "type": "heading",
+          "settings": [
+			{
+              "type": "image_picker",
+              "id": "surreal_img",
+              "label": "Select Image"
+            },
+            {
+              "type": "text",
+              "id": "surreal_img_title",
+              "label": "Title"
+            }
+          ]
+        }
+	 ]
+  }
+{% endschema %}

@@ -1,0 +1,8 @@
+development:
+  password: shptka_2c944a72614bdf0de6af2cc5a0de5e8f
+  theme_id: "121138511957"
+  store: coloredepoxies.myshopify.com
+  ignore_files:
+  - assets/css/
+  - assets/src/
+  - assets/all.js

@@ -1,0 +1,889 @@
+{% comment %}
+CURRENT VERSION: 2.3.7
+LAST EDITED: Nov 26
+{% endcomment %}
+<script>if(typeof window.WSAIO==='undefined'){window.WSAIO={};}if(typeof WSAIO.App==='undefined'){WSAIO.App={};}</script>
+
+{% comment %} Configuration Section {% endcomment %}
+
+    {% liquid
+        assign products_per_page = 24
+        assign products_per_search = 12
+        assign ws_discount_code_field_name = 'wsaio--discount-code-field'
+        assign ws_discount_code_field_btn = 'wsaio--discount-code-btn'
+        assign ws_db_config = 'metafields'
+        assign environment = 'production'
+    %}
+
+    {% comment %} Config Price Design
+        ## FOR DEVELOPERS ONLY
+        ##wholesale price by application will be replaced with %regular_price%
+        ##wholesale compare at price by application will be replaced with %compare_at_price%
+        ##wholesale saved amount will be replaced with %saved_amount:percentage% OR %saved_amount:price%
+        ##wholesale cart page (Total saved amount) will be replaced with %cart_saved_amount%
+    {% endcomment %}
+
+    {% comment %} Cart page total saved amount message design {% endcomment %}
+    {%- capture cart_bulk_saving_html -%}
+        <div class="cart--bulk-savings">
+            You saved %saved_amount% by buying bulk
+        </div>
+    {%- endcapture -%}
+
+    {% comment %} Cart subtotal price design {% endcomment %}
+    {%- capture cart_subtotal_price_html -%}
+        <span class="cart__subtotal acxz"> %regular_price% </span>
+    {%- endcapture -%}
+
+    {% comment %} Cart item line price design {% endcomment %}
+    {%- capture cart_item_total_price_html -%}
+        <s>%compare_at_price%</s> <span class="order-discount">%regular_price%</span>
+    {%- endcapture -%}
+
+    {% comment %} Cart item single price design {% endcomment %}
+    {%- capture cart_item_price_html -%}
+        <span class="money">
+
+        <span class="money pre-money" style="visibility: visible;">
+         %regular_price%
+        </span>
+
+      </span>
+    {%- endcapture -%}
+
+    {%- capture cart_item_saved_price_html -%}
+        <div class="ws-saved-badge">
+            <div>You saved %saved_amount:percentage%</div>
+            <div>Or %saved_amount:price%</div>
+        </div>
+    {%- endcapture -%}
+
+    {% comment %} Product page price design {% endcomment %}
+    {%- capture product_price_html -%}
+        <p class="modal_price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+          <span class="sold_out"></span>
+          <span itemprop="price" class="sale">
+            <span class="current_price ">
+              <span class="money"> %regular_price% </span>
+            </span>
+          </span>
+          <span class="was_price">
+            <span class="money">%compare_at_price%</span>
+          </span>
+        </p>
+    {%- endcapture -%}
+
+    {% comment %} Home, Search, Related Products and Collection page price design {% endcomment %}
+    {%- capture hcsr_price_html -%}
+<span class="coll_c"> <span class="product__price--on-sale"> %regular_price% </span> <s style="color: #8c8b8b;">%compare_at_price%</s></span>
+<!-- <s>%compare_at_price%</s> -->
+<span class="quick_c" style="display:none;">
+  
+    <span class="sold_out"></span> 
+    <span itemprop="price" class="sale"> 
+      <span class="current_price ">
+        <span class="money"> %regular_price% </span>
+      </span>
+    </span> 
+    <span class="was_price">
+      <span class="money">%compare_at_price%</span>
+    </span>
+
+</span>
+    {%- endcapture -%}
+
+    {% comment %} Volume discount price design for collection page {% endcomment %}
+    {%- capture hcsr_qb_price_html -%}
+        <span class="product__price--on-sale"> %regular_price% </span> <s>%compare_at_price%</s>
+    {%- endcapture -%}
+
+    {% comment %} Discount code form html {% endcomment %}
+    {%- capture discount_code_form_html -%}
+        <span class="wsaio--coupon-code-form">
+            <input type="text" name="{{ws_discount_code_field_name}}" placeholder="Discount code"/>
+            <button name="{{ws_discount_code_field_btn}}" class="btn wsaio--coupon-code-button">Apply</button>
+        </span>
+    {%- endcapture -%}
+
+    {% comment %} For shipping message from app, use %message% variable to show message on specific location {% endcomment %}
+    {%- capture shipping_message_html -%}
+        <div class="ws--shipping-message">%message%</div>
+    {%- endcapture -%}
+
+    {% comment %} Product's saved price design {% endcomment %}
+    {%- capture saved_price_html -%}
+        <div class="ws-saved-badge">
+            You Saved %saved_amount:percentage% OR %saved_amount:price%
+        </div>
+    {%- endcapture -%}
+
+    {% comment %} collection grid saved price design {% endcomment %}
+    {%- capture saved_price_in_grid_html -%}
+        <div class="ws-saved-badge">
+            You Saved  %saved_amount:percentage% OR %saved_amount:price%
+        </div>
+    {%- endcapture -%}
+
+    {% comment %} Buy it now button html - required to attach an event on buy it now button {% endcomment %}
+    {%- capture buy_now_button_html -%}
+        <div data-shopify="payment-button" class="shopify-payment-button"><div><div><div><button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded" data-testid="Checkout-button">Buy it now</button><button aria-disabled="true" aria-hidden="true" class="shopify-payment-button__more-options shopify-payment-button__button--hidden" type="button" data-testid="sheet-open-button">More payment options</button></div></div></div></div>
+    {%- endcapture -%}
+
+    {% comment %} Product page original product price design {% endcomment %}
+    {%- capture product_price_original_html -%}
+        <p class="modal_price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+          <span class="sold_out"></span>
+          <span itemprop="price" class="sale">
+            <span class="current_price ">
+              <span class="money"> %regular_price% </span>
+            </span>
+          </span>
+          <span class="was_price">
+            <span class="money">%compare_at_price%</span>
+          </span>
+        </p>
+    {%- endcapture -%}
+
+    {% comment %} Collection page original product price design {% endcomment %}
+    {%- capture hcsr_price_original_html -%}
+        <span class="coll_c"> <span class="product__price--on-sale ooo"> %regular_price% </span> <s style="color: #8c8b8b;">%compare_at_price%</s></span>
+<!-- <s>%compare_at_price%</s> -->
+<span class="quick_c" style="display:none;">
+  
+    <span class="sold_out"></span> 
+    <span itemprop="price" class="sale"> 
+      <span class="current_price ">
+        <span class="money rrr"> %regular_price% </span>
+      </span>
+    </span> 
+    <span class="was_price">
+      <span class="money">%compare_at_price%</span>
+    </span>
+
+</span>
+<span class="orig_d" style="display:none;">
+<span class="price sale" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer"> 
+  <meta itemprop="price" content="7.90"> <meta itemprop="priceCurrency" content="USD">
+  <meta itemprop="seller" content="Coloredepoxies "> 
+  <meta itemprop="availability" content="in_stock"> <meta itemprop="itemCondition" content="New">
+
+ from 
+  <div class="money-details"></div>
+  <span class="money pre-money" data-product-id="1352508473429" style="visibility: visible;"> %regular_price% </span>
+  <div class="money-details"></div>  - 
+  <span class="money pre-money" data-product-id="1352508473429" style="visibility: visible;"> %regular_price% </span>
+  <div class="money-details"></div>
+  </span></span>
+
+
+
+    {%- endcapture -%}
+
+    {% comment %} Check variants SKU {% endcomment %}
+    <script>
+        /**
+        If import, export is enabled on discunt rule page, change variant_sku_are_same value to FALSE, e.g
+        #WSAIO.variant_sku_are_same = false;
+        App applies discount on variant (variant based discount) if variant SKU OR variant id is same.
+        Note: SKU is required if user imports discount rule.
+        **/
+        WSAIO.variant_sku_are_same = true;
+
+        /**Coupon code expiry date configuration. Use +5, For example if you want to set 3 days expiry time since coupon code has been created, You should calculate 72+5 = 77;
+        To enable custom coupon code expiry date, uncomment below line **/
+        //WSAIO.coupon_expires_after_hours = 77;
+
+        /**
+        Define whether you want to get discounts rules data from metafields or from Database. default is metafields. Option [ 'metafields', 'database' ].
+        Please note that cart page calculations always comes from database.
+        **/
+        WSAIO.db_config= {{ ws_db_config | json}};
+
+        /**
+        Here you can control checkout requests. By changing checkout version, you can easily upgrade/downgrade the app version
+        **/
+        WSAIO.checkout_version = '/checkout/v3';
+
+        /**
+        Buy it now button interval. It will find and attach wsaio checkout events on buyitnow button after this interval.
+        **/
+        WSAIO.buy_now_btn_interval = 1000;
+    </script>
+
+    {% comment %} Selector configurations {% endcomment %}
+    <script>
+        WSAIO.shopify_payment_button_wrapper = '.shopify-payment-button';
+        WSAIO.buy_now_button_selector = '.shopify-payment-button__button';
+        WSAIO.signup_form_selector = '.wholesale-all-in-one-registration-form';
+        WSAIO.currency_selector = '[name*="currencies"],[id*="currencies"]';
+        WSAIO.cart_qty_change_selector = '[name="updates[]"]';
+        WSAIO.product_qb_table_selector = 'form[action="/cart/add"]:after';
+        WSAIO.checkout_selector = '[name*=checkout]';
+        WSAIO.subtotal_selector = '.wsaio--subtotal:same';
+        WSAIO.cart_item_total_selector = '.ws-item-total-price-%key%:same';
+        WSAIO.cart_item_price_selector = '.ws-item-price-%key%:same';
+        WSAIO.cart_item_saved_price_selector = '.ws-item-saved-price-%key%:same';
+        WSAIO.cart_bulk_saving_selector = '.ws--total-saving:same';
+        WSAIO.product_id_selector = '.wsaio-pid-%id%:same';
+        WSAIO.variant_id_selector = '.wsaio-vid-%id%:same';
+        WSAIO.product_saved_amount_selector = '.saved_price-%id%:same';
+        WSAIO.shipping_message_selector = '.wsaio--shiping-msg:same';
+        WSAIO.discount_code_field_selector = '.discount-code-form:same';
+        WSAIO.discount_code_alerts_selector = '.discount-code-alerts:same';
+        WSAIO.discount_code_field_name = {{ws_discount_code_field_name|json}};
+        WSAIO.discount_code_field_btn = {{ws_discount_code_field_btn|json}};
+        WSAIO.discount_code_error_message = '<span style="color:red;">Discount code is invalid</span>';//string or html
+        WSAIO.discount_code_success_message = '<span style="color:green;">Accepted! Discounts calculated at checkout</span>';//string or html
+        WSAIO.discount_code_customer_login_message = '<span style="color:orange;">Login to get discount</span>';//string or html
+        WSAIO.rd_sale_clock_selector = '.wsaio-rd-clock-%id%'; // regular discount sale clock selector. It will always replace inner html
+        WSAIO.vd_sale_clock_selector = '.wsaio-vd-clock-%id%'; // volume discount sale clock selector. It will always replace inner html
+    </script>
+
+    {% comment %} Language Translations {% endcomment %}
+    <script>
+        WSAIO.Lang = {
+            "discount": "Discount",
+            "buy": "Buy",
+            "price": "Price per item",
+            "quantity": "Quantity",
+            "off": " Off",
+            "from": "From ",
+            "minimum_quantity": "Minimum Qty",
+            "maximum_quantity": "Maximum Qty",
+            "range_seperator": " to ",
+            "each_item" : " each",
+            "range_so_on": " + "
+        };
+    </script>
+
+{% comment %} End Configuration Section {% endcomment %}
+
+{% comment %} Basic liquid code - Don't change {% endcomment %}
+    {% liquid
+        assign ws_general_settings = shop.metafields.waioSettings.general_settings
+        assign ws_selected_variant = product.selected_or_first_available_variant.id
+        assign ws_selected_variant_price = product.selected_or_first_available_variant.price
+        assign products_with_collections = '['
+        assign product_in_collects = '['
+        assign products_in_collection = '['
+        for item in cart.items
+            for collection in item.product.collections
+                assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: item.product.id | append: '"' | append: ',product_handle:"' | append: item.product.handle | append: '"},'
+            endfor
+        endfor
+        if template.name == 'product'
+            for collection in product.collections
+                assign product_in_collects = product_in_collects | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+            endfor
+            for collection in product.collections
+                assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+            endfor
+        else
+            if template.name == 'search'
+                paginate search.results by products_per_search
+                    for product in search.results
+                        assign first_available_variant = product.first_available_variant | json
+                        if product.available == false
+                        assign first_available_variant = "{}"
+                        endif
+                        assign title = product.title | json
+                        assign products_in_collection = products_in_collection | append: '{id:"' | append: product.id | append: '",handle:"' | append: product.handle | append: '"' | append: ',title:' | append: title | append: ',available:"' | append: product.available | append: '"' | append: ',first_available_variant:' | append: first_available_variant | append: '},'
+                        for collection in product.collections
+                            assign product_in_collects = product_in_collects | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+                        endfor
+                        for collection in product.collections
+                            assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+                        endfor
+                    endfor
+                endpaginate
+            else
+                if template.name == 'collection'
+                    paginate collection.products by products_per_page
+                        for product in collection.products
+                            assign first_available_variant = product.first_available_variant | json
+                            if product.available == false
+                            assign first_available_variant = "{}"
+                            endif
+                            assign title = product.title | json
+                            assign products_in_collection = products_in_collection | append: '{id:"' | append: product.id | append: '",handle:"' | append: product.handle | append: '"' | append: ',title:' | append: title | append: ',available:"' | append: product.available | append: '"' | append: ',first_available_variant:' | append: first_available_variant | append: '},'
+                            for collection in product.collections
+                                assign product_in_collects = product_in_collects | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+                            endfor
+                            for collection in product.collections
+                                assign products_with_collections = products_with_collections | append: '{collection_id:"' | append: collection.id | append: '",product_id:"' | append: product.id | append: '"' | append: ',product_handle:"' | append: product.handle | append: '"},'
+                            endfor
+                        endfor
+                    endpaginate
+                endif
+            endif
+        endif
+        assign products_with_collections = products_with_collections | append: ']'
+        assign product_in_collects = product_in_collects | append: ']'
+        assign products_in_collection = products_in_collection | append: ']'
+    %}
+
+<script>
+    WSAIO.log = "info";
+    WSAIO.errorLog = "error";
+    WSAIO.auto_delete_api = false; // if you want to auto delete discount codes and draft order.
+    WSAIO.app_auto_start = true; //Boolean // Once this snippet has been loaded, all app's functions will be executed. You can disable this functionality and handle the app's functions manually on each page.
+    WSAIO.volume_discount_on_hcsr = false; // if you don't want to show discount on home, collection, search and related products pages, set it to false
+    WSAIO.disable_logs_when_live = true; //Boolean
+    WSAIO.debugger = true; //Boolean
+    WSAIO.App.url = "https://wholesales.digitalcoo.com";
+    WSAIO.App.checkoutURL = "https://wholesalecheckout.digitalcoo.com";
+    WSAIO.App.version = "2.3.7";
+    WSAIO.template = "{{template.name}}";
+    WSAIO.landingTemplate = "{{template.name}}";
+    WSAIO.customer = {
+        id: {{customer.id|json}},
+        tags: {{customer.tags | downcase | json}},
+        tax_exempt: {{ customer.tax_exempt | json }},
+        total_spent: {{ customer.total_spent | json }},
+        orders_count: {{ customer.orders_count | json }},
+        name: {{ customer.name | json }},
+        email: {{ customer.email | json }},
+        default_address: {{ customer.default_address | json }} || {},
+        addresses: {{ customer.addresses | json }} || []
+    };
+    if(WSAIO.customer && WSAIO.customer.tags){
+        try{
+            WSAIO.customer.tags = JSON.parse(WSAIO.customer.tags);
+        }catch(e){}
+    }
+    WSAIO.shopInfo = {
+        "money_format": {{ shop.money_format | json }},
+        "currency": {{ shop.currency | json }},
+        "domain" : {{shop.domain | json }},
+        "shop" : {{shop.permanent_domain | json }},
+    };
+    WSAIO.frontpage_collection = {
+        handle: "{{ collections.frontpage.handle }}",
+        id: "{{ collections.frontpage.id }}",
+    };
+    WSAIO.cart_object = {{ cart|json }};
+    WSAIO.wsaiovd = [];
+    WSAIO.wsaiord = [];
+    WSAIO.volume_discounts = [];
+    WSAIO.regular_discounts = [];
+    {%- if ws_db_config == 'metafields' -%}
+        WSAIO.wsaiovd = {{ shop.metafields.wsaiovd | json }};
+        WSAIO.wsaiord = {{ shop.metafields.wsaiord | json }};
+        WSAIO.volume_discounts = WSAIO.volume_discounts.concat(Object.keys(WSAIO.wsaiovd).map(function(a){return WSAIO.wsaiovd[a]}));
+        WSAIO.regular_discounts = WSAIO.regular_discounts.concat(Object.keys(WSAIO.wsaiord).map(function(a){return WSAIO.wsaiord[a]}));
+    {%- endif -%}
+    WSAIO.signup_form = {{ shop.metafields.waioForms.waio-forms-key | json }};
+    WSAIO.selected_product = {
+        id: {{product.id | json }},
+        handle: {{ product.handle | json }},
+        variant: {
+            id: {{product.selected_or_first_available_variant.id|json}},
+            sku: {{product.selected_or_first_available_variant.sku|json}},
+            price: {{product.selected_or_first_available_variant.price|json}},
+            compare_at_price: {{product.selected_or_first_available_variant.compare_at_price|json}}
+        }
+    };
+    WSAIO.selected_variant = {
+        id: {{product.selected_or_first_available_variant.id|json}},
+        sku: {{product.selected_or_first_available_variant.sku|json}},
+        price: {{product.selected_or_first_available_variant.price|json}},
+        compare_at_price: {{product.selected_or_first_available_variant.compare_at_price|json}}
+    };
+    WSAIO.current_product = {
+        id: {{product.id | json }},
+        handle: {{ product.handle | json }},
+        variant: {
+            id: {{product.selected_or_first_available_variant.id|json}},
+            sku: {{product.selected_or_first_available_variant.sku|json}},
+            price: {{product.selected_or_first_available_variant.price|json}},
+            compare_at_price: {{product.selected_or_first_available_variant.compare_at_price|json}}
+        }
+    };
+    WSAIO.current_variant = {
+        id: {{product.selected_or_first_available_variant.id|json}},
+        sku: {{product.selected_or_first_available_variant.sku|json}},
+        price: {{product.selected_or_first_available_variant.price|json}},
+        compare_at_price: {{product.selected_or_first_available_variant.compare_at_price|json}}
+    };
+    WSAIO.selected_collection = {
+        id: {{collection.id | json }},
+        handle: {{ collection.handle | json }}
+    };
+    WSAIO.current_collection = {
+        id: {{collection.id | json }},
+        handle: {{ collection.handle | json }}
+    };
+    WSAIO.buy_now_product = {{ product | json }};
+    try{
+        WSAIO.general_settings = JSON.parse('{{ws_general_settings}}');
+        if(typeof WSAIO.general_settings.settings !== "undefined"){
+            WSAIO.general_settings = WSAIO.general_settings.settings;
+        }
+    }catch(e){console.error("JSON Parsing error in settings.",e)}
+    WSAIO.app_mode = WSAIO.general_settings.app_mode || "live";
+    WSAIO.user_mode = localStorage.getItem("wsaio-app-mode") || "live";
+    WSAIO.product_in_collects = {{product_in_collects}};
+    WSAIO.products_in_collection = {{products_in_collection}};// Only for collection template
+    WSAIO.products_with_collections = {{products_with_collections}};
+    WSAIO.cart_subtotal_price_html = {{ cart_subtotal_price_html | strip_newlines | json }};
+    WSAIO.cart_item_total_price_html = {{ cart_item_total_price_html | strip_newlines | json }};
+    WSAIO.cart_item_price_html = {{ cart_item_price_html |strip_newlines | json }};
+    WSAIO.cart_item_saved_price_html = {{ cart_item_saved_price_html | strip_newlines | json }};
+    WSAIO.product_price_html = {{ product_price_html | strip_newlines | json }};
+    WSAIO.hcsr_price_html = {{ hcsr_price_html | strip_newlines | json }};
+    WSAIO.cart_bulk_saving_html = {{ cart_bulk_saving_html | strip_newlines | json }};
+    WSAIO.hcsr_qb_price_html = {{ hcsr_qb_price_html | strip_newlines | json }};
+    WSAIO.shipping_message_html = {{ shipping_message_html | strip_newlines | json }};
+    WSAIO.discount_code_form_html = {{ discount_code_form_html | strip_newlines | json }};
+    WSAIO.saved_price_html = {{ saved_price_html | strip_newlines | json }};
+    WSAIO.saved_price_in_grid_html = {{ saved_price_in_grid_html | strip_newlines | json }};
+    WSAIO.buy_now_button_html = {{ buy_now_button_html | strip_newlines | json }}
+    WSAIO.product_price_original_html = {{ product_price_original_html | strip_newlines | json }}
+    WSAIO.hcsr_price_original_html = {{ hcsr_price_original_html | strip_newlines | json }}
+    {%- if environment == 'production' -%}
+        WSAIO.log = "";
+        WSAIO.errorLog = "";
+        WSAIO.debugger = false;
+    {%- else -%}
+        WSAIO.log = "trace";
+        WSAIO.errorLog = "error";
+        WSAIO.debugger = true;
+    {%- endif -%}
+    WSAIO.cart_total = "";
+    WSAIO.cart_discounted_total = "";
+</script>
+{% comment %} Wholesale main js file {% endcomment %}
+{{ 'wholesale-all-in-one.min.js' | asset_url | script_tag }}
+{% render 'wholesale-all-in-one-extra' %}
+{% comment %} For variant change {% endcomment %}
+{%- if template.name == 'product' or template.name == 'index' -%}
+{{ 'waio-option-selection.js' | asset_url | script_tag }}
+{%- endif -%}
+{% comment %} Use Callback {% endcomment %}
+    <script>
+    /**
+        WSAIO.cartCurrency = function(res) {
+            if (WSAIO.selectedCurrency() != WSAIO.shopInfo.currency ) {
+                //check_Currency();
+                var line_items = res.line_items;
+                var regular_discounted_price = [];
+                var total_discounted_price = [];
+                //--------------subtotal discounted price------
+                var discount12 = res.wholesale_total_discount;
+                discount12 = Number(WSAIO.Currency.convert(WSAIO.Currency.rates, discount12, WSAIO.shopInfo.currency, WSAIO.selectedCurrency())).toFixed(2);
+                var subtotal = Number(res.items_subtotal_price) - Number(discount12);
+                discount12 = WSAIO.formatMoney(Number(discount12).toFixed(2));
+                subtotal = WSAIO.formatMoney(Number(subtotal).toFixed(2));
+                $('{ {selector_subtotal}}').text(subtotal);
+                $('{ {saved_amount_selector}}').text(subtotal);
+                //---------------  line item loop -------------
+                for (i = 0; i < line_items.length; i++) {
+                  //--------------single discounted price------
+                  var pri_convert = WSAIO.Currency.convert(WSAIO.Currency.rates, line_items[i].wholesale.saved_amount.price, WSAIO.shopInfo.currency, WSAIO.selectedCurrency());
+                  var regular = Number(line_items[i].price) - Number(pri_convert);
+                  regular = WSAIO.formatMoney(Number(regular).toFixed(2));
+                  regular_discounted_price[i] = regular;
+                  //--------------Total discounted price------
+                  var total = Number(line_items[i].quantity) * Number(pri_convert);
+                  var accurate_total = Number(line_items[i].wholesale.item_subtotal_compare_at_price) - Number(total);
+                  accurate_total = WSAIO.formatMoney(Number(accurate_total).toFixed(2));
+                  total_discounted_price[i] = accurate_total;
+                  if (i == line_items.length - 1) {
+                    paste_value();
+                  }
+                }
+                function paste_value() {
+                  $('{ {loop_selector}}').each(function (e) {
+                    var _this = $(this);
+                    _this.find('{ {selector}}').text(regular_discounted_price[e]);
+                    _this.find('{ {selector}}').text(total_discounted_price[e]);
+                  });
+                }
+            }
+        }
+        function check_Currency() {
+          if (WSAIO.selectedCurrency() == 'PKR') {
+            WSAIO.shopInfo.money_format = "Rs.{ % raw %}{ {amount}} { % endraw %}";
+          } else {
+            WSAIO.shopInfo.money_format = "${ % raw %}{ {amount}} { % endraw %} CAD";
+          }
+        }
+
+        // uncomment if discount on specific collections
+            jQuery.getJSON('/cart/', function(e) {
+            var keyss2 = [];
+            $(e.items).each(function(eee){
+            var ids = e.items[eee].product_id;
+            var handles = e.items[eee].handle;
+            var settings = {
+            "url": "https://wholesales.digitalcoo.com/api/collections?shop=dapper-dudes-danes.myshopify.com&product_id="+ids,
+            "method": "GET"
+            }
+            var g = [];
+            $.ajax(settings).done(function (response) {
+            $(response.smart_collections.smart_collections).each(function(e){
+            g[e] = { collection_id: response.smart_collections.smart_collections[e].id,product_id: ids, product_handle: handles }
+            WSAIO.products_with_collections.push(g[e]);
+            });
+            $(response.custom_collections.custom_collections).each(function(e){
+            g[e] = { collection_id: response.custom_collections.custom_collections[e].id,product_id: ids, product_handle: handles }
+            WSAIO.products_with_collections.push(g[e]);
+            });
+            });
+            })
+            });
+        **/
+        WSAIO.callback = function(response){
+            //Discount code form will be added if any discount or shipping applied
+            if(response && response.shipping){
+                WSAIO.applied_shipping = response.shipping;
+                if(WSAIO.applied_shipping.apply_shipping_charges){//check if shipping applied
+                    if(true===WSAIO.general_settings.enable_additional_coupon_code){
+                        WSAIO.DiscountCode.addForm();
+                        WSAIO.DiscountCode.subscribe("click");// subscribe on click event
+                    }
+                }
+            }
+            if(response && Number(response.wholesale_total_discount) > 0){
+                if(true===WSAIO.general_settings.enable_additional_coupon_code){
+                    WSAIO.DiscountCode.addForm();
+                    WSAIO.DiscountCode.subscribe("click");// subscribe on click event
+                }
+            }
+            // Minimum Order controls function will run if active from the App
+            if(response && response.checkout_price_from_total_price){
+                var subtotal = response.checkout_price_from_total_price;
+                if(typeof subtotal === "string"){
+                  subtotal = subtotal.replace(".","");
+                }
+                WSAIO.orderControl(subtotal, WSAIO.checkout_selector);
+            }
+        };
+    </script>
+
+{% comment %} Extra Javascript code {% endcomment %}
+
+    <script>
+
+
+//        setTimeout(function(){
+//          $('.mnmz').attr("disabled","true")
+//        },100);
+//        setTimeout(function(){
+//          $('.mnmz').attr("disabled","true")
+//        },200);      setTimeout(function(){
+//          $('.mnmz').attr("disabled","true")
+//        },300);      setTimeout(function(){
+//          $('.mnmz').attr("disabled","true")
+//        },400);
+//        setTimeout(function(){
+//          $('.mnmz').attr("disabled","true")
+//        },10);
+//        setTimeout(function(){
+//          $('.mnmz').attr("disabled","true")
+//        },50);
+
+      setTimeout(function(){$('.mnmz').attr("disabled","true");},0);
+      setTimeout(function(){$('.mnmz').attr("disabled","true");},100);
+      setTimeout(function(){$('.mnmz').attr("disabled","true");},200);
+      setTimeout(function(){$('.mnmz').attr("disabled","true");},300);
+      setTimeout(function(){$('.mnmz').removeAttr('disabled','disabled');},4000);
+
+        //##Global Variable is "WSAIO"
+        //##This code will be executed after 2.5Sec of page load, if app is active or preview mode.
+        window.wsaio_execute_custom_code = function($){
+//           alert("wsaio_execute_custom_code is working now!");
+
+          //============ home ==============
+          setTimeout(function(){
+            WSAIO.preCheckout();
+          },200);
+          setTimeout(function(){
+            WSAIO.preCheckout();
+          },100);
+          setTimeout(function(){
+            WSAIO.preCheckout();
+          },500);
+          setTimeout(function(){
+             $('.col_clct').each(function(){
+              var clctn_dta = JSON.parse($(this).attr("clct"));
+              for(var i=0;i<clctn_dta.length; i++){
+                WSAIO.product_in_collects.push(clctn_dta[i]);
+              }
+            });
+              $('.product-wrap').each(function (){
+                WSAIO.regularDiscount({
+                  template: 'collection',
+                  product_id: $(this).find('.coll').attr('product_id'),
+                  product_handle:$(this).find('.coll').attr('product_handle'),
+                  variant_id:  $(this).find('.coll').attr('product_variant_id'),
+                  variant_sku: $(this).find('.coll').attr('product_variant_sku'),
+                  variant_price: $(this).find('.coll').attr('product_variant_price'),
+                  variant_compare_at_price: $(this).find('.coll').attr('product_variant_compare_price')
+                });
+              });
+              },2500)
+
+          //============ home product =================
+          setTimeout(function(){
+
+             $('.col_clct').each(function(){
+              var clctn_dta = JSON.parse($(this).attr("clct"));
+              for(var i=0;i<clctn_dta.length; i++){
+                WSAIO.product_in_collects.push(clctn_dta[i]);
+              }
+            });
+                WSAIO.productDiscount({
+                  template: 'product',
+                  product_id: $(".clearfix.frontpage_product_stagger--true").find('.homep').attr('product_id'),
+                  product_handle:$(".clearfix.frontpage_product_stagger--true").find('.homep').attr('product_handle'),
+                  variant_id:  $(".clearfix.frontpage_product_stagger--true").find('.homep').attr('product_variant_id'),
+                  variant_sku: $(".clearfix.frontpage_product_stagger--true").find('.homep').attr('product_variant_sku'),
+                  variant_price: $(".clearfix.frontpage_product_stagger--true").find('.homep').attr('product_variant_price'),
+                  variant_compare_at_price: $(".clearfix.frontpage_product_stagger--true").find('.homep').attr('product_variant_compare_price')
+                });
+
+              },2500)
+
+
+
+          //============ collection =============
+          var isLoaded21=false;
+          var _intv = setInterval(function(){
+            if($('.product-list.collection-matrix.clearfix').hasClass('loading-in-progress') && isLoaded21==false){
+              isLoaded21=true;
+//               console.log("chanana")
+              setTimeout(function(){
+                 $('.col_clct').each(function(){
+              var clctn_dta = JSON.parse($(this).attr("clct"));
+              for(var i=0;i<clctn_dta.length; i++){
+                WSAIO.product_in_collects.push(clctn_dta[i]);
+              }
+            });
+              $('.product-wrap').each(function (){
+                WSAIO.regularDiscount({
+                  template: 'collection',
+                  product_id: $(this).find('.coll').attr('product_id'),
+                  product_handle:$(this).find('.coll').attr('product_handle'),
+                  variant_id:  $(this).find('.coll').attr('product_variant_id'),
+                  variant_sku: $(this).find('.coll').attr('product_variant_sku'),
+                  variant_price: $(this).find('.coll').attr('product_variant_price'),
+                  variant_compare_at_price: $(this).find('.coll').attr('product_variant_compare_price')
+                });
+              });
+              },2500)
+
+            }
+            else if(!$('.product-list.collection-matrix.clearfix').hasClass('loading-in-progress')&& isLoaded21==true){
+              isLoaded21=false;
+            }
+          },500);
+
+          //=========  mini cart =============
+          var isLoaded211=false;
+          var _intv = setInterval(function(){
+            if($('.cart_container').hasClass('active_link') && isLoaded211==false){
+              isLoaded211=true;
+
+              console.log("active")
+              setTimeout(function(){
+                WSAIO.preCheckout();
+
+              },500)
+
+            }
+            else if(!$('.cart_container').hasClass('active_link')&& isLoaded211==true){
+              isLoaded211=false;
+            }
+          },500);
+
+          //========  quick view ==============
+
+          if(WSAIO.template == 'collection' || WSAIO.template == 'index'){
+
+            console.log("collection")
+            var isLoaded121=false;
+          var _intv = setInterval(function(){
+            if($('.js-quick-shop').hasClass('remodal-is-opened') && isLoaded121==false){
+              isLoaded121=true;
+
+				 console.log("okoko")
+                 setTimeout(function(){
+                  var Vid = $('.remodal.quick-shop [name="id"]').val();
+                   var handle = $('.remodal.quick-shop').find('.js-product-title a').attr('href');
+                   console.log(handle)
+                   if(handle != undefined && handle != '#' && handle.indexOf("/products/") > -1){
+                     handle =  handle.split('/products/')[1];
+                     jQuery.getJSON('/products/'+handle+'.js', function(product) {
+                       var current_product21 = product;
+
+                       $('.remodal.quick-shop').find('.quicksss').addClass('wsaio-pid-'+current_product21.id);
+                       var _indx = current_product21.variants.findIndex(function(x){return x.id == Vid})
+                       if(_indx > -1){
+                         var _price = current_product21.variants[_indx].price;
+                         var _sku = current_product21.variants[_indx].sku;
+                         var _compare = current_product21.variants[_indx].compare_at_price;
+                       }
+                       WSAIO.productDiscount({
+                         template: 'product',
+                         product_id: current_product21.id,
+                         product_handle: current_product21.handle,
+                         variant_id: current_product21.variants[_indx].id,
+                         variant_sku: _sku,
+                         variant_price:_price,
+                         variant_compare_at_price: _compare
+                       })
+                     });
+                   }
+                 },1000)
+
+            }
+            else if(!$('.js-quick-shop').hasClass('remodal-is-opened')&& isLoaded121==true){
+              isLoaded121=false;
+              console.log("close")
+
+
+            }
+          },100);
+          }
+
+          //=========== search =============
+
+
+          if(WSAIO.template == 'search'){
+
+
+            var isLoaded33=false;
+          var _intv = setInterval(function(){
+            if($('.js-quick-shop').hasClass('remodal-is-opened') && isLoaded33==false){
+              isLoaded33=true;
+
+				console.log("search")
+                 setTimeout(function(){
+                   var handle = $('.remodal.quick-shop').find('.js-product-title a').attr('href');
+                   console.log(handle)
+                   if(handle != undefined && handle != '#' && handle.indexOf("/products/") > -1){
+                     handle =  handle.split('/products/')[1];
+                      handle=handle.split('?')[0];
+                     jQuery.getJSON('/products/'+handle+'.js', function(product) {
+                       var current_product21 = product;
+                       $('.remodal.quick-shop').find('.quicksss').addClass('wsaio-pid-'+current_product21.id);
+
+                       WSAIO.productDiscount({
+                         template:'product',
+                         product_id: current_product21.id,
+                         product_handle: current_product21.handle,
+                         variant_id: current_product21.variants[0].id,
+                         variant_sku: current_product21.variants[0].sku,
+                         variant_price: current_product21.variants[0].price,
+                         variant_compare_at_price: current_product21.variants[0].compare_at_price
+                       });
+                     })
+                   }
+                 },1500)
+
+            }
+            else if(!$('.js-quick-shop').hasClass('remodal-is-opened')&& isLoaded33==true){
+              isLoaded33=false;
+              console.log("close")
+            }
+          },500);
+          }
+
+          //=============  checkout ==================
+
+          if(WSAIO.checkout != undefined){
+            var _atcBtn = '<input type="button" name="waio_addToCart" class="action_button add_to_cart" value="Check out">' ;
+            $('[name="checkout"]').replaceWith(_atcBtn);
+          }
+          $('[name="waio_addToCart"]').on('click',function(e){
+            if(WSAIO.checkout != undefined){
+              e.preventDefault();
+              WSAIO.checkout();
+              return false;
+            }
+          })
+
+        };
+    </script>
+{% comment %} Stylesheet code (CSS) {% endcomment %}
+<style>.ws--preview-bar-btn{position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;display:inline-block;height:auto;margin:0;background:inherit;border:0;border-radius:inherit;font-family:inherit;font-weight:400;cursor:pointer;text-transform:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-webkit-appearance:none;-moz-appearance:none;appearance:none;padding:.4rem 1.5rem;background:-webkit-gradient(linear,left top,left bottom,from(white),to(#f9fafb));background:linear-gradient(to bottom,#fff,#f9fafb);border:1px solid #c4cdd5;-webkit-box-shadow:0 1px 0 0 rgba(22,29,37,.05);box-shadow:0 1px 0 0 rgba(22,29,37,.05);border-radius:3px;font-size:1rem;line-height:1rem;color:#212b36;-webkit-transition-property:background,border,-webkit-box-shadow;transition-property:background,border,-webkit-box-shadow;transition-property:background,border,box-shadow;transition-property:background,border,box-shadow,-webkit-box-shadow;-webkit-transition-timing-function:cubic-bezier(.64,0,.35,1);transition-timing-function:cubic-bezier(.64,0,.35,1);-webkit-transition-duration:.2s;transition-duration:.2s;-webkit-tap-highlight-color:transparent;opacity:1}.ws-error {border-color: red !important;border: 1px solid !important;}.ws-success {border-color: green !important;border: 1px solid !important;}.checkout-disabled {pointer-events: none;}
+
+span.cart__subtotal {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+
+  .discount-code-form, .discount-code-alert {
+        width: 320px !important;
+        margin-left: auto !important;
+      }
+      button.btn.wsaio--coupon-code-button {
+        height: 40px !important;
+            width: 91px;
+      }
+      .discount-code-form input{
+        height: 40px !important;
+        width: 71% !important;
+      }
+      .wsaio--coupon-code-form{
+        display:flex !important;
+      }
+
+ .cart_content.animated.fadeIn .cart__subtotal {
+    font-size: small;
+    font-weight: bold;
+}
+
+/*   .js-quick-shop .coll_c{
+    display:none !important;
+  }
+
+  .js-quick-shop .quick_c{
+
+      display:inline-block !important;
+  } */
+  .frontpage_product_stagger--true .coll_c{
+    display:none !important;
+  }
+
+  .frontpage_product_stagger--true .quick_c{
+
+      display:inline-block !important;
+        font-size: 20px;
+  }
+
+ .product-info__caption .empty .coll_c{
+     display:none !important;
+  }
+ .product-info__caption .empty .orig_d{
+     display:inline-block !important;
+  }
+
+    .wholesale-table thead th, .wholesale-table tbody td{
+         text-align: center !important;
+      }
+
+  .empty .rrr{
+    color: #2b2e38;
+  }
+
+
+  .js-quick-shop .product__price--on-sale {
+    color: #d54d4d;
+}
+ .empty .ooo {
+    color: #2b2e38;
+}
+  .wholesale-table:nth-of-type(n+2){
+      display:none !important;
+
+      }
+
+  .empty .current_price .money {
+  	color: #454545;
+  }
+
+
+</style>

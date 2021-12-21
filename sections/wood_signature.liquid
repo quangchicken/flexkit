@@ -1,0 +1,57 @@
+<div class="wood_signature_box">
+      <h2>{{ section.settings.title }}</h2>
+<p>{{ section.settings.content }} </p>
+      <div class="wood_signature">
+       {% for block in section.blocks %}
+        <div class="wood_signature_block ">
+          	<a href="{{ block.settings.image | img_url:'master' }}" class="fancybox">
+        		<img src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}">
+          	</a>
+          	<h5>{{ block.settings.maintitle }}</h5>
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+  <div>
+</div>
+{% schema %}
+  {
+    "name": "Wood Chips",
+    "settings": [
+    	{
+       		"type": "text",
+        	"id": "title",
+        	"label": "Heading"
+      	},
+    	{
+       		"type": "textarea",
+        	"id": "content",
+        	"label": "Content"
+      	}
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+    	  {
+       		"type": "text",
+        	"id": "maintitle",
+        	"label": "Title"
+      	  }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

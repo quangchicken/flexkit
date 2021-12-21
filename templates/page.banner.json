@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-banner-template",
+      "settings": {
+        "wide_display": true,
+        "image": "shopify:\/\/shop_images\/about-banner_1400x.progressive_b5d78679-f9ec-4237-9483-169d5d43511e.jpg",
+        "mobile_image_crop": "none",
+        "caption_content_background": "darken_bg",
+        "pretext": "",
+        "title": "ABOUT US",
+        "subtitle": "",
+        "text_position": "center",
+        "text_align": "center",
+        "button1": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,566 @@
+{% assign rules_operator = 'and' %}{%- for OC in shop.metafields.waioOC -%}{% assign key = OC | first %}{% assign item = OC | last %}{% if item.status == 'active' %}{%assign rules_operator = item.rules_operator %}{%assign rules_message = item.message %}{% capture rules_checked %}{% for rule in item.rules %}{% case rule.column %}{%when 'cart_original_total_price'%}{%assign rule_price = rule.condition |times: 100 %}{%case rule.relation %}{%when 'equal'%}{%if cart.original_total_price == rule_price %}true{%else%}false{%endif%}{%when 'not_equal'%}{%if cart.original_total_price != rule_price %}true{%else%}false{%endif%}{%when 'greater_than'%}{%if rule_price < cart.original_total_price  %}true{%else%}false{%endif%}{%when 'less_than'%}{%if rule_price > cart.original_total_price %}true{%else%}false{%endif%}{%else%}{%endcase%}{%when 'customer_has_an_account' %}{%case rule.relation %}{%when 'equal'%}{%if rule.condition == 'true' %}{%if customer %}true{%else%}false{% endif %}{%endif%}{%when 'not_equal'%}{%if rule.condition == 'true' %}{%if customer %}false{%else%}true{% endif %}{%endif%}{%else%}{%endcase%}{%when 'customer_tag' %}{%case rule.relation %}{%when 'equal'%}{%if customer %}{%for tag in customer.tags %}{% if tag == rule.condition%}true{%break%}{% endif %}{% if forloop.last == true %}false{% endif %}{%endfor%}{%else%}false{%endif%}{%when 'not_equal'%}{%if customer %}{%for tag in customer.tags %}{% if tag != rule.condition%}true{%break%}{% endif %}{% if forloop.last == true %}false{% endif %}{%endfor%}{%else%}false{%endif%}{%else%}{%endcase%}{% else %}{%endcase%}{% if forloop.last == true %}{%else%},{% endif %}{% endfor %}{%endcapture%}{% endif %}{%- endfor -%}
+<script>
+    "undefined"===typeof WSAIO&&(window.WSAIO={});
+    "undefined"===typeof WSAIO&&(window.WSAIO={});
+    "undefined"===typeof waioMOC&&(window.waioMOC={});
+    WSAIO.template = "{{ template.name }}";
+    window.collection_id = {{ collection.id | json }};
+    WSAIO.initExtra = function($){
+        if (!Array.prototype.findIndex) {
+            Object.defineProperty(Array.prototype, 'findIndex', {
+                value: function(predicate) {
+                // 1. Let O be ? ToObject(this value).
+                if (this == null) {
+                    throw new TypeError('"this" is null or not defined');
+                }
+                var o = Object(this);
+                // 2. Let len be ? ToLength(? Get(O, "length")).
+                var len = o.length >>> 0;
+                // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+                if (typeof predicate !== 'function') {
+                    throw new TypeError('predicate must be a function');
+                }
+                // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                var thisArg = arguments[1];
+                // 5. Let k be 0.
+                var k = 0;
+                // 6. Repeat, while k < len
+                while (k < len) {
+                    // a. Let Pk be ! ToString(k).
+                    // b. Let kValue be ? Get(O, Pk).
+                    // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                    // d. If testResult is true, return k.
+                    var kValue = o[k];
+                    if (predicate.call(thisArg, kValue, k, o)) {
+                    return k;
+                    }
+                    // e. Increase k by 1.
+                    k++;
+                }
+                // 7. Return -1.
+                return -1;
+                },
+                configurable: true,
+                writable: true
+            });
+        }
+        if (!Array.prototype.indexOf) {
+            Array.prototype.indexOf = function(searchElement, fromIndex) {
+                "use strict";
+                var k;
+
+                // 1. Let o be the result of calling ToObject passing
+                //    the this value as the argument.
+                if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+                }
+
+                var o = Object(this);
+
+                // 2. Let lenValue be the result of calling the Get
+                //    internal method of o with the argument "length".
+                // 3. Let len be ToUint32(lenValue).
+                var len = o.length >>> 0;
+
+                // 4. If len is 0, return -1.
+                if (len === 0) {
+                return -1;
+                }
+
+                // 5. If argument fromIndex was passed let n be
+                //    ToInteger(fromIndex); else let n be 0.
+                var n = fromIndex | 0;
+
+                // 6. If n >= len, return -1.
+                if (n >= len) {
+                return -1;
+                }
+
+                // 7. If n >= 0, then Let k be n.
+                // 8. Else, n<0, Let k be len - abs(n).
+                //    If k is less than 0, then let k be 0.
+                k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+                // 9. Repeat, while k < len
+                for (; k < len; k++) {
+                // a. Let Pk be ToString(k).
+                //   This is implicit for LHS operands of the in operator
+                // b. Let kPresent be the result of calling the
+                //    HasProperty internal method of o with argument Pk.
+                //   This step can be combined with c
+                // c. If kPresent is true, then
+                //    i.  Let elementK be the result of calling the Get
+                //        internal method of o with the argument ToString(k).
+                //   ii.  Let same be the result of applying the
+                //        Strict Equality Comparison Algorithm to
+                //        searchElement and elementK.
+                //  iii.  If same is true, return k.
+                if (k in o && o[k] === searchElement)
+                    return k;
+                }
+                return -1;
+            };
+        }
+        if (!Array.prototype.find) {
+            Object.defineProperty(Array.prototype, 'find', {
+                value: function(predicate) {
+                // 1. Let O be ? ToObject(this value).
+                if (this == null) {
+                    throw TypeError('"this" is null or not defined');
+                }
+                var o = Object(this);
+                // 2. Let len be ? ToLength(? Get(O, "length")).
+                var len = o.length >>> 0;
+                // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+                if (typeof predicate !== 'function') {
+                    throw TypeError('predicate must be a function');
+                }
+                // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                var thisArg = arguments[1];
+                // 5. Let k be 0.
+                var k = 0;
+                // 6. Repeat, while k < len
+                while (k < len) {
+                    // a. Let Pk be ! ToString(k).
+                    // b. Let kValue be ? Get(O, Pk).
+                    // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                    // d. If testResult is true, return kValue.
+                    var kValue = o[k];
+                    if (predicate.call(thisArg, kValue, k, o)) {
+                    return kValue;
+                    }
+                    // e. Increase k by 1.
+                    k++;
+                }
+                // 7. Return undefined.
+                return undefined;
+                },
+                configurable: true,
+                writable: true
+            });
+        }
+        var tem_moc = {{shop.metafields.waioMOC | json }};
+        var w_original_total_price = {{cart.items_subtotal_price | json}};
+        var w_total_weight = {{cart.total_weight | json}};
+        var w_item_count = {{cart.item_count | json}};
+        var w_weight_with_unit = {{ cart.total_weight | weight_with_unit | json}};
+        var is_loggedIn = {% if customer %}true{%else%}false{% endif %};
+        var shop = {{shop.domain | json }};
+        var customerTags = {{ customer.tags | json }} || [];
+        var customer_tags = {{ customer.tags | json }} || [];
+        try{
+            customerTags = JSON.parse(customerTags);
+        }catch(e){}
+        try{
+            customer_tags = JSON.parse(customer_tags);
+        }catch(e){}
+        var cart = {{ cart | json }};
+        var collection_handle = '{{ collection.handle }}';
+        var tempWaioQC = {{shop.metafields.waioQC | json }};
+        var waioQCTemp = [];
+        waioQCTemp = waioQCTemp.concat(Object.keys(tempWaioQC).map(function(a){return tempWaioQC[a]}));
+        WSAIO.quantity_controls = [];
+        if(typeof waioQCTemp !== "undefined" && waioQCTemp.length > 0){
+            var sortOrder = ["tag_based", "logged_in", "all"];
+            var sortOrder2 =  ["variants", "products","collections","entire_store"];
+            var temp = [];
+            for(var iter = 0; iter < sortOrder2.length; iter++){
+                var _d = sortOrder2[iter];
+                var temp1 = waioQCTemp.filter(function(x){return x.applies_to === _d});
+                temp1.sort(function(a,b){
+                    var compA = $.inArray(a.customer_group, sortOrder);
+                    var compB = $.inArray(b.customer_group, sortOrder);
+                    return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+                });
+                temp1.forEach(function(_f,_j){
+                    temp.push(_f);
+                });
+            }
+            WSAIO.quantity_controls = temp; 
+        }
+        waioMOC.rules=[];waioMOC.rules=waioMOC.rules.concat(Object.keys(tem_moc).map(function(a){return tem_moc[a]}));waioMOC.cart={original_total_price:w_original_total_price,total_weight:w_total_weight,item_count:w_item_count,weight_with_unit:w_weight_with_unit};waioMOC.oc={};
+        WSAIO.disable_checkout=!1;
+        function log(a,b,c){if(WSAIO.debug)if("undefined"!==typeof c)switch(c){case "warning":console.warn(a,b);break;case "error":console.error(a,b);break;case "info":console.info(a,b);break;default:console.log(a,b)}else console.log(a,b)};
+		function mF(a){if(isNaN(a)||null==a)return 0;a=a.toString();if("string"==typeof a&&-1<a.indexOf("."))return 2>a.split(".")[1].length?Number(a).toFixed(2).toString():a.toString();a=(Number(a)/100).toFixed(2);return a.toString()};
+        // START MINIMUM ORDER CONTROL
+        var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.arrayIteratorImpl=function(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}};$jscomp.arrayIterator=function(a){return{next:$jscomp.arrayIteratorImpl(a)}};$jscomp.makeIterator=function(a){var b="undefined"!=typeof Symbol&&Symbol.iterator&&a[Symbol.iterator];return b?b.call(a):$jscomp.arrayIterator(a)};
+        function disable_checkout(a,b,d){$(".waio-orderControl-message").remove();b=b||waioMOC.oc.message;d=d||WSAIO.checkout_selector;a||WSAIO.disable_checkout?(a='<div class="waio-orderControl-message">'+b+"</div>",0<$(".waio-orderControl-message").length?$(".waio-orderControl-message").text(b):$(a).insertAfter(d),$(d).off(),$(d).attr("disabled","disabled"),$(d).addClass("checkout-disabled")):($(".waio-orderControl-message").html(""),$(d).removeClass("checkout-disabled"),$(d).removeAttr("disabled"),$(d).attr("name","checkout"))}
+        function minOrderControl(){for(var a=[],b=0;b<waioMOC.rules.length;b++){var d=waioMOC.rules[b];"active"===d.status&&mocIsValidCustomer(d)&&a.push(d)}if(0<a.length){b={};if(1===a.length)b=a[0];else{d=a.findIndex(function(a){return"tag_based"===a.customer_group});var c=a.findIndex(function(a){return"logged_in"===a.customer_group}),e=a.findIndex(function(a){return"all"===a.customer_group});-1<d?b=a[d]:-1<c?b=a[c]:-1<e&&(b=a[e])}log(b);if("undefined"!==typeof b.rules){a=[];d=$jscomp.makeIterator(b.rules);for(c=d.next();!c.done;c=d.next())switch(c=c.value,c.column){case "cart_original_total_price":switch(c.relation){case "equal":Number(c.condition)==mF(Number(waioMOC.cart.original_total_price))?a.push("yes"):a.push("no");break;case "not_equal":Number(c.condition)!=mF(Number(waioMOC.cart.original_total_price))?a.push("yes"):a.push("no");break;case "greater_than":Number(c.condition)<mF(Number(waioMOC.cart.original_total_price))?a.push("yes"):a.push("no");break;case "less_than":Number(c.condition)>mF(Number(waioMOC.cart.original_total_price))?a.push("yes"):a.push("no");break;default:cosnole.log("invalid relation value in MOC's nested switch")}break;case "cart_item_count":switch(c.relation){case "equal":Number(c.condition)==Number(waioMOC.cart.item_count)?a.push("yes"):a.push("no");break;case "not_equal":Number(c.condition)!=Number(waioMOC.cart.item_count)?a.push("yes"):a.push("no");break;case "greater_than":Number(c.condition)<Number(waioMOC.cart.item_count)?a.push("yes"):a.push("no");break;case "less_than":Number(c.condition)>Number(waioMOC.cart.item_count)?a.push("yes"):a.push("no");break;default:cosnole.log("invalid relation value in MOC's nested switch")}break;case "cart_total_weight":switch(c.relation){case "equal":Number(c.condition)==Number(waioMOC.cart.total_weight)?a.push("yes"):a.push("no");break;case "not_equal":Number(c.condition)!=Number(waioMOC.cart.total_weight)?a.push("yes"):a.push("no");break;case "greater_than":Number(c.condition)<Number(waioMOC.cart.total_weight)?a.push("yes"):a.push("no");break;case "less_than":Number(c.condition)>Number(waioMOC.cart.total_weight)?a.push("yes"):a.push("no");break;default:cosnole.log("invalid relation value in MOC's nested switch")}break;default:cosnole.log("invalid column value in MOC's parent switch")}log(a);waioMOC.oc=b;"and"===b.rules_operator?-1<a.indexOf("no")?(WSAIO.disable_checkout=!0,WSAIO.checkout_message=b.message,WSAIO.disableCheckout(!0,b.message)):(WSAIO.disable_checkout=!1,WSAIO.checkout_message=b.message,WSAIO.disableCheckout(!1,b.message)):-1===a.indexOf("yes")?(WSAIO.disable_checkout=!0,WSAIO.checkout_message=b.message,WSAIO.disableCheckout(!0,b.message)):(WSAIO.disable_checkout=!1,WSAIO.checkout_message=b.message,WSAIO.disableCheckout(!1,b.message))}else log("Something missing in MOC")}else log("Minimum Order Control is not valid for this customer"),log("Minimum Order Control is not valid for this customer")}
+        function mocIsValidCustomer(a){var b=!0;"all"!==a.customer_group?(is_loggedIn||(b=!1),"tag_based"===a.customer_group?isTagged(a.customer_tags)||(b=!1):a.except_tags&&isTagged(a.excepted_tags)&&(b=!1)):(a.except_tags&&isTagged(a.excepted_tags)&&(b=!1),a.except_logged_in&&is_loggedIn&&(b=!1));return b}
+        function isTagged(a){if("undefined"===typeof a||!is_loggedIn)return!1;var b=!1,d=customer_tags.map(function(a){return a.toLowerCase()});a=a.map(function(a){return a.toLowerCase()});a=$jscomp.makeIterator(a);for(var c=a.next();!c.done;c=a.next())if(-1<d.indexOf(c.value)){b=!0;break}return b};
+        // END MINIMUM ORDER CONTROL
+        WSAIO.order_control = function(){minOrderControl();};
+        WSAIO.disableCheckout = function(c,m,el){disable_checkout(c,m,el);};
+        // Quantity Controls functions
+        function quantity_controller(config, callback){
+            if("undefined"===typeof config)var config={};
+            null===config&&(config={});
+            var productId = config.productId || current_product.id;
+            var variantId = config.variantId || selected_variant_id;
+            var collectionId = config.collectionId || collection_id;
+            var custom_message = config.message || null;
+            var qc_variants = [];
+            var qc_products = [];
+            var qc_collections = [];
+            var qc_entireStore = [];
+            for(var iter = 0; iter < WSAIO.quantity_controls.length; iter++){
+                var rule = WSAIO.quantity_controls[iter];
+                if(rule.status !== "enabled") continue;
+                if(rule.customer_group === "logged_in" && !is_loggedIn) continue;
+                else if(rule.customer_group === "tag_based"){
+                    if(!is_loggedIn) continue;
+                    var cus_tags = customerTags.map(function (e) {
+                        return e.toLowerCase()
+                    });
+                    var tagFound = false;
+                    for(var iter1 = 0; iter1 < rule.customer_tags.length; iter1++){
+                        var tag = rule.customer_tags[iter1];
+                        if(cus_tags.indexOf(tag.toLowerCase())>-1){
+                            tagFound = true; break;
+                        }
+                    }
+                    if(!tagFound) continue;
+                }
+
+
+
+              getAllRelevantQC({
+                rule: rule,
+                variantId: variantId,
+                productId: productId,
+                collectionId: collectionId,
+                qc_variants: qc_variants,
+                qc_products: qc_products,
+                qc_collections: qc_collections,
+                qc_entireStore: qc_entireStore
+              }, function(results){
+                log("results",results);
+                var pushData = {
+                  variantId: variantId,
+                  productId: productId,
+                  collectionId: collectionId,
+                  customer_group: rule.customer_group,
+                  internal_name: rule.internal_name,
+                  default_quantity: rule.default_quantity,
+                  maximum_quantity: rule.maximum_quantity,
+                  minimum_quantity: rule.minimum_quantity,
+                  quantity_increment: rule.quantity_increment,
+                  applies_to: rule.applies_to,
+                  message: custom_message || rule.message,
+                  selector_for_individual_variant: rule.selector_for_individual_variant,
+                  minimum_quantity_method: rule.minimum_quantity_method
+                };
+                if(results.type === "variants" && results.status === "approved"){
+                  pushData.variants = rule.variants;
+                  qc_variants.push(pushData);
+                }
+                if(results.type === "products" && results.status === "approved"){
+                  pushData.products = rule.products;
+                  qc_products.push(pushData);
+                }
+                if(results.type === "collections" && results.status === "approved"){
+                  pushData.collections = rule.collections;
+                  qc_collections.push(pushData);
+                }
+                if(results.type === "entire_store" && results.status === "approved"){
+                  pushData.entire_store = true;
+                  qc_entireStore.push(pushData);
+                }
+              });
+            }//end forloop
+            log("qc_variants", qc_variants);
+            log("qc_products", qc_products);
+            log("qc_collections", qc_collections);
+            log("qc_entireStore", qc_entireStore);
+            var variants_final = [];
+            var products_final = {};
+            var collections_final = {};
+            var entireStore_final = {};
+            for(var iter = 0; iter < qc_variants.length; iter++){
+              var v = qc_variants[iter];
+              var vcg = variants_final.find(function(x){return x.customer_group});
+              if( "undefined" !== typeof vcg ){
+
+                switch(vcg){
+                    case "tag_based":
+                      if(vcg != "tag_based"){
+                        variants_final.push(v);
+                      }
+                      break;
+                    case "logged_in":
+                      if(vcg != "tag_based"){
+                        variants_final.push(v);
+                      }
+                      break;
+                    case "all":
+                      if(vcg != "tag_based" && variants_final.customer_group != "logged_in"){
+                        variants_final.push(v);
+                      }
+                      break;
+                  default:
+                      break;
+                  }
+
+
+
+              }
+
+              else{
+                variants_final.push(v);
+              }
+            }
+            for(var iter = 0; iter < qc_products.length; iter++){
+              var v = qc_products[iter];
+              if( "undefined" !== typeof products_final.customer_group ){
+                switch(v.customer_group){
+                  case "tag_based":
+                      if(products_final.customer_group != "tag_based"){
+                        products_final = v;
+                      }
+                      break;
+                  case "logged_in":
+                      if(products_final.customer_group != "tag_based"){
+                        products_final = v;
+                      }
+                      break;
+                  case "all":
+                      if(products_final.customer_group != "tag_based" && products_final.customer_group != "logged_in"){
+                        products_final = v;
+                      }
+                      break;
+                  default:
+                      break;
+                  }
+              }
+              else{
+                products_final = v;
+              }
+            }
+            for(var iter = 0; iter < qc_collections.length; iter++){
+              var v = qc_collections[iter];
+              if( "undefined" !== typeof collections_final.customer_group ){
+                switch(v.customer_group){
+                  case "tag_based":
+                      if(collections_final.customer_group != "tag_based"){
+                        collections_final = v;
+                      }
+                      break;
+                  case "logged_in":
+                      if(collections_final.customer_group != "tag_based"){
+                        collections_final = v;
+                      }
+                      break;
+                  case "all":
+                      if(collections_final.customer_group != "tag_based" && collections_final.customer_group != "logged_in"){
+                        collections_final = v;
+                      }
+                      break;
+                  default:
+                      break;
+                  }
+              }
+              else{
+                collections_final = v;
+              }
+            }
+              for(var iter = 0; iter < qc_entireStore.length; iter++){
+              var v = qc_entireStore[iter];
+              if( "undefined" !== typeof entireStore_final.customer_group ){
+                switch(v.customer_group){
+                  case "tag_based":
+                      if(entireStore_final.customer_group != "tag_based"){
+                        entireStore_final = v;
+                      }
+                      break;
+                  case "logged_in":
+                      if(entireStore_final.customer_group != "tag_based"){
+                        entireStore_final = v;
+                      }
+                      break;
+                  case "all":
+                      if(entireStore_final.customer_group != "tag_based" && entireStore_final.customer_group != "logged_in"){
+                        entireStore_final = v;
+                      }
+                      break;
+                  default:
+                      break;
+                  }
+              }
+              else{
+                entireStore_final = v;
+              }
+            }
+            log("variants_final", variants_final);
+            log("products_final", products_final);
+            log("collections_final", collections_final);
+            log("entireStore_final", entireStore_final);
+            var quantity_controls = [];
+            if("undefined" !== typeof variants_final.find(function(x){return x.applies_to})){
+                variants_final.forEach(function(_d,i){quantity_controls.push(_d);});
+                if("undefined" !== typeof products_final.applies_to){
+                    quantity_controls.push(products_final);
+                }
+            }
+            else if("undefined" !== typeof products_final.applies_to){
+              quantity_controls.push(products_final);
+            }
+            else if("undefined" !== typeof collections_final.applies_to){
+              quantity_controls.push(collections_final); 
+            }
+            else if("undefined" !== typeof entireStore_final.applies_to){
+              quantity_controls.push(entireStore_final);
+            }
+            callback(null,{quantity_controls:quantity_controls})
+          }
+        function getAllRelevantQC(data, callback){
+            var $jscomp$destructuring$var0 = data, rule = $jscomp$destructuring$var0.rule, qc_variants = $jscomp$destructuring$var0.qc_variants, qc_products = $jscomp$destructuring$var0.qc_products, qc_collections = $jscomp$destructuring$var0.qc_collections, qc_entireStore = $jscomp$destructuring$var0.qc_entireStore, variantId = $jscomp$destructuring$var0.variantId, productId = $jscomp$destructuring$var0.productId, collectionId = $jscomp$destructuring$var0.collectionId;
+            var status = "rejected";
+            switch (rule.applies_to) {
+                case "variants":
+                    if(variantId){
+                        var find = rule.variants.findIndex(function(x){ return x.id == variantId });
+                        if(find > -1){
+                            status = "approved";
+                        }
+                    }
+                    else{
+                        log("WAIO Warning!","Variant id not found for Quantity controller applies to variants","warning");
+                    }
+                    if(productId){
+                        var find = rule.variants.findIndex(function(x){ return x.product_id == productId });
+                        if(find > -1){
+                            status = "approved";
+                        }
+                    }
+                break;
+                case "products":
+                    if(productId){
+                        var find = rule.products.findIndex(function(x){ return x.id == productId });
+                        if(find > -1){
+                            status = "approved";
+                        }
+                    }
+                    else{
+                        log("WAIO Warning!","Product id not found for Quantity controller applies to products","warning");
+                    }
+                    if(variantId){
+                        try{
+                            for(var iter = 0; iter < rule.products.length; iter++){
+                                var product =  rule.products[iter];
+                                var find = product.variants.findIndex(function(x){ return x.id == variantId });
+                                if(find > -1){
+                                    status = "approved"; break;
+                                }
+                            }
+                        }catch(e){log(e);}
+                    }
+                    break;
+                case "collections":
+                    if(collectionId){
+                        if(rule.collections.findIndex(function(x){return x.id == collectionId }) > -1){
+                            status = "approved";
+                        }
+                    }
+                    else if(productId){
+                        WSAIO.collectionsOfProduct(productId, function(collectionIds){
+                        log("collectionIds",collectionIds);
+                            for(var iter = 0; iter < collectionIds.length; iter++){
+                                var collId = collectionIds[iter];
+                                if(rule.collections.findIndex(function(x){return x.id == collId }) > -1){
+                                    status = "approved"; break;
+                                }
+                            }
+                        });
+                    }
+                    else if(collection_handle == "all"){
+                        if(qc_collections.length == 0){
+                            status = "approved";
+                        }
+                        log("WAIO message: All collections rendered!")
+                    }
+                    else{
+                        log("WAIO message: Current collection's id not found!","warning")
+                    }
+                    break;
+                case "entire_store":
+                    if(WSAIO.template !== "product"){
+                        if(qc_collections.length === 0 && qc_products.length === 0 && qc_variants.length === 0){
+                            status = "approved";
+                        }
+                    }
+                    else{
+                        if(qc_variants.length === 0){
+                            status = "approved";
+                        }
+                        {%if template.name == 'index' or template.name == 'search'%}
+                        status = "approved";
+                        {%endif%}
+                    }
+                    break;
+                default:
+                    break;
+            }
+            callback({type:rule.applies_to,status:status});
+        }
+        function quantityControls__cart(config, callback){
+            if("undefined"===typeof config)var config={};
+            null===config&&(config={});
+            var elementSelector = config.elementSelector || "[data-variant-id]";
+            var variantIdAttribute = config.variantIdAttribute || "data-variant-id";
+            var productIdAttribute = config.productIdAttribute || "data-product-id";
+            if($(elementSelector).length > 0){
+                $(elementSelector).each(function(e,a){
+                    var $variantId = $(this).attr(variantIdAttribute);
+                    var $productId = $(this).attr(productIdAttribute);
+                    config.variantId = $variantId;
+                    if($productId){
+                        config.productId = $productId;
+                    }
+                    WSAIO.quantityController(config, function(e,quantity_controls){
+                        if(e){
+                            log(e);
+                            callback(e, null);
+                        }
+                        else{
+                            callback(null, {
+                                quantity_controls: quantity_controls,
+                                elementSelector: "["+variantIdAttribute+"='"+$variantId+"']"
+                            });
+                        };
+                    });
+                });
+            }
+            else{
+                callback("elementSelector could not found any nodeElement. Config elementSelector for Quantity controller to work on cart template.", null);
+            }
+        }
+        // End Quantity Controls functions
+        WSAIO.quantityController = function(config, callback){
+            if("undefined"===typeof config)var config={};
+            null===config&&(config={});
+            if(config.productHandle){
+                WSAIO.getProductByHandle(config.productHandle, function(e,product){
+                    if(product){
+                        config.productId = product.id;
+                        if(!config.variantId){
+                            try{
+                                config.variantId = product.variants[0].id;
+                            }catch(e){log(e)}
+                        }
+                    }
+                    quantity_controller(config, callback);
+                });
+            }
+            else{
+                quantity_controller(config, callback);
+            }
+        }
+        WSAIO.cartQuantityController = function(config,callback){
+            quantityControls__cart(config,callback)
+        }
+        WSAIO.disableCheckout();
+        WSAIO.order_control();
+    };
+var waioLoadScriptExtra=function(c,b){var a=document.createElement("script");a.type="text/javascript";a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()};a.src=c;document.getElementsByTagName("head")[0].appendChild(a)};
+"undefined"===typeof jQuery||1.7>parseFloat(jQuery.fn.jquery)?waioLoadScriptExtra("//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js",function(){WSAIO.initExtra(jQuery.noConflict(!0))}):WSAIO.initExtra(jQuery);
+</script>
