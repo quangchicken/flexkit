@@ -2171,66 +2171,6 @@
           "1588525647983"
         ],
         "settings": {}
-      },
-      "square-foot-calculator": {
-        "type": "square-foot-calculator",
-        "blocks": {
-          "a07b44ee-0525-4f64-ba40-b0085859e813": {
-            "type": "text",
-            "settings": {
-              "title": "Flakes Epoxy System",
-              "link": "shopify:\/\/collections\/all-flakes",
-              "product_link_1": "signature-micas-color-flakes",
-              "product_link_2": "stone-series",
-              "product_link_3": "",
-              "product_link_4": "woodchips",
-              "product_link_5": "crystal-flake",
-              "product_link_6": "glitter",
-              "product_link_7": "glitter-accents",
-              "product_link_8": ""
-            }
-          },
-          "6c632b61-3d23-4478-800c-c486adc25653": {
-            "type": "text",
-            "settings": {
-              "title": "Marbelized Metallic Epoxy System",
-              "link": "shopify:\/\/collections\/pigments",
-              "product_link_1": "",
-              "product_link_2": "",
-              "product_link_3": "",
-              "product_link_4": "",
-              "product_link_5": "",
-              "product_link_6": "",
-              "product_link_7": "",
-              "product_link_8": ""
-            }
-          },
-          "8c8eefe2-a5a4-45b5-aa5d-815138bb9503": {
-            "type": "text",
-            "settings": {
-              "title": "Solid Color Epoxy System",
-              "link": "shopify:\/\/products\/colored-epoxy-resin-kit-new-images",
-              "product_link_1": "",
-              "product_link_2": "",
-              "product_link_3": "",
-              "product_link_4": "",
-              "product_link_5": "",
-              "product_link_6": "",
-              "product_link_7": "",
-              "product_link_8": ""
-            }
-          }
-        },
-        "block_order": [
-          "a07b44ee-0525-4f64-ba40-b0085859e813",
-          "6c632b61-3d23-4478-800c-c486adc25653",
-          "8c8eefe2-a5a4-45b5-aa5d-815138bb9503"
-        ],
-        "settings": {
-          "tooltip": "<p>Proin lobortis vel ipsum non ullamcorper. Integer et vulputate turpis. Nunc consectetur nulla magna. Vivamus lobortis, tellus et suscipit cursus, felis nibh rhoncus dui, ac vestibulum est mi pulvinar sem. Sed sit amet rhoncus mauris. Sed semper placerat ullamcorper. Aliquam at scelerisque mauris.<\/p><p>Vivamus efficitur convallis dolor, nec egestas libero vestibulum quis. Duis placerat volutpat efficitur. Quisque ac ligula sagittis, dapibus augue vitae, volutpat quam. Morbi consectetur et libero quis ultricies. Proin vitae blandit turpis. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
-          "product_colored_epoxy": "colored-epoxy-resin-kit-new-images",
-          "product_clear_epoxy": "clear-epoxy-resin-kit"
-        }
       }
     },
     "content_for_index": [
