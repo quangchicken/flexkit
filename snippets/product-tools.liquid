@@ -1,0 +1,57 @@
+<div class="product-tools">
+    <h3 class="product-tools-title">Tools</h3>
+    {% for i in (1..4) %}
+        {% assign toolMetafield = 'tool_product_' | append: i %}
+        {% if product.metafields.products[toolMetafield].value != blank %}
+            {% assign productToolHandle = product.metafields.products[toolMetafield].value.handle %}
+            {% assign productTool = all_products[productToolHandle] %}
+            <div class="tools-item">
+                <div class="product-wrap">
+                    <a class="product_image" href="{{ productTool.url }}">
+                        <picture>
+                        <img loading="lazy" src="{{ productTool | img_url: '120x120' }}" alt="{{ productTool.featured_image.alt | escape }}" itemprop="image" />
+                        </picture>
+                   </a>
+                </div>
+                <a class="product-info__caption">
+                    <div class="product-details">
+                        <a href="{{ productTool.url }}">
+                            <span class="title" itemprop="name">{{ productTool.title }}</span>
+                                <span class="price {% if productTool.compare_at_price_max > productTool.price %}sale{% endif %}">
+                                    {% unless productTool.available == false and settings.display_price == false %}
+                                        <span class="current_price">
+                                            {% if productTool.price_varies %}
+                                            <small class="from"><em>{{ 'products.general.from' | t }}</em></small>
+                                            {% endif %}
+                                            {% if productTool.price_min > 0 %}
+                                            <span class="money">{% render 'price-element', price: productTool.price_min %}</span>
+                                            {% else %}
+                                            {% if settings.free_price_text != blank %}
+                                                <span class="free">{{ settings.free_price_text }}</span>
+                                            {% else %}
+                                                <span class="money">{% render 'price-element', price: productTool.price_min %}</span>
+                                            {% endif %}
+                                            {% endif %}
+                                        </span>
+                                        <span class="was_price">
+                                            {% if productTool.price < productTool.compare_at_price %}
+                                            <span class="money">{% render 'price-element', price: productTool.compare_at_price %}</span>
+                                            {% endif %}
+                                        </span>
+                                    {% endunless %}
+                                    
+                                    {% unless productTool.available %}
+                                        <div class="sold_out">
+                                        {{ settings.sold_out_text }}
+                                        </div>
+                                    {% endunless %}
+                                    
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                </a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
