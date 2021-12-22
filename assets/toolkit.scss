@@ -28,7 +28,7 @@
 .sf-calculator-btn-fixed{
     position: fixed;
     right: 10px;
-    bottom: -20px;
+    bottom: 30px;
     height: 40px;
     width: 184px;
     z-index: 999999;
@@ -736,5 +736,11 @@
                 }
             }
         }
+    }
+}
+
+.sf-marbelized-metallic-epoxy-system-clone{
+    .sf-system__product--form{
+        display: none;
     }
 }

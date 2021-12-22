@@ -16,6 +16,8 @@
   {% endif %}
 {% endfor %}
 
+{% assign flakes_product = product.title | split: " | " | last | strip | downcase %}
+
 <div
   class="
     product_form
@@ -96,9 +98,9 @@
   <div class="purchase-details">
     {% if settings.display_product_quantity %}
       <div class="purchase-details__quantity product-quantity-box">
-        <label for="quantity">{{ 'products.product.quantity' | t }}</label>
+        <label for="quantity">{{ 'products.product.quantity' | t }} - {{ flakes_product }}</label>
         <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
-        <input type="number" min="1" size="2" class="quantity" name="quantity" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
+        <input type="number" min="{% if flakes_product == 'flakes' %}10{% else %}1{% endif %}" size="2" class="quantity" name="quantity" id="quantity" value="{% if flakes_product == 'flakes' %}10{% else %}1{% endif %}" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
         <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
       </div>
     {% endif %}
