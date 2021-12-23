@@ -71,6 +71,24 @@
   </div>
 </section>
 
+<!-- jQuery('.flakes .add_to_cart').on('click', blurChangeInputFlakes) -->
+{% javascript %}
+jQuery(document).ready(function() {
+  jQuery('.flakes input[type="number"]').val(10);
+  function blurChangeInputFlakes(e){
+    clearTimeout(blurChangeInputFlakes.timeout);
+    blurChangeInputFlakes.timeout = setTimeout(function(){
+      var minVal = jQuery('.flakes input[type="number"]').attr('min'),
+      currentVal = jQuery('.flakes input[type="number"]').val();
+      if(currentVal < 10){
+        jQuery('.flakes input[type="number"]').val(10);
+      }
+    }, 100);
+  }
+  jQuery('.flakes input[type="number"]').on('blur change', blurChangeInputFlakes);
+});
+{% endjavascript %}
+
 {% schema %}
 {
   "name": "Product information",
