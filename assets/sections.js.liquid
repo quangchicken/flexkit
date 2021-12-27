@@ -569,7 +569,12 @@ window.cart = {
 ==============================================================================*/
 window.selectCallback = function (variant, selector) {
   const evt = document.createEvent('HTMLEvents');
-  const $product = $(`.product-${selector.product.id}`);
+  let $product = $(`.product-${selector.product.id}`);
+  
+ 
+
+  //console.log($product);
+
   const $notifyForm = $(`.notify-form-${selector.product.id}`);
   const $productForm = $('.product_form, .shopify-product-form', $product);
   const variantInventory = $productForm.data('variant-inventory');
@@ -582,8 +587,16 @@ window.selectCallback = function (variant, selector) {
 
   // Manually trigger change event so
   // pure JS listeners can receive it
+
   evt.initEvent('change', false, true);
   selector.variantIdField.dispatchEvent(evt);
+
+  if($(evt.target).parents('.product-main').length > 0){
+    $product = $(`.product-main.product-${selector.product.id}`)
+  }
+  if($(evt.target).parents('.product-sf').length > 0){
+    $product = $(`.sf-product.product-${selector.product.id}`)
+  }
 
   if (variant) {
     if (variant.title != null) {
@@ -1816,7 +1829,10 @@ window.productPage = {
 
           const JSONData = $swatchElement.parents('.product_form').data('product');
           const productID = $swatchElement.parents('.product_form').data('product-id');
-          const productSection = `.product-${productID} .js-product_section`;
+          let productSection = `.product-${productID} .js-product_section`;
+          if($swatchElement.parents('.sfc-swatch').length > 0){
+            productSection = `#square-foot-calculator .product-${productID} .js-product_section`;
+          }
           const swatchOptions = $swatchElement.parents('.product_form').find('.swatch_options .swatch');
 
           if (swatchOptions.length > 1) {

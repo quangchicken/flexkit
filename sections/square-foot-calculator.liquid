@@ -115,8 +115,10 @@
                                             <div class="sf-system__variants">
                                                 {% if collection != '' %}
                                                     {% for product in collection.products %}
-                                                    <div id="sf-system__{{ product.id}}" class="sf-system__variants--item sf-variants-item-js swatch_options">
+                                                    <div class="product-{{ product.id }}">
+                                                    <div id="sf-system__{{ product.id}}" class="sf-system__variants--item sf-variants-item-js swatch_options js-product_section">
                                                         {% render 'sf-system-product-form', product: product %}
+                                                    </div>
                                                     </div>
                                                     {% endfor %}
                                                 {% endif %}
@@ -127,8 +129,10 @@
                                                         {% if block.settings[product_additives] != '' %}
                                                             {% assign product_url = block.settings[product_additives] %}
                                                             {% assign product = all_products[product_url] %}
-                                                            <div id="sf-system__{{ product.id}}" class="sf-system__variants--item sf-variants-item-js product-additive swatch_options">
+                                                            <div class="product-{{ product.id }}">
+                                                            <div id="sf-system__{{ product.id}}" class="sf-system__variants--item sf-variants-item-js product-additive swatch_options js-product_section">
                                                                 {% render 'sf-system-product-form', product: product %}
+                                                            </div>
                                                             </div>
                                                         {% endif %}
                                                     {% endfor %}
@@ -765,7 +769,7 @@
             let $sfVariantSelectedClone = $sf.find('.sf-solid-color-epoxy-system-clone'),
                 $sfVariantSelected = $sf.find('.sf-product-select-js.active').parent(),
                 sfEpoxySystemClone = $sfVariantSelected.find('.sf-system__product--options').clone(),
-                mainVariantTitle = $sfVariantSelected.find('select[name="id"]').data('title'),
+                mainVariantTitle = $sfVariantSelected.find('.data-title').data('title'),
                 mainVariantColor = $sfVariantSelected.find('input[name="option-1"]:checked').val(),
                 mainVariantImage = $sfVariantSelected.find('input[name="option-1"]:checked').next().find('label').data('image');
                 
@@ -776,7 +780,7 @@
             });
            
             if($sfVariantSelectedClone.length > 0){
-                mainVariantTitle = $sfVariantSelectedClone.find('select[name="id"]').data('title');
+                mainVariantTitle = $sfVariantSelectedClone.find('.data-title').data('title');
                 mainVariantColor = $sfVariantSelectedClone.find('input[name="option-1"]:checked').val();
                 mainVariantImage = $sfVariantSelectedClone.find('input[name="option-1"]:checked').next().find('label').data('image');
             }
@@ -843,7 +847,7 @@
                     coloredHtmt += '<div class="sf-system__product--select-image">';
                     coloredHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
                     coloredHtmt += `</div>`;
-                    coloredHtmt += `<span class="sf-system__product--select-name">`;
+                    coloredHtmt += `<span class="sf-system__product--select-name test00">`;
                     sizeColoredEpoxyGallon.forEach(el => {
                         coloredHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
                         coloredTotalPrice += el['price'] * el['qty'];
@@ -858,7 +862,7 @@
                     coloredHtmt += '<div class="sf-system__product--select-image">';
                     coloredHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
                     coloredHtmt += `</div>`;
-                    coloredHtmt += `<span class="sf-system__product--select-name">`;
+                    coloredHtmt += `<span class="sf-system__product--select-name test01">`;
                     sizeColoredEpoxyGallon.forEach(el => {
                         coloredHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
                         coloredTotalPrice += el['price'] * el['qty'];
@@ -956,9 +960,12 @@
                 if($sfProductSelected.next().find('.sf-variants-item-js.selected input[name="option-0"]:checked').length === 0){
                     sfValidate = false;
                 }
-            }     
+            }
             if($sfProductSelected.next().find('.sf-variants-item-js.selected input[name="option-1"]').length > 0){
                 if($sfProductSelected.next().find('.sf-variants-item-js.selected input[name="option-1"]:checked').length === 0){
+                    sfValidate = false;
+                }
+                if($sfProductSelected.next().find('.sf-variants-item-js.selected input[name="option-1"]:checked+.soldout').length === 1){
                     sfValidate = false;
                 }
             }     

@@ -14,7 +14,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
     {%- assign option_index = forloop.index0 -%}
     {%- assign downcased_option = swatch | downcase -%}
 
-    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+    {% if downcased_option contains 'color' or downcased_option contains 'colour'  or downcased_option contains 'type' %}
       {%- assign is_color = true -%}
     {% endif %}
   {% endif %}
