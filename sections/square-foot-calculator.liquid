@@ -271,7 +271,7 @@
                     mainProductOp1 = $sfVariantSelected.find('input[name="option-1"]:checked').val(),
                     mainProductOp2 = $sfVariantSelected.find('input[name="option-2"]:checked').val(),
                     $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}'][data-option-1='${mainProductOp1}'][data-option-2='${mainProductOp2}']`),
-                    mainVariantTitle = $sfVariantSelected.find('select[name="id"]').data('title'),
+                    mainVariantTitle = $sfVariantSelected.find('.data-title').data('title'),
                     mainVariantId = Number($mainVariant.val()),
                     mainVariantImage = $sfVariantSelected.find('.sf-system__variants--item-image img').attr('src'),
                     mainVariantColor = $mainVariant.data('color'),
@@ -485,7 +485,7 @@
                     mainProductOp1 = $sfVariantSelected.find('input[name="option-1"]:checked').val(),
                     mainProductOp2 = $sfVariantSelected.find('input[name="option-2"]:checked').val(),
                     $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}'][data-option-1='${mainProductOp1}'][data-option-2='${mainProductOp2}']`),
-                    mainVariantTitle = $sfVariantSelected.find('select[name="id"]').data('title'),
+                    mainVariantTitle = $sfVariantSelected.find('.data-title').data('title'),
                     mainVariantId = Number($mainVariant.val()),
                     mainVariantColor = $mainVariant.data('color');
 
@@ -498,8 +498,9 @@
             let mainVariantImage =  $sf.find('.sf-product-item-js.active img').attr('src');
 
             if($sfVariantSelectedClone.length > 0){
+                console.log('123');
                 $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}'][data-option-1='${mainProductOp1}'][data-option-2='${mainProductOp2}']`),
-                mainVariantTitle = $sfVariantSelectedClone.find('select[name="id"]').data('title');
+                mainVariantTitle = $sfVariantSelectedClone.find('.sf-system__product--item.active .sf-system__product--item-title').text();
                 mainVariantColor = $sfVariantSelectedClone.find('input[name="option-1"]:checked').val();
                 mainVariantColor = $mainVariant.data('color');
             }
@@ -554,7 +555,6 @@
             let mainTotalPrice = 0;
             let mainHtmt = '';
             if($sfVariantSelectedClone.length > 0 ){
-                console.log('123');
                     mainHtmt += '<div class="sf-system__product--select-image">';
                     mainHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
                     mainHtmt += `</div>`;
@@ -741,8 +741,6 @@
                     }
                     jQuery('.sf-product-item-js').not($this).removeClass('active');
                     metallicEpoxySystem(inputSF);
-                    console.log(inputSF);
-                    console.log($sfVariantSelectedClone.length);
                 });
             }
 
