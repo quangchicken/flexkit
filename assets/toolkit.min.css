@@ -863,3 +863,7 @@
 .sf-marbelized-metallic-epoxy-system-clone .sf-system__product--form {
   display: none;
 }
+
+.sf-marbelized-metallic-epoxy-system-clone .sf-solid-color-epoxy-system {
+  display: none;
+}
