@@ -193,7 +193,9 @@
 <button class="sf-calculator-close-js">Close</button>
 <script>
    
-     
+    let pigmentsOptionOz = '';
+    let pigmentsVariantId = '';
+
     const $sf = jQuery('#square-foot-calculator');
           $sfProductSelect = jQuery('.sf-product-select-js'),
           $sfProductItem = jQuery('.sf-product-item-js'),
@@ -206,9 +208,11 @@
           $sfTotalPrice = jQuery('#sf-total-price'),
           $sfAddToCart = jQuery('#sf-addtocart-js'),
           $sfBack = jQuery('.sf-product-back-js');
+          $sfProductSelectName = jQuery('.sf-system__product--select-name span');
           
 
     let sfDataForm = [];
+    let sizepigmentsOZ= [];
           
 
     const productColored = {{ product_colored_epoxy_ob | json}},
@@ -460,8 +464,11 @@
                   pigmentsOZ = inputSF / 28.8,
                   coloredId = '',
                   clearId = '';
-
-            sfDataForm = [];
+            
+            if(pigmentsOptionOz == ''){
+                sfDataForm = [];   
+            }
+            console.log(sfDataForm, 'Arr');
 
             if((Math.ceil(coloredEpoxyGallon) - coloredEpoxyGallon) > 0.5){
                 coloredEpoxyGallon = Math.floor(coloredEpoxyGallon) + 0.5;
@@ -483,9 +490,10 @@
                 clearEpoxyGallon = 3;
             }
 
-            let     $sfVariantSelectedClone = $sf.find('.sf-marbelized-metallic-epoxy-system-clone'),
-                    $sfVariantSelected = $sf.find('.sf-variants-item-js.selected'),
-                    sfMarbelizedMetallicEpoxySystemClone = $sf.find('.sf-marbelized-metallic-epoxy-system .sf-system__product--option').clone(),
+            let     $sfVariantSelectedClone = $sf.find('.result .sf-marbelized-metallic-epoxy-system-clone .sf-variants-item-js.selected'),
+                    sfMarbelizedMetallicEpoxySystemClone = $sf.find('.sf-marbelized-metallic-epoxy-system .sf-system__product--option').clone();
+            
+            let     $sfVariantSelected = $sf.find('.sf-variants-item-js.selected'),
                     mainProductOp0 = $sfVariantSelected.find('input[name="option-0"]:checked').val(),
                     mainProductOp1 = $sfVariantSelected.find('input[name="option-1"]:checked').val(),
                     mainProductOp2 = $sfVariantSelected.find('input[name="option-2"]:checked').val(),
@@ -493,7 +501,7 @@
                     mainVariantTitle = $sfVariantSelected.find('.data-title').data('title'),
                     mainVariantId = Number($mainVariant.val());
                     // mainVariantColor = $mainVariant.data('color');
-
+                    
             // sf-solid-color-epoxy-system
             let $sfSolidColorEpoxyClone = $sf.find('.sf-solid-color-epoxy-system-clone'),
                 $sfVariantSelectedSolidColor = $sf.find('.sf-solid-color-epoxy-system.metallic-pigments'),
@@ -521,65 +529,164 @@
             });
 
             let mainVariantImage =  $sf.find('.sf-product-item-js.active img').attr('src');
-
+            let mainVariantTitleClone = '';
             if($sfVariantSelectedClone.length > 0){
                 $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}'][data-option-1='${mainProductOp1}'][data-option-2='${mainProductOp2}']`),
-                mainVariantTitle = $sfVariantSelectedClone.find('.sf-system__product--item.active .sf-system__product--item-title').text();
+                mainVariantTitleClone = $sfVariantSelectedClone.find('.data-title').data('title');
                 // mainVariantColor = $sfVariantSelectedClone.find('input[name="option-1"]:checked').val();
                 // mainVariantColor = $mainVariant.data('color');
             }
 
+            let variantActiveIndex = jQuery('.mainHtml .sf-system__product--select-name span.active').index('.mainHtml .sf-system__product--select-name span');
             // Main Product
             pigmentsOZ = clearEpoxyGallon;
-            // if(pigmentsOZ % 2  !== 0){
-            //     pigmentsOZ += 1;
-            // }       
-
-            let sizepigmentsOZ= [],
-                modPigmentsOZ = pigmentsOZ % 3;
-
-            let qty_12oz = Math.floor(pigmentsOZ / 3);
-
-            if(qty_12oz > 0){
-                if(modPigmentsOZ > 1.5){
-                    qty_12oz += 1;
-                    modPigmentsOZ = 0;
-                }
-
-                mainProductOp0 = '12 oz';
-                $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
-                mainVariantId = Number($mainVariant.val());
-                mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
-                if($sfSolidColorEpoxyClone.length > 0){
-                    mainVariantColor = $sfSolidColorEpoxyClone.find('input[name="option-1"]:checked').val();
-                }
-                mainVariantPrice = $mainVariant.data('price');
-
-                sfDataForm.push({ id: mainVariantId, quantity: qty_12oz });
-                sizepigmentsOZ.push({
-                    'name': mainProductOp0,
-                    'qty': qty_12oz,
-                    'price': mainVariantPrice
-                });
+            if(pigmentsOZ % 2  !== 0){
+                pigmentsOZ += 1;
             }
 
-            if(modPigmentsOZ > 0){
-                let qty_8oz = 1;
-                mainProductOp0 = '8 oz';
-                $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
-                mainVariantId = Number($mainVariant.val());
-                mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
-                if($sfSolidColorEpoxyClone.length > 0){
-                    mainVariantColor = $sfSolidColorEpoxyClone.find('input[name="option-1"]:checked').val();
-                }
-                mainVariantPrice = $mainVariant.data('price');
+            if(pigmentsOptionOz == ''){
+                sizepigmentsOZ= [];
+            }
 
-                sfDataForm.push({ id: mainVariantId, quantity: qty_8oz });
-                sizepigmentsOZ.push({
-                    'name': mainProductOp0,
-                    'qty': qty_8oz,
-                    'price': mainVariantPrice
-                });
+            let modPigmentsOZ = pigmentsOZ % 3,
+                qty_12oz = Math.floor(pigmentsOZ / 3);
+
+            if(pigmentsOptionOz == ''){
+                if(qty_12oz > 0){
+                    if(modPigmentsOZ > 1.5){
+                        qty_12oz += 1;
+                        modPigmentsOZ = 0;
+                    }
+
+                    mainProductOp0 = '12 oz';
+                    $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
+                    if($sfVariantSelectedClone.length > 0){
+                        $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}']`);
+                    }
+                    mainVariantId = Number($mainVariant.val());
+                    mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
+                    if($sfSolidColorEpoxyClone.length > 0){
+                        mainVariantColor = $sfSolidColorEpoxyClone.find('input[name="option-1"]:checked').val();
+                    }
+                    mainVariantPrice = $mainVariant.data('price');
+
+                    sfDataForm.push({ id: mainVariantId, quantity: qty_12oz });
+                    sizepigmentsOZ.push({
+                        'id': mainVariantId,
+                        'name': mainProductOp0,
+                        'qty': qty_12oz,
+                        'price': mainVariantPrice
+                    });
+                }
+
+                if(modPigmentsOZ > 0){
+                    let qty_8oz = 1;
+                    mainProductOp0 = '8 oz';
+                    $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
+                    if($sfVariantSelectedClone.length > 0){
+                        $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}']`);
+                    }
+                    mainVariantId = Number($mainVariant.val());
+                    mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
+                    if($sfSolidColorEpoxyClone.length > 0){
+                        mainVariantColor = $sfSolidColorEpoxyClone.find('input[name="option-1"]:checked').val();
+                    }
+                    mainVariantPrice = $mainVariant.data('price');
+
+                    sfDataForm.push({ id: mainVariantId, quantity: qty_8oz });
+                    sizepigmentsOZ.push({
+                        'id': mainVariantId,
+                        'name': mainProductOp0,
+                        'qty': qty_8oz,
+                        'price': mainVariantPrice
+                    });
+                }
+            } else {
+                if(pigmentsOptionOz == '12 oz'){
+                    if(qty_12oz > 0){
+                        if(modPigmentsOZ > 1.5){
+                            qty_12oz += 1;
+                            modPigmentsOZ = 0;
+                        }
+
+                        mainProductOp0 = '12 oz';
+                        $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
+                        mainVariantImage = $sf.find('.sf-product-item-js.active img').attr('src');
+                        mainVariantTitleClone = $sfVariantSelected.find('.data-title').data('title');
+                        if($sfVariantSelectedClone.length > 0){
+                            $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}']`);
+                            mainVariantImage = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
+                            mainVariantTitleClone = $sfVariantSelectedClone.find('.data-title').data('title');
+                        }
+                        mainVariantId = Number($mainVariant.val());
+                        mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
+                        if($sfSolidColorEpoxyClone.length > 0){
+                            mainVariantColor = $sfSolidColorEpoxyClone.find('input[name="option-1"]:checked').val();
+                        }
+                        mainVariantPrice = $mainVariant.data('price');
+
+                        sfDataForm.push({ id: mainVariantId, quantity: qty_12oz });
+                        for (var i = 0; i < sfDataForm.length; i++) {
+                            var obj = sfDataForm[i];
+                            if(sfDataForm[i]['id'] == pigmentsVariantId){
+                                sfDataForm.splice(i, 1);
+                            }
+                        }
+
+                        console.log(mainVariantImage);
+
+                        sizepigmentsOZ.forEach((el, index) => {
+                            if (index == variantActiveIndex){
+                                sizepigmentsOZ.splice(index, 1, {
+                                    'id': mainVariantId,
+                                    'name': mainProductOp0,
+                                    'colorImageName': mainVariantTitleClone,
+                                    'qty': qty_12oz,
+                                    'price': mainVariantPrice
+                                });
+                            }
+                        });
+                    }
+                }
+                if(pigmentsOptionOz == '8 oz'){
+                    if(modPigmentsOZ > 0){
+                        let qty_8oz = 1;
+                        mainProductOp0 = '8 oz';
+                        $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
+                        mainVariantImage = $sf.find('.sf-product-item-js.active img').attr('src');
+                        mainVariantTitleClone = $sfVariantSelected.find('.data-title').data('title');
+                        if($sfVariantSelectedClone.length > 0){
+                            $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}']`);
+                            mainVariantImage = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
+                            mainVariantTitleClone = $sfVariantSelectedClone.find('.data-title').data('title');
+                        }
+                        mainVariantId = Number($mainVariant.val());
+                        mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
+                        if($sfSolidColorEpoxyClone.length > 0){
+                            mainVariantColor = $sfSolidColorEpoxyClone.find('input[name="option-1"]:checked').val();
+                        }
+                        mainVariantPrice = $mainVariant.data('price');
+
+                        sfDataForm.push({ id: mainVariantId, quantity: qty_8oz });
+                        for (var i = 0; i < sfDataForm.length; i++) {
+                            var obj = sfDataForm[i];
+                            if(sfDataForm[i]['id'] == pigmentsVariantId){
+                                sfDataForm.splice(i, 1);
+                            }
+                        }
+                        sizepigmentsOZ.forEach((el, index) => {
+                            if (index == variantActiveIndex){
+                                sizepigmentsOZ.splice(index, 1, {
+                                    'id': mainVariantId,
+                                    'name': mainProductOp0,
+                                    'colorImageName': mainVariantTitleClone,
+                                    'qty': qty_8oz,
+                                    'price': mainVariantPrice
+                                });
+                            }
+                        });
+                    }
+                }
             }
 
             let mainTotalPrice = 0;
@@ -589,22 +696,36 @@
                 mainHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
                 mainHtmt += `</div>`;
                 mainHtmt += `<span class="sf-system__product--select-name">`;
-                sizepigmentsOZ.forEach(el => {
-                    mainHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                sizepigmentsOZ.forEach((el, index) => {
+                    let variantActive = '';
+                    if(index == variantActiveIndex){
+                        variantActive = 'active';
+                        mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;
+                    } else {
+                        if(el['colorImageName'] == undefined){
+                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;   
+                        } else {
+                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;   
+                        }
+                    }
                     mainTotalPrice += el['price'] * el['qty'];
                 });
                 mainHtmt += `</span>`;
                 mainHtmt += `<span class="sf-system__product--select-price">${Shopify.formatMoney(mainTotalPrice, "{{ shop.money_format }}")}</span>`;
                 mainHtmt += `</div>`;
             } else{
-                mainHtmt += '<div class="sf-system__product">';
+                mainHtmt += '<div class="sf-system__product mainHtml">';
                 mainHtmt += '<div class="sf-system__product--select">';
                 mainHtmt += '<div class="sf-system__product--select-image">';
                 mainHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
                 mainHtmt += `</div>`;
                 mainHtmt += `<span class="sf-system__product--select-name">`;
-                sizepigmentsOZ.forEach(el => {
-                    mainHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                sizepigmentsOZ.forEach((el, index) => {
+                    let variantActive = '';
+                    if(index == 0){
+                        variantActive = 'active';
+                    }
+                    mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
                     mainTotalPrice += el['price'] * el['qty'];
                 });
                 mainHtmt += `</span>`;
@@ -691,7 +812,7 @@
                 coloredHtmt += `</div>`;
                 coloredHtmt += `<span class="sf-system__product--select-name">`;
                 sizeColoredEpoxyGallon.forEach(el => {
-                    coloredHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                    coloredHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${productColoredTitle}</span>`;
                     coloredTotalPrice += el['price'] * el['qty'];
                 });
                 coloredHtmt += `</span>`;
@@ -783,10 +904,12 @@
                             item = jQuery(this).data('product-id');
                     if(!$this.hasClass('active')){
                         $this.addClass('active').parent().nextAll('.sf-system__product--form').find(item).addClass('selected').slideDown();
-                        jQuery('.sf-product-item-js').not($this).removeClass('active');
-                        jQuery('.sf-variants-item-js').not(item).removeClass('selected');
+                        $this.siblings().removeClass('active');
+                        jQuery('.sf-marbelized-metallic-epoxy-system-clone').find('.sf-variants-item-js').not(item).removeClass('selected');
                     }
-                    jQuery('.sf-product-item-js').not($this).removeClass('active');
+
+                    pigmentsOptionOz = jQuery('.mainHtml .sf-system__product--select-name span.active').data('option');
+                    pigmentsVariantId = jQuery('.mainHtml .sf-system__product--select-name span.active').data('variant-id');
                     metallicEpoxySystem(inputSF);
                 });
             }
@@ -800,6 +923,13 @@
                     metallicEpoxySystem(inputSF);
                 });
             }
+
+            sfDataForm = sfDataForm.reduce((unique, o) => {
+                if(!unique.some(obj => obj.id === o.id && obj.quantity === o.quantity)) {
+                    unique.push(o);
+                }
+                return unique;
+            },[]);
 
             $sfTotalPrice.html(Shopify.formatMoney(sfResultTotalPrice, "{{ shop.money_format }}"));
             jQuery('.sf-calculator__block.enter').slideUp().next().slideDown();
@@ -1062,7 +1192,7 @@
     $sfTooltip.click(function(){
         jQuery('.sf-calculator__block.products').slideUp().parent().find('.tooltip').slideDown();
     });
-    
+
     $sfCloseTooltip.click(function(){
         jQuery('.sf-calculator__block.tooltip').slideUp().parent().find('.sf-calculator__block.products').slideDown();
     });
@@ -1070,6 +1200,8 @@
     $sfCalculateButton.click(function(e){
         const $sfProductSelected = $sf.find('.sf-product-select-js.active');
         const sfType = $sfProductSelected.attr('id');
+        pigmentsOptionOz = '';
+        pigmentsVariantId = '';
 
         const sfInputFeet = jQuery('#sf-input-feet').val();
 
@@ -1101,6 +1233,11 @@
     jQuery('.sf-calculator-close-js').click(function(e){
         jQuery('#shopify-section-square-foot-calculator').removeClass('active');
     });
+    jQuery(document).on('click', '.mainHtml .sf-system__product--select-name span', function(){
+        jQuery(this).addClass('active').siblings().removeClass('active');
+        pigmentsOptionOz = jQuery(this).data('option');
+        pigmentsVariantId = jQuery(this).data('variant-id');
+    })
     
     let SFInterval = setInterval(function (interval) {
         if(jQuery(document).find('#chatra').length > 0){

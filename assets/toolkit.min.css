@@ -701,7 +701,12 @@
 }
 
 .sf-calculator__block.result .sf-system__product--select-name span {
+  cursor: pointer;
   display: block;
+}
+
+.sf-calculator__block.result .sf-system__product--select-name span.active em {
+  color: #D54D4D;
 }
 
 .sf-calculator__block.result .sf-system__product--select-price {

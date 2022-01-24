@@ -585,7 +585,13 @@
                                 display: inline-block;
                             }
                             span{
+                                cursor: pointer;
                                 display: block;
+                                &.active{
+                                    em{
+                                        color: #D54D4D;
+                                    }
+                                }
                             }
                         }
                         &-price{
