@@ -700,7 +700,11 @@
                     let variantActive = '';
                     if(index == variantActiveIndex){
                         variantActive = 'active';
-                        mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;
+                        if(el['colorImageName'] == undefined){
+                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                        } else {
+                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;
+                        }
                     } else {
                         if(el['colorImageName'] == undefined){
                             mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;   
