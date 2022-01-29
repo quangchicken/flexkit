@@ -3,7 +3,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 {{ 'toolkit.min.css' | asset_url | stylesheet_tag }}
 
-{% assign tooltip = section.settings.tooltip %}
+{% assign tooltip_flakes = section.settings.tooltip_flakes %}
+{% assign tooltip_marbelized_metallic = section.settings.tooltip_marbelized_metallic %}
+{% assign tooltip_solid_color = section.settings.tooltip_solid_color %}
+
 {% assign product_colored_epoxy_ob = '' %}
 {% assign product_clear_epoxy_ob = '' %}
 {% if section.settings.product_colored_epoxy != '' %}
@@ -14,6 +17,9 @@
     {% assign product_clear_epoxy = section.settings.product_clear_epoxy %}
     {% assign product_clear_epoxy_ob = all_products[section.settings.product_clear_epoxy] %}
 {% endif %}
+{{ product_colored_epoxy_ob }}-123
+{{ product_clear_epoxy_ob }}-123
+{% if product_clear_epoxy_ob != empty and product_colored_epoxy_ob != empty %}
 <div id="square-foot-calculator">
     <div class="sf-calculator__container">
         <div class="sf-calculator__block products">
@@ -183,7 +189,9 @@
         <div class="sf-calculator__block tooltip">
             <h3 class="sf-calculator__block--title">How it works?</h3>
             <div class="sf-calculator__block--content">
-                {{ tooltip }}
+                <div class="sf-tooltip-flakes active">{{ tooltip_flakes }}</div>
+                <div class="sf-tooltip-marbelized-metallic">{{ tooltip_marbelized_metallic }}</div>
+                <div class="sf-tooltip-solid-color">{{ tooltip_solid_color }}</div>
             </div>
             <button id="sf-close-tooltip-js" class="sf-calculator__block--close-tooltip" type="button">Back</button>
         </div>
@@ -195,6 +203,7 @@
    
     let pigmentsOptionOz = '';
     let pigmentsVariantId = '';
+    let pigmentsVariantImg = '';
 
     const $sf = jQuery('#square-foot-calculator');
           $sfProductSelect = jQuery('.sf-product-select-js'),
@@ -213,8 +222,8 @@
 
     let sfDataForm = [];
     let sizepigmentsOZ= [];
-          
-
+    let solidColorClick = false;
+    
     const productColored = {{ product_colored_epoxy_ob | json}},
           productClear = {{ product_clear_epoxy_ob | json}},
           productColoredVariants = productColored.variants,
@@ -292,10 +301,16 @@
             if(qtyFlakesPound == 1){
                 qtyFlakesPound = 2;
             }
+            if(qtyFlakesPound < 10){
+                qtyFlakesPound = 10;
+            }
             
-            sfDataForm.push({ id: mainVariantId, quantity: qtyFlakesPound });
+            sfDataForm.push({ id: mainVariantId, quantity: sizeFlakesPound });
 
-            let mainTotalPrice = mainVariantPrice * qtyFlakesPound;
+            let mainTotalPrice = mainVariantPrice * sizeFlakesPound;
+            // console.log(flakesPound);
+            // console.log(qtyFlakesPound);
+            // console.log(sizeFlakesPound);
             let mainHtmt = '<div class="sf-system__product">';
                 mainHtmt += '<div class="sf-system__product--select">';
                 mainHtmt += '<div class="sf-system__product--select-image">';
@@ -468,7 +483,6 @@
             if(pigmentsOptionOz == ''){
                 sfDataForm = [];   
             }
-            console.log(sfDataForm, 'Arr');
 
             if((Math.ceil(coloredEpoxyGallon) - coloredEpoxyGallon) > 0.5){
                 coloredEpoxyGallon = Math.floor(coloredEpoxyGallon) + 0.5;
@@ -530,14 +544,16 @@
 
             let mainVariantImage =  $sf.find('.sf-product-item-js.active img').attr('src');
             let mainVariantTitleClone = '';
+            let mainVariantImageClone = '';
             if($sfVariantSelectedClone.length > 0){
                 $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}'][data-option-1='${mainProductOp1}'][data-option-2='${mainProductOp2}']`),
                 mainVariantTitleClone = $sfVariantSelectedClone.find('.data-title').data('title');
+                mainVariantImageClone = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
                 // mainVariantColor = $sfVariantSelectedClone.find('input[name="option-1"]:checked').val();
                 // mainVariantColor = $mainVariant.data('color');
             }
 
-            let variantActiveIndex = jQuery('.mainHtml .sf-system__product--select-name span.active').index('.mainHtml .sf-system__product--select-name span');
+            let variantActiveIndex = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').index('.mainPigmentsHtml .sf-system__product--select-name span');
             // Main Product
             pigmentsOZ = clearEpoxyGallon;
             if(pigmentsOZ % 2  !== 0){
@@ -574,6 +590,8 @@
                     sizepigmentsOZ.push({
                         'id': mainVariantId,
                         'name': mainProductOp0,
+                        'colorImageName': mainVariantTitle,
+                        'image': mainVariantImage,
                         'qty': qty_12oz,
                         'price': mainVariantPrice
                     });
@@ -597,10 +615,13 @@
                     sizepigmentsOZ.push({
                         'id': mainVariantId,
                         'name': mainProductOp0,
+                        'colorImageName': mainVariantTitle,
+                        'image': mainVariantImage,
                         'qty': qty_8oz,
                         'price': mainVariantPrice
                     });
                 }
+
             } else {
                 if(pigmentsOptionOz == '12 oz'){
                     if(qty_12oz > 0){
@@ -613,11 +634,14 @@
                         $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
                         mainVariantImage = $sf.find('.sf-product-item-js.active img').attr('src');
                         mainVariantTitleClone = $sfVariantSelected.find('.data-title').data('title');
+                        mainVariantImageClone = $sf.find('.sf-product-item-js.active img').attr('src');
                         if($sfVariantSelectedClone.length > 0){
                             $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}']`);
                             mainVariantImage = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
                             mainVariantTitleClone = $sfVariantSelectedClone.find('.data-title').data('title');
+                            mainVariantImageClone = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
                         }
+
                         mainVariantId = Number($mainVariant.val());
                         mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
                         if($sfSolidColorEpoxyClone.length > 0){
@@ -625,27 +649,73 @@
                         }
                         mainVariantPrice = $mainVariant.data('price');
 
-                        sfDataForm.push({ id: mainVariantId, quantity: qty_12oz });
+                        let old_pigmentsVariant = '';
+
+                        sfDataForm.splice(variantActiveIndex, 0, { id: mainVariantId, quantity: 1 })
                         for (var i = 0; i < sfDataForm.length; i++) {
                             var obj = sfDataForm[i];
-                            if(sfDataForm[i]['id'] == pigmentsVariantId){
+                            if(sfDataForm[i]['id'] == pigmentsVariantId && sfDataForm[i]['quantity'] == 1){
+                                sfDataForm.splice(i, 1);
+                            }else if(sfDataForm[i]['id'] == pigmentsVariantId && sfDataForm[i]['quantity'] > 1){
+                                old_pigmentsVariant = { id: sfDataForm[i]['id'], quantity: sfDataForm[i]['quantity'] - 1 };
                                 sfDataForm.splice(i, 1);
                             }
                         }
 
-                        console.log(mainVariantImage);
-
-                        sizepigmentsOZ.forEach((el, index) => {
-                            if (index == variantActiveIndex){
-                                sizepigmentsOZ.splice(index, 1, {
-                                    'id': mainVariantId,
-                                    'name': mainProductOp0,
-                                    'colorImageName': mainVariantTitleClone,
-                                    'qty': qty_12oz,
-                                    'price': mainVariantPrice
-                                });
+                        if(old_pigmentsVariant != ''){
+                            sfDataForm.splice(variantActiveIndex, 0,old_pigmentsVariant);
+                            for (var i = 0; i < sfDataForm.length; i++) {
+                                if(sfDataForm[i]['id'] == pigmentsVariantId && sfDataForm[i]['quantity'] == 1){
+                                    sfDataForm.splice(i, 1);
+                                }
                             }
-                        });
+                        }
+
+                        let html_pigmentsVariant = '';                    
+                        if(variantActiveIndex == 0){
+                            sizepigmentsOZ.unshift({
+                                'id': mainVariantId,
+                                'name': mainProductOp0,
+                                'colorImageName': mainVariantTitleClone,
+                                'image': mainVariantImageClone,
+                                'qty': 1,
+                                'price': mainVariantPrice 
+                            })
+                        } else {
+                            sizepigmentsOZ.splice(variantActiveIndex,0, {
+                                'id': mainVariantId,
+                                'name': mainProductOp0,
+                                'colorImageName': mainVariantTitleClone,
+                                'image': mainVariantImageClone,
+                                'qty': 1,
+                                'price': mainVariantPrice 
+                            });
+                        }
+
+                        for (var i = 0; i < sizepigmentsOZ.length; i++) {
+                            var obj = sizepigmentsOZ[i];
+                            if(sizepigmentsOZ[i]['id'] == pigmentsVariantId && sizepigmentsOZ[i]['qty'] == 1){
+                                sizepigmentsOZ.splice(i, 1);
+                            }else if(sizepigmentsOZ[i]['id'] == pigmentsVariantId && sizepigmentsOZ[i]['qty'] > 1){
+                                html_pigmentsVariant = { 
+                                    id: sizepigmentsOZ[i]['id'],
+                                    name: sizepigmentsOZ[i]['name'],
+                                    colorImageName: sizepigmentsOZ[i]['colorImageName'],
+                                    image: sizepigmentsOZ[i]['image'],
+                                    qty: sizepigmentsOZ[i]['qty'] - 1,
+                                    price: sizepigmentsOZ[i]['price']
+                                };
+                                sizepigmentsOZ.splice(i, 1);
+                            }
+                        }
+                        
+                        if(html_pigmentsVariant != ''){
+                            if(variantActiveIndex == 0){
+                                sizepigmentsOZ.push(html_pigmentsVariant);
+                            } else {
+                                sizepigmentsOZ.splice(variantActiveIndex, 0,html_pigmentsVariant);
+                            }
+                        }
                     }
                 }
                 if(pigmentsOptionOz == '8 oz'){
@@ -655,10 +725,12 @@
                         $mainVariant = $sfVariantSelected.find(`option[data-option-0='${mainProductOp0}']`);
                         mainVariantImage = $sf.find('.sf-product-item-js.active img').attr('src');
                         mainVariantTitleClone = $sfVariantSelected.find('.data-title').data('title');
+                        mainVariantImageClone = $sf.find('.sf-product-item-js.active img').attr('src');
                         if($sfVariantSelectedClone.length > 0){
                             $mainVariant = $sfVariantSelectedClone.find(`option[data-option-0='${mainProductOp0}']`);
                             mainVariantImage = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
                             mainVariantTitleClone = $sfVariantSelectedClone.find('.data-title').data('title');
+                            mainVariantImageClone = $sf.find('.sf-marbelized-metallic-epoxy-system-clone .sf-product-item-js.active img').attr('src');
                         }
                         mainVariantId = Number($mainVariant.val());
                         mainVariantColor = $sfVariantSelectedSolidColor.find('input[name="option-1"]:checked').val();
@@ -667,24 +739,75 @@
                         }
                         mainVariantPrice = $mainVariant.data('price');
 
-                        sfDataForm.push({ id: mainVariantId, quantity: qty_8oz });
+                        
+
+                        let old_pigmentsVariant = '';
+
+                        sfDataForm.splice(variantActiveIndex, 0, { id: mainVariantId, quantity: 1 })
                         for (var i = 0; i < sfDataForm.length; i++) {
                             var obj = sfDataForm[i];
-                            if(sfDataForm[i]['id'] == pigmentsVariantId){
+                            if(sfDataForm[i]['id'] == pigmentsVariantId && sfDataForm[i]['quantity'] == 1){
+                                sfDataForm.splice(i, 1);
+                            }else if(sfDataForm[i]['id'] == pigmentsVariantId && sfDataForm[i]['quantity'] > 1){
+                                old_pigmentsVariant = { id: sfDataForm[i]['id'], quantity: sfDataForm[i]['quantity'] - 1 };
                                 sfDataForm.splice(i, 1);
                             }
                         }
-                        sizepigmentsOZ.forEach((el, index) => {
-                            if (index == variantActiveIndex){
-                                sizepigmentsOZ.splice(index, 1, {
-                                    'id': mainVariantId,
-                                    'name': mainProductOp0,
-                                    'colorImageName': mainVariantTitleClone,
-                                    'qty': qty_8oz,
-                                    'price': mainVariantPrice
-                                });
+
+                        if(old_pigmentsVariant != ''){
+                            sfDataForm.splice(variantActiveIndex, 0,old_pigmentsVariant);
+                            for (var i = 0; i < sfDataForm.length; i++) {
+                                if(sfDataForm[i]['id'] == pigmentsVariantId && sfDataForm[i]['quantity'] == 1){
+                                    sfDataForm.splice(i, 1);
+                                }
                             }
-                        });
+                        }
+
+                        let html_pigmentsVariant = '';                    
+                        if(variantActiveIndex == 0){
+                            sizepigmentsOZ.unshift({
+                                'id': mainVariantId,
+                                'name': mainProductOp0,
+                                'colorImageName': mainVariantTitleClone,
+                                'image': mainVariantImageClone,
+                                'qty': 1,
+                                'price': mainVariantPrice 
+                            })
+                        } else {
+                            sizepigmentsOZ.splice(variantActiveIndex,0, {
+                                'id': mainVariantId,
+                                'name': mainProductOp0,
+                                'colorImageName': mainVariantTitleClone,
+                                'image': mainVariantImageClone,
+                                'qty': 1,
+                                'price': mainVariantPrice 
+                            });
+                        }
+
+                        for (var i = 0; i < sizepigmentsOZ.length; i++) {
+                            var obj = sizepigmentsOZ[i];
+                            if(sizepigmentsOZ[i]['id'] == pigmentsVariantId && sizepigmentsOZ[i]['qty'] == 1){
+                                sizepigmentsOZ.splice(i, 1);
+                            }else if(sizepigmentsOZ[i]['id'] == pigmentsVariantId && sizepigmentsOZ[i]['qty'] > 1){
+                                html_pigmentsVariant = { 
+                                    id: sizepigmentsOZ[i]['id'],
+                                    name: sizepigmentsOZ[i]['name'],
+                                    colorImageName: sizepigmentsOZ[i]['colorImageName'],
+                                    image: sizepigmentsOZ[i]['image'],
+                                    qty: sizepigmentsOZ[i]['qty'] - 1,
+                                    price: sizepigmentsOZ[i]['price']
+                                };
+                                sizepigmentsOZ.splice(i, 1);
+                            }
+                        }
+                        
+                        if(html_pigmentsVariant != ''){
+                            if(variantActiveIndex == 0){
+                                sizepigmentsOZ.push(html_pigmentsVariant);
+                            } else {
+                                sizepigmentsOZ.splice(variantActiveIndex, 0,html_pigmentsVariant);
+                            }
+                        }
                     }
                 }
             }
@@ -692,24 +815,38 @@
             let mainTotalPrice = 0;
             let mainHtmt = '';
             if($sfVariantSelectedClone.length > 0 ){
+                console.log('123');
                 mainHtmt += '<div class="sf-system__product--select-image">';
                 mainHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
                 mainHtmt += `</div>`;
                 mainHtmt += `<span class="sf-system__product--select-name">`;
                 sizepigmentsOZ.forEach((el, index) => {
                     let variantActive = '';
-                    if(index == variantActiveIndex){
-                        variantActive = 'active';
+                    if(el['qty'] == 1){
                         if(el['colorImageName'] == undefined){
-                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                            mainHtmt += `
+                                <span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}" data-variant-title="${mainVariantTitle}" data-imgSrc="${mainVariantImage}">
+                                    <picture><img src="${mainVariantImage}" alt="" /></picture>
+                                    <em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>
+                            `;
                         } else {
-                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;
+                            mainHtmt += `<span class="${el['image']}" data-option="${el['name']}" data-variant-id="${el['id']}" data-variant-title="${el['colorImageName']}" data-imgSrc="${el['image']}">
+                                <picture><img src="${el['image']}" alt="" /></picture>
+                                <em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;
                         }
-                    } else {
-                        if(el['colorImageName'] == undefined){
-                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;   
-                        } else {
-                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${el['colorImageName']}</span>`;   
+                    } else if(el['qty'] > 1){
+                        for(let i = 0; i < el['qty']; i++){
+                            if(el['colorImageName'] == undefined){
+                                mainHtmt += `
+                                    <span class="${variantActive} ${i}" data-option="${el['name']}" data-variant-id="${el['id']}" data-variant-title="${mainVariantTitle}" data-imgSrc="${mainVariantImage}">
+                                        <picture><img src="${mainVariantImage}" alt="" /></picture>
+                                        <em>1 x ${el['name']}</em> ${mainVariantTitle}
+                                    </span>`;
+                            } else {
+                                mainHtmt += `<span class="${variantActive} ${i}" data-option="${el['name']}" data-variant-id="${el['id']}" data-variant-title="${el['colorImageName']}" data-imgSrc="${el['image']}">
+                                    <picture><img src="${el['image']}" alt="" /></picture>
+                                    <em>1 x ${el['name']}</em> ${el['colorImageName']}</span>`;
+                            }
                         }
                     }
                     mainTotalPrice += el['price'] * el['qty'];
@@ -717,8 +854,9 @@
                 mainHtmt += `</span>`;
                 mainHtmt += `<span class="sf-system__product--select-price">${Shopify.formatMoney(mainTotalPrice, "{{ shop.money_format }}")}</span>`;
                 mainHtmt += `</div>`;
-            } else{
-                mainHtmt += '<div class="sf-system__product mainHtml">';
+            } else {
+                console.log('456');
+                mainHtmt += '<div class="sf-system__product mainPigmentsHtml">';
                 mainHtmt += '<div class="sf-system__product--select">';
                 mainHtmt += '<div class="sf-system__product--select-image">';
                 mainHtmt += `<picture><img src="${mainVariantImage}" alt="" /></picture>`;
@@ -729,7 +867,21 @@
                     if(index == 0){
                         variantActive = 'active';
                     }
-                    mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}"><em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                    if(el['qty'] > 1){
+                        for(let i = 0; i < el['qty']; i++){
+                            variantActive = '';
+                            if(i == 0){
+                                variantActive = 'active';
+                            }
+                            mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}" data-variant-title="${mainVariantTitle}" data-imgSrc="${mainVariantImage}">
+                                <picture><img src="${mainVariantImage}" alt="" /></picture>
+                                <em>1 x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                        }
+                    } else {
+                        mainHtmt += `<span class="${variantActive}" data-option="${el['name']}" data-variant-id="${el['id']}" data-variant-title="${mainVariantTitle}">
+                            <picture><img src="${mainVariantImage}" alt="" /></picture>
+                            <em>${el['qty']} x ${el['name']}</em> ${mainVariantTitle}</span>`;
+                    }
                     mainTotalPrice += el['price'] * el['qty'];
                 });
                 mainHtmt += `</span>`;
@@ -901,6 +1053,7 @@
 
             if($sfVariantSelectedClone.length > 0 ){
                 $sfResult.find('.sf-marbelized-metallic-epoxy-system-clone').prev().html(mainHtmt);
+                jQuery('.mainPigmentsHtml .sf-system__product--select-name span').eq(variantActiveIndex).addClass('active');
             } else {
                 $sfResult.html(sfResultHTML).find('.sf-marbelized-metallic-epoxy-system-clone').append(sfMarbelizedMetallicEpoxySystemClone);
                 sfMarbelizedMetallicEpoxySystemClone.on('click', '.sf-product-item-js', function(e) {
@@ -912,8 +1065,12 @@
                         jQuery('.sf-marbelized-metallic-epoxy-system-clone').find('.sf-variants-item-js').not(item).removeClass('selected');
                     }
 
-                    pigmentsOptionOz = jQuery('.mainHtml .sf-system__product--select-name span.active').data('option');
-                    pigmentsVariantId = jQuery('.mainHtml .sf-system__product--select-name span.active').data('variant-id');
+                    pigmentsOptionOz = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('option');
+                    pigmentsVariantId = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('variant-id');
+                    pigmentsVarianTitle = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('variant-title');
+                    pigmentsVariantImg = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('imgSrc');
+                    
+                    solidColorClick = false;
                     metallicEpoxySystem(inputSF);
                 });
             }
@@ -923,6 +1080,12 @@
             } else {
                 $sfResult.find('.sf-solid-color-epoxy-system-clone').append(sfEpoxySystemClone);
                 sfEpoxySystemClone.on('click', '.swatch-element', function(e) {
+                    pigmentsOptionOz = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('option');
+                    pigmentsVariantId = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('variant-id');
+                    pigmentsVarianTitle = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('variant-title');
+                    pigmentsVariantImg = jQuery('.mainPigmentsHtml .sf-system__product--select-name span.active').data('imgSrc');
+
+                    solidColorClick = true;
                     jQuery(this).prev().prop('checked', true);
                     metallicEpoxySystem(inputSF);
                 });
@@ -1194,6 +1357,14 @@
     });
 
     $sfTooltip.click(function(){
+        let show_how_it_work = ''
+        if($sf.find('.sf-product-select-js.active').length > 0){
+            show_how_it_work = '.sf-tooltip' + jQuery('.sf-product-select-js.active').attr('id').replace('sf','').replace('-epoxy-system','');
+        }
+        console.log(show_how_it_work);
+        if(show_how_it_work != ''){
+            jQuery('.sf-calculator__block.tooltip').find(show_how_it_work).addClass('active').siblings().removeClass('active');
+        }
         jQuery('.sf-calculator__block.products').slideUp().parent().find('.tooltip').slideDown();
     });
 
@@ -1206,6 +1377,7 @@
         const sfType = $sfProductSelected.attr('id');
         pigmentsOptionOz = '';
         pigmentsVariantId = '';
+        solidColorClick = false;
 
         const sfInputFeet = jQuery('#sf-input-feet').val();
 
@@ -1230,14 +1402,15 @@
     jQuery('#sf-calculator-btn').click(function(e){
         jQuery('#shopify-section-square-foot-calculator').addClass('active');
     });
-    jQuery('a[href$="#square-foot-calculator"]').click(function(e){
+    jQuery(document).on('click', 'a[href$="#square-foot-calculator"]', function(e){
+        e.preventDefault();
         jQuery('#sf-calculator-btn').trigger('click');
     });
 
     jQuery('.sf-calculator-close-js').click(function(e){
         jQuery('#shopify-section-square-foot-calculator').removeClass('active');
     });
-    jQuery(document).on('click', '.mainHtml .sf-system__product--select-name span', function(){
+    jQuery(document).on('click', '.mainPigmentsHtml .sf-system__product--select-name span', function(){
         jQuery(this).addClass('active').siblings().removeClass('active');
         pigmentsOptionOz = jQuery(this).data('option');
         pigmentsVariantId = jQuery(this).data('variant-id');
@@ -1255,6 +1428,7 @@
         }
     }, 1000);       
 </script>
+{% endif %}
 
 {% schema %}
   {
@@ -1263,8 +1437,20 @@
     "settings": [
         {
             "type": "richtext",
-            "id": "tooltip",
-            "label": "How It Works?",
+            "id": "tooltip_flakes",
+            "label": "How It Works? | Flakes",
+            "default": "<p>Proin lobortis vel ipsum non ullamcorper. Integer et vulputate turpis. Nunc</p>"
+        },
+        {
+            "type": "richtext",
+            "id": "tooltip_marbelized_metallic",
+            "label": "How It Works? | Marbelized Metallic",
+            "default": "<p>Proin lobortis vel ipsum non ullamcorper. Integer et vulputate turpis. Nunc</p>"
+        },
+        {
+            "type": "richtext",
+            "id": "tooltip_solid_color",
+            "label": "How It Works? | Solid Color",
             "default": "<p>Proin lobortis vel ipsum non ullamcorper. Integer et vulputate turpis. Nunc</p>"
         },
         {
