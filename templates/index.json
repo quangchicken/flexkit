@@ -2,6 +2,7 @@
   "sections": {
     "16323330574dcd1a9b": {
       "type": "slideshow",
+      "disabled": true,
       "blocks": {
         "16323330574dcd1a9b-0": {
           "type": "image",
@@ -468,6 +469,139 @@
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "1642994017872f29d0": {
+      "type": "list-of-videos",
+      "blocks": {
+        "164299401681a5552b-0": {
+          "type": "video",
+          "settings": {
+            "video_title": "Video",
+            "link": "https:\/\/youtu.be\/Czd-svEK8v4",
+            "image": "shopify:\/\/shop_images\/coatings_87bd5cf8-440b-4efb-93ff-91735d1d6301.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/coatings.jpg"
+          }
+        },
+        "2fc789b8-6b8f-4a20-91a9-f103c39f7d35": {
+          "type": "video",
+          "settings": {
+            "video_title": "Video",
+            "link": "https:\/\/youtu.be\/-38IatRgBLY",
+            "image": "shopify:\/\/shop_images\/concreteprep.jpg"
+          }
+        },
+        "89e9a198-59ee-4ea2-aec5-305e829c1ae7": {
+          "type": "video",
+          "settings": {
+            "video_title": "Video",
+            "link": "https:\/\/youtu.be\/HBHruiAQ1Kg",
+            "image": "shopify:\/\/shop_images\/concreteprep2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/concreteprep2.jpg"
+          }
+        },
+        "2759b6fa-5d26-4182-9536-7d75d5214f7a": {
+          "type": "video",
+          "settings": {
+            "video_title": "Video",
+            "link": "https:\/\/youtu.be\/LaOjOXkBP0s",
+            "image": "shopify:\/\/shop_images\/solidcolor.png",
+            "mobile_image": "shopify:\/\/shop_images\/counters_e52c5075-b208-4a33-a6cd-5a63b12ae67d.jpg"
+          }
+        },
+        "eb8d3df0-15f2-4311-a765-9ab92e637b03": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "link": "https:\/\/youtu.be\/uotqxn6uAes",
+            "image": "shopify:\/\/shop_images\/Crackthumbnail.jpg"
+          }
+        },
+        "d07974ee-232e-4121-a0a2-b264017da964": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "link": "https:\/\/youtu.be\/i0CXMh68U_A",
+            "image": "shopify:\/\/shop_images\/flake.png",
+            "mobile_image": "shopify:\/\/shop_images\/flake.png"
+          }
+        },
+        "eda58f09-b941-4e42-b7ce-bffc17ce4bf6": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "link": "https:\/\/youtu.be\/WmE7TI_pwRo",
+            "image": "shopify:\/\/shop_images\/garagemetallic.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/metallic.jpg"
+          }
+        },
+        "b8e25009-f149-47f3-bbf0-44805847b0af": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "link": "https:\/\/youtu.be\/qPHEgm_MtlQ",
+            "image": "shopify:\/\/shop_images\/micawalkwaypart1.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/micawalkwaypart1.jpg"
+          }
+        },
+        "fddc8e03-a6e2-424a-bcaf-56cfa8f47538": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "link": "https:\/\/youtu.be\/d21q1POyuQk",
+            "image": "shopify:\/\/shop_images\/micawalkwaypart2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/micawalkwaypart2.jpg"
+          }
+        },
+        "fdeb7ebe-3851-4f6a-9962-f46c0ee919e6": {
+          "type": "video",
+          "settings": {
+            "video_title": "",
+            "link": "https:\/\/youtu.be\/b5yXDCc5P6c",
+            "image": "shopify:\/\/shop_images\/metallic.png"
+          }
+        }
+      },
+      "block_order": [
+        "164299401681a5552b-0",
+        "2fc789b8-6b8f-4a20-91a9-f103c39f7d35",
+        "89e9a198-59ee-4ea2-aec5-305e829c1ae7",
+        "2759b6fa-5d26-4182-9536-7d75d5214f7a",
+        "eb8d3df0-15f2-4311-a765-9ab92e637b03",
+        "d07974ee-232e-4121-a0a2-b264017da964",
+        "eda58f09-b941-4e42-b7ce-bffc17ce4bf6",
+        "b8e25009-f149-47f3-bbf0-44805847b0af",
+        "fddc8e03-a6e2-424a-bcaf-56cfa8f47538",
+        "fdeb7ebe-3851-4f6a-9962-f46c0ee919e6"
+      ],
+      "settings": {
+        "wide_display": true,
+        "aspect_ratio": "16:9",
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "preheading": "",
+        "heading": "",
+        "subheading": "",
+        "button1_label": "",
+        "button1_link": "",
+        "button1_style": "global-button--banner",
+        "button2_label": "",
+        "button2_link": "",
+        "button2_style": "global-button--banner",
+        "text_position": "center",
+        "text_align": "center",
+        "caption_content_background": "original",
+        "mobile_image_crop": "none",
+        "mobile_text_below_image": true,
+        "mobile_text_color": "",
+        "css_class": "",
+        "custom_css": ""
+      }
     }
   },
   "order": [
@@ -486,6 +620,7 @@
     "163364066202837e99",
     "1633640731f6175769",
     "1633640838bd38f005",
-    "1633640888c8483fcb"
+    "1633640888c8483fcb",
+    "1642994017872f29d0"
   ]
 }

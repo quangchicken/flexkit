@@ -2171,6 +2171,68 @@
           "1588525647983"
         ],
         "settings": {}
+      },
+      "square-foot-calculator": {
+        "type": "square-foot-calculator",
+        "blocks": {
+          "099cf7e7-7e7e-4795-9418-743fd86a3e07": {
+            "type": "text",
+            "settings": {
+              "title": "Flakes Epoxy System",
+              "link": "shopify:\/\/collections\/all-flakes",
+              "product_link_1": "signature-micas-color-flakes",
+              "product_link_2": "stone-series",
+              "product_link_3": "",
+              "product_link_4": "woodchips",
+              "product_link_5": "crystal-flake",
+              "product_link_6": "glitter",
+              "product_link_7": "glitter-accents",
+              "product_link_8": ""
+            }
+          },
+          "97b0e9d5-2379-4097-aa8f-88c74f0bd11d": {
+            "type": "text",
+            "settings": {
+              "title": "Marbelized Metallic Epoxy System",
+              "link": "shopify:\/\/collections\/pigments",
+              "product_link_1": "",
+              "product_link_2": "",
+              "product_link_3": "",
+              "product_link_4": "",
+              "product_link_5": "",
+              "product_link_6": "",
+              "product_link_7": "",
+              "product_link_8": ""
+            }
+          },
+          "b80e4f24-1958-46e3-8d27-d18b02073951": {
+            "type": "text",
+            "settings": {
+              "title": "Solid Color Epoxy System",
+              "link": "shopify:\/\/products\/colored-epoxy-resin-kit-new-images",
+              "product_link_1": "",
+              "product_link_2": "",
+              "product_link_3": "",
+              "product_link_4": "",
+              "product_link_5": "",
+              "product_link_6": "",
+              "product_link_7": "",
+              "product_link_8": ""
+            }
+          }
+        },
+        "block_order": [
+          "099cf7e7-7e7e-4795-9418-743fd86a3e07",
+          "97b0e9d5-2379-4097-aa8f-88c74f0bd11d",
+          "b80e4f24-1958-46e3-8d27-d18b02073951"
+        ],
+        "settings": {
+          "tooltip_flakes": "<p><strong>FLAKES<\/strong><\/p><p>1. Choose from one of the 7 custom flake systems.<\/p><p>2. Choose color.<\/p><p>3. Select size of flakes (1\/4” is standard)<\/p><p>4. Enter square footage.<\/p><p>5. Add to cart.<\/p><p>6. Before proceeding to check out you can change color on colored epoxy resin kit to closely match flake color.<\/p><p><\/p><p><strong>MARBELIZED METALLIC EPOXY<\/strong><\/p><p>1. Choose one of the 12 solid colors first this will be the primer and backdrop color.<\/p><p>2. Choose metallic pigments.<\/p><p>3. Enter your square footage.<\/p><p>4.Pending the size of your job you will be able to choose more than one pigment,  rule of thumb the more splash colors you add the better the effects.<\/p><p><\/p><p><strong>Solid Color<\/strong><\/p><p> 1. Pick any color, System will calculate enough epoxy for two rolled on applications. Day 1 the primer & Day 2 the final finish coat.<br\/>Divide the cost of goods by your square footage this will give you precise square foot cost.<br\/><\/p>",
+          "tooltip_marbelized_metallic": "<p><strong>FLAKES<\/strong><\/p><p>1. Choose from one of the 7 custom flake systems.<\/p><p>2. Choose color.<\/p><p>3. Select size of flakes (1\/4” is standard)<\/p><p>4. Enter square footage.<\/p><p>5. Add to cart.<\/p><p>6. Before proceeding to check out you can change color on colored epoxy resin kit to closely match flake color.<\/p><p><\/p><p><strong>MARBELIZED METALLIC EPOXY<\/strong><\/p><p>1. Choose one of the 12 solid colors first this will be the primer and backdrop color.<\/p><p>2. Choose metallic pigments.<\/p><p>3. Enter your square footage.<\/p><p>4.Pending the size of your job you will be able to choose more than one pigment,  rule of thumb the more splash colors you add the better the effects.<\/p><p><\/p><p><strong>Solid Color<\/strong><\/p><p> 1. Pick any color, System will calculate enough epoxy for two rolled on applications. Day 1 the primer & Day 2 the final finish coat.<br\/>Divide the cost of goods by your square footage this will give you precise square foot cost.<br\/><\/p>",
+          "tooltip_solid_color": "<p><strong>FLAKES<\/strong><\/p><p>1. Choose from one of the 7 custom flake systems.<\/p><p>2. Choose color.<\/p><p>3. Select size of flakes (1\/4” is standard)<\/p><p>4. Enter square footage.<\/p><p>5. Add to cart.<\/p><p>6. Before proceeding to check out you can change color on colored epoxy resin kit to closely match flake color.<\/p><p><\/p><p><strong>MARBELIZED METALLIC EPOXY<\/strong><\/p><p>1. Choose one of the 12 solid colors first this will be the primer and backdrop color.<\/p><p>2. Choose metallic pigments.<\/p><p>3. Enter your square footage.<\/p><p>4.Pending the size of your job you will be able to choose more than one pigment,  rule of thumb the more splash colors you add the better the effects.<\/p><p><\/p><p><strong>Solid Color<\/strong><\/p><p> 1. Pick any color, System will calculate enough epoxy for two rolled on applications. Day 1 the primer & Day 2 the final finish coat.<br\/>Divide the cost of goods by your square footage this will give you precise square foot cost.<br\/><\/p>",
+          "product_colored_epoxy": "colored-epoxy-resin-kit-new-images",
+          "product_clear_epoxy": "clear-epoxy-resin-kit"
+        }
       }
     },
     "content_for_index": [

@@ -49,6 +49,7 @@
     <link rel="preload" href="{{ 'sections.js' | asset_url }}" as="script">
     <link rel="preload" href="{{ 'utilities.js' | asset_url }}" as="script">
     <link rel="preload" href="{{ 'app.js' | asset_url }}" as="script">
+    <link href="{{ 'featherlight.min.css' | asset_url }}" rel="stylesheet">
 
     <!-- Stylesheet for Fancybox library -->
     {{ 'fancybox.css' | asset_url | stylesheet_tag }}
@@ -145,6 +146,7 @@
     <script src="{{ 'sections.js' | asset_url }}" defer></script>
     <script src="{{ 'utilities.js' | asset_url }}" defer></script>
     <script src="{{ 'app.js' | asset_url }}" defer></script>
+    <script src="{{ 'featherlight.min.js' | asset_url }}" defer></script>
 
     {% if settings.disqus_enabled %}
       {% if template contains "blog" or template contains "article" or template contains "index" %}
