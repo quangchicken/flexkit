@@ -846,11 +846,22 @@ window.Shopify.updateOptionsInSelector = function (selectorIndex, parent) {
     if ($.inArray($(this).attr('data-value'), availableOptions) !== -1) {
       $(this).removeClass('soldout').find(':radio').removeAttr('disabled', 'disabled')
         .removeAttr('checked');
+      $(this).eq(0).trigger('change').prev().prop('checked', true);
     } else {
       $(this).addClass('soldout').find(':radio').removeAttr('checked')
         .attr('disabled', 'disabled');
+      $(this).prev().prop('checked', false);
     }
   });
+  console.log(parent, selectorIndex);
+  // setTimeout(function() { 
+  //   $(`.js-product_section .swatch[data-option-index="1"]`).find('.swatch-element.available:not(.soldout)').eq(0).addClass('adsadasda');
+  // }, 1000);
+  // $(`.option_title`).each(function () {
+  //   if($(this).text() == 'Size'){
+  //     $(this).parent().find('.swatch-element.available:not(.soldout)').eq(0).find('label').trigger('click');
+  //   }
+  // });
 };
 
 window.Shopify.linkOptionSelectors = function (product, parent) {
