@@ -1,0 +1,47 @@
+{% layout none %}
+<div id="product-photos-zoom">
+	<div class="photos-zoom-container">
+		<div class="owl-carousel">
+			{% capture all_images %}
+			{% for image in product.images %}
+				{% assign variantTitle = image.alt | split: " | "  %}
+                {% assign variantType = image.alt | split: " | " | last | strip %}
+				<div class="item" data-gallery="{{ image | img_url: '1600x1600' }}" data-index="{{ forloop.index }}">
+					<div class="variant-image">
+						<picture>
+							<source srcset="{{ image | img_url: 'x680', crop: 'center' }}">
+							<img loading="lazy" importance="low" src="{{ image | img_url: 'master' }}" alt="" />
+						</picture>
+					</div>
+					<div class="variant-info">
+						<p class="title">{{ variantType }}</p>
+						<p class="type">{{ variantType }} {{ variantTitle[1] | strip }}</p>
+					</div>
+				</div>
+			{% endfor %}
+			{% endcapture %}
+
+			{{all_images}}
+		</div>
+	</div>
+
+	
+	<div class="photos-zoom-thumbnails">
+		<div class="owl-carousel">
+			{% capture all_images %}
+			{% for image in product.images %}
+				<div class="item" data-gallery="{{ image | img_url: '1600x1600' }}" data-index="{{ forloop.index }}">
+					<div class="image-thumb">
+					<picture>
+						<source media="(min-width: 1024px)" srcset="{{ image | img_url: '753x697', crop: 'center' }}">
+						<source srcset="{{ image | img_url: '753x697', crop: 'center' }}">
+						<img src="{{ image | img_url: 'master' }}" alt="{{ product.title | escape }} image {{forloop.index}}" />
+					</picture>
+					</div>
+				</div>
+			{% endfor %}
+			{% endcapture %}
+			{{all_images}}
+		</div>
+	</div>
+</div>
