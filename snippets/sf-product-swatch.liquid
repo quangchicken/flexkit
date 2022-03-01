@@ -50,7 +50,7 @@ Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
               <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" aria-label="sold out" alt="sold out"/>
             </label>
           {% else %}
-            <label data-image="{{ product.variants[forloop.index0].image | img_url: '300x300', crop: 'center' | prepend: 'https:' }}" for="{{ variant.id }}_swatch-{{ option_index }}-{{ value | replace: ' ', '-' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" style="background-image: url({{ product.variants[forloop.index0].image | img_url: 'small' }}); background-color: {{ value | split: ' ' | last | handle }};">
+            <label data-image="{{ product.variants[forloop.index0].image | img_url: '300x300', crop: 'center' | prepend: 'https:' }}" for="sf-{{ variant.id }}_swatch-{{ option_index }}-{{ value | replace: ' ', '-' | replace: '"', '' }}-{{ product.id }}{% if section.id %}-{{ section.id }}{% endif %}" style="background-image: url({{ product.variants[forloop.index0].image | img_url: 'small' }}); background-color: {{ value | split: ' ' | last | handle }};">
               <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" aria-label="sold out" alt="sold out"/>
             </label>
           {% endif %}

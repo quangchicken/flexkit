@@ -20,7 +20,7 @@ const sourcemaps = require('gulp-sourcemaps');
 
 function scss() {
   return gulp
-    .src('assets/flake-catalog.scss')
+    .src('assets/toolkit.scss')
     .pipe(plumber())
     .pipe(sass({ outputStyle: 'expanded' }))
     .pipe(rename({ suffix: '.min' }))
@@ -36,7 +36,7 @@ function minify_css() {
 
 // Watch files
 function watchFiles() {
-    gulp.watch('assets/flake-catalog.scss', scss);
+    gulp.watch('assets/toolkit.scss', scss);
 }
 
 // define complex tasks
