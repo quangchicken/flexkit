@@ -118,12 +118,15 @@
     {% endif %}
   {% endif %}
   {% render 'product-tools' %}
+  {% if min10pounds == true or min05pounds == true%}
+    <input type="hidden" value="inputMinPounds" id="properties[inputMinPounds]-{{ variant.id }}" name="properties[inputMinPounds]" />
+  {% endif %}
   <div class="purchase-details {% if min10pounds == true %}min10pounds{% elsif min05pounds == true %}min05pounds{% endif %}">
     {% if settings.display_product_quantity %}
       <div class="purchase-details__quantity product-quantity-box">
         <label for="quantity">{{ 'products.product.quantity' | t }}</label>
         <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
-        <input type="number" min="{% if min10pounds == true %}10{% elsif min05pounds == true %}5{% else %}1{% endif %}" size="2" class="quantity" name="quantity" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %} />
+        <input type="number" min="{% if min10pounds == true %}10{% elsif min05pounds == true %}5{% else %}1{% endif %}" size="2" class="quantity" name="quantity" id="quantity" value="1" {% if settings.limit_quantity and variant.inventory_management != blank and variant.inventory_policy == "deny" %}max="{{ variant.inventory_quantity }}"{% endif %}/>
         <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
       </div>
     {% endif %}
@@ -173,27 +176,48 @@
   <div class="surface-pick-up__modal" data-surface-pick-up-modal></div>
 </div>
 
-<!-- jQuery('.flakes .add_to_cart').on('click', blurChangeInputFlakes) -->
 <script>
-jQuery(document).ready(function() {
-  jQuery('.min10pounds input[type="number"]').val(10);
-  jQuery('.min05pounds input[type="number"]').val(5);
-  function blurChangeInputMinPounds(e){
-    clearTimeout(blurChangeInputMinPounds.timeout);
-    blurChangeInputFlakes.timeout = setTimeout(function(){
-      var min10Val = jQuery('.min10pounds input[type="number"]').attr('min'),
-          min05Val = jQuery('.min05pounds input[type="number"]').attr('min'),
-          current10Val = jQuery('.min10pounds input[type="number"]').val(),
-          current05Val = jQuery('.min05pounds input[type="number"]').val();
-      if(current10Val < 10){
-        jQuery('.min10pounds input[type="number"]').val(10);
+jQuery('.min10pounds input[type="number"]').val(10);
+jQuery('.min05pounds input[type="number"]').val(5);
+function blurChangeInputMinPounds(e){
+  clearTimeout(blurChangeInputMinPounds.timeout);
+  blurChangeInputMinPounds.timeout = setTimeout(function(){
+    var min10Val = jQuery('.min10pounds input[type="number"]').attr('min'),
+        min05Val = jQuery('.min05pounds input[type="number"]').attr('min'),
+        current10Val = Number(jQuery('.min10pounds input[type="number"]').val()),
+        current05Val = Number(jQuery('.min05pounds input[type="number"]').val());
+    if(current10Val <= 10){
+      current10Val = 10;
+    } else if(current10Val  > 10) {
+      if(current10Val % 10 != 0){
+        var surplus = Number(current10Val % 10);
+        if(surplus <= 5){
+          surplus = Number(5 - surplus);
+          current10Val = Number(current10Val + surplus);
+        } else if(surplus > 5){
+          surplus = Number(10 - surplus);
+          current10Val = Number(current10Val + surplus);
+        }
       }
-      if(current05Val < 5){
-        jQuery('.min05pounds input[type="number"]').val(5);
+    }
+    jQuery('.min10pounds input[type="number"]').val(current10Val);
+
+    if(current05Val <= 5){
+      current05Val = 5;
+    } else {
+      if(current05Val % 5 != 0){
+        var surplus = Number(current05Val % 5);
+        if(surplus <= 5){
+          surplus = Number(5 - surplus);
+          current05Val = Number(current05Val + surplus);
+        }
       }
-    }, 100);
-  }
-  jQuery('.min10pounds input[type="number"]').on('blur change', blurChangeInputMinPounds);
-  jQuery('.min05pounds input[type="number"]').on('blur change', blurChangeInputMinPounds);
-});
+    }
+    jQuery('.min05pounds input[type="number"]').val(current05Val);
+  }, 20);
+}
+jQuery('.min10pounds input[type="number"]').on('blur change', blurChangeInputMinPounds);
+jQuery('.min05pounds input[type="number"]').on('blur change', blurChangeInputMinPounds);
+jQuery(document).on('blur change','.min10pounds input[type="number"]', blurChangeInputMinPounds);
+jQuery(document).on('blur change','.min05pounds input[type="number"]', blurChangeInputMinPounds);
 </script>

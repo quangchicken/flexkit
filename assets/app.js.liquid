@@ -584,10 +584,17 @@ $(() => {
           cartItemsHTML += `<div class="meta">${item.selling_plan_allocation.selling_plan.name}</div>`;
         }
 
+        let inputMinPounds = '';
         if (item.properties) {
           $.each(item.properties, (title, value) => {
             if (value) {
-              cartItemsHTML += `<div class="line-item">${title}: ${value} </div>`;
+              // cartItemsHTML += `<div class="line-item">${title}: ${value} </div>`;
+              if(value == 'inputMinPounds'){
+                cartItemsHTML += ``;
+                inputMinPounds = 'inputMinPounds';
+              } else {
+                cartItemsHTML += `<div class="line-item">${title}: ${value} </div>`;
+              }
             }
           });
         }
@@ -666,7 +673,7 @@ $(() => {
           cartItemsHTML += discountMessage;
         }
 
-        cartItemsHTML += '<div class="product-quantity-box">';
+        cartItemsHTML += `<div class="product-quantity-box ${inputMinPounds}">`;
         cartItemsHTML += '<span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>';
         cartItemsHTML += `<input type="number" min="0" class="quantity" name="updates[]" id="updates_${item.id}" value="${item.quantity}" data-cart-quantity-input="mini-cart" />`;
         cartItemsHTML += '<span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>';

@@ -17,8 +17,8 @@
     {% assign product_clear_epoxy = section.settings.product_clear_epoxy %}
     {% assign product_clear_epoxy_ob = all_products[section.settings.product_clear_epoxy] %}
 {% endif %}
-{{ product_colored_epoxy_ob }}-123
-{{ product_clear_epoxy_ob }}-123
+
+
 {% if product_clear_epoxy_ob != empty and product_colored_epoxy_ob != empty %}
 <div id="square-foot-calculator">
     <div class="sf-calculator__container">
@@ -239,8 +239,11 @@
           productClearVariants = productClear.variants,
           productColoredTitle = productColored.title,
           productClearTitle = productClear.title,
+          productClearInventoryQuantity = productClear.inventory_quantity,
           productColoredImage = productColored.featured_image.replace(/(\.[^.]*)$/, "_100x100_crop_center$1"),
           productClearImage = productClear.featured_image.replace(/(\.[^.]*)$/, "_100x100_crop_center$1");
+    
+    
 
     const findVariantColored = function(option1, option2) {
         let el = '';
@@ -270,6 +273,7 @@
                   flakesPound = inputSF / 13,
                   coloredId = '',
                   clearId = '';
+                  clearInventoryQuantity = '';
 
             sfDataForm = [];
 
@@ -418,7 +422,7 @@
                         coloredTotalPrice += el['price'] * el['qty'];
                     });
                     coloredHtmt += `</span>`;
-                    coloredHtmt += `<span class="sf-system__product--select-price 456">${Shopify.formatMoney(coloredTotalPrice, "{{ shop.money_format }}")}</span>`;
+                    coloredHtmt += `<span class="sf-system__product--select-price">${Shopify.formatMoney(coloredTotalPrice, "{{ shop.money_format }}")}</span>`;
                     coloredHtmt += `</div>`;
                 } else {
                     coloredHtmt += '<div class="sf-system__product sf-system__product--solid-color">';
@@ -432,7 +436,7 @@
                         coloredTotalPrice += el['price'] * el['qty'];
                     });
                     coloredHtmt += `</span>`;
-                    coloredHtmt += `<span class="sf-system__product--select-price 123">${Shopify.formatMoney(coloredTotalPrice, "{{ shop.money_format }}")}</span>`;
+                    coloredHtmt += `<span class="sf-system__product--select-price">${Shopify.formatMoney(coloredTotalPrice, "{{ shop.money_format }}")}</span>`;
                     coloredHtmt += `</div>`;
                     coloredHtmt += `<div class="sf-solid-color-epoxy-system-clone"></div>`;
                     coloredHtmt += `</div>`;
@@ -448,12 +452,16 @@
 
                 variantClear = findVariantClear('15 Gallon Kit');
                 clearId = variantClear['id'];
+                clearInventoryQuantity = variantClear['inventory_quantity'];
                 clearPrice = variantClear['price'];
                 sfDataForm.push({ id: clearId, quantity: qty_15Clear });
                 sizeClearEpoxyGallon.push({
+                    'id': clearId,
                     'name': '15 Gallon Kit',
                     'qty': qty_15Clear,
-                    'price': clearPrice
+                    'price': clearPrice,
+                    'inventory_quantity': clearInventoryQuantity
+
                 });
             }
 
@@ -468,12 +476,15 @@
 
                     variantClear = findVariantClear('3 Gallon Kit');
                     clearId = variantClear['id'];
+                    clearInventoryQuantity = variantClear['inventory_quantity'];
                     clearPrice = variantClear['price'];
                     sfDataForm.push({ id: clearId, quantity: qty_3Clear });
                     sizeClearEpoxyGallon.push({
+                        'id': clearId,
                         'name': '3 Gallon Kit',
                         'qty': qty_3Clear,
-                        'price': clearPrice
+                        'price': clearPrice,
+                        'inventory_quantity': clearInventoryQuantity
                     });
                 }
 
@@ -481,15 +492,18 @@
 
                 if(modClearEpoxyGallon > 0){
                     let qty_1_5Clear = 1;
-
+                    
                     variantClear = findVariantClear('1.5 Gallon Kit');
                     clearId = variantClear['id'];
+                    clearInventoryQuantity = variantClear['inventory_quantity'];
                     clearPrice = variantClear['price'];
                     sfDataForm.push({ id: clearId, quantity: qty_1_5Clear });
                     sizeClearEpoxyGallon.push({
+                        'id': clearId,
                         'name': '1.5 Gallon Kit',
                         'qty': qty_1_5Clear,
-                        'price': clearPrice
+                        'price': clearPrice,
+                        'inventory_quantity': clearInventoryQuantity
                     });
                 }
             }
@@ -501,7 +515,7 @@
                 clearHtmt += `</div>`;
                 clearHtmt += `<span class="sf-system__product--select-name">`;
                     sizeClearEpoxyGallon.forEach(el => {
-                    clearHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${productClearTitle}</span>`;
+                    clearHtmt += `<span data-id="${el['id']}" data-inventory-quantity="${el['inventory_quantity']}" data-title="${productClearTitle}"><em>${el['qty']} x ${el['name']}</em> ${productClearTitle}</span>`;
                     clearTotalPrice += el['price'] * el['qty'];
                 });
                 clearHtmt += `</span>`;
@@ -534,6 +548,7 @@
                   pigmentsOZ = inputSF / 28.8,
                   coloredId = '',
                   clearId = '';
+                  clearInventoryQuantity = '';
             
             if(pigmentsOptionOz == ''){
                 sfDataForm = [];   
@@ -1043,12 +1058,15 @@
 
                 variantClear = findVariantClear('15 Gallon Kit');
                 clearId = variantClear['id'];
+                clearInventoryQuantity = variantClear['inventory_quantity'];
                 clearPrice = variantClear['price'];
                 sfDataForm.push({ id: clearId, quantity: qty_15Clear });
                 sizeClearEpoxyGallon.push({
+                    'id': clearId,
                     'name': '15 Gallon Kit',
                     'qty': qty_15Clear,
-                    'price': clearPrice
+                    'price': clearPrice,
+                    'inventory_quantity': clearInventoryQuantity
                 });
             }
 
@@ -1063,12 +1081,15 @@
 
                     variantClear = findVariantClear('3 Gallon Kit');
                     clearId = variantClear['id'];
+                    clearInventoryQuantity = variantClear['inventory_quantity'];
                     clearPrice = variantClear['price'];
                     sfDataForm.push({ id: clearId, quantity: qty_3Clear });
                     sizeClearEpoxyGallon.push({
+                        'id': clearId,
                         'name': '3 Gallon Kit',
                         'qty': qty_3Clear,
-                        'price': clearPrice
+                        'price': clearPrice,
+                        'inventory_quantity': clearInventoryQuantity
                     });
                 }
 
@@ -1079,12 +1100,15 @@
 
                     variantClear = findVariantClear('1.5 Gallon Kit');
                     clearId = variantClear['id'];
+                    clearInventoryQuantity = variantClear['inventory_quantity'];
                     clearPrice = variantClear['price'];
                     sfDataForm.push({ id: clearId, quantity: qty_1_5Clear });
                     sizeClearEpoxyGallon.push({
+                        'id': clearId,
                         'name': '1.5 Gallon Kit',
                         'qty': qty_1_5Clear,
-                        'price': clearPrice
+                        'price': clearPrice,
+                        'inventory_quantity': clearInventoryQuantity
                     });
                 }
             }
@@ -1096,7 +1120,7 @@
                 clearHtmt += `</div>`;
                 clearHtmt += `<span class="sf-system__product--select-name">`;
                     sizeClearEpoxyGallon.forEach(el => {
-                    clearHtmt += `<span><em>${el['qty']} x ${el['name']}</em> ${productClearTitle}</span>`;
+                    clearHtmt += `<span data-id="${el['id']}" data-inventory-quantity="${el['inventory_quantity']}" data-title="${productClearTitle}"><em>${el['qty']} x ${el['name']}</em> ${productClearTitle}</span>`;
                     clearTotalPrice += el['price'] * el['qty'];
                 });
                 clearHtmt += `</span>`;
@@ -1303,6 +1327,35 @@
                 window.location.href = '/cart';
 			},
 			error: function() {
+                jQuery('#sf-result-js p.sold-out').remove();
+
+                var coloredEpoxySoldOut = false;
+                var clearEpoxySoldOut = false;
+                sfDataForm.forEach(async (product) => {
+                    
+                    var productTitle = $sf.find(`option[value='${product.id}'`).parent().data('title');
+                    var productInventoryQuantity = $sf.find(`option[value='${product.id}'`).data('inventory-quantity');
+                    if(productTitle == undefined){
+                        productTitle = $sf.find(`span[data-id='${product.id}'`).data('title');
+                        productInventoryQuantity = $sf.find(`span[data-id='${product.id}'`).data('inventory-quantity');
+                    }
+                    if(productInventoryQuantity <= 0 && productTitle != 'Colored Epoxy Resin Kit' && productTitle != 'Clear Epoxy Resin Kit' ){
+                        jQuery('#sf-result-js').append('<p class="sold-out" style="color:#d54d4d;">'+ productTitle +' Is Sold Out</p>');
+                    }
+                    if(productInventoryQuantity <= 0 && productTitle == 'Colored Epoxy Resin Kit'){
+                        coloredEpoxySoldOut = true;
+                    }
+                    if(productInventoryQuantity <= 0 && productTitle == 'Clear Epoxy Resin Kit'){
+                        clearEpoxySoldOut = true;
+                    }
+                });
+                if(coloredEpoxySoldOut == true){
+                    jQuery('#sf-result-js').append('<p class="sold-out" style="color:#d54d4d;">Colored Epoxy Resin Kit Is Sold Out</p>');
+                } 
+                if(clearEpoxySoldOut == true){
+                    jQuery('#sf-result-js').append('<p class="sold-out" style="color:#d54d4d;">Clear Epoxy Resin Kit Is Sold Out</p>');
+                } 
+
 				console.log("There's something wrong");
 			}
 		});
@@ -1409,6 +1462,7 @@
         jQuery(this).parents('.sf-calculator__block').slideUp().prev().slideDown();
         jQuery('.sf-solid-color-epoxy-system-clone').remove();
         jQuery('.sf-marbelized-metallic-epoxy-system-clone').remove();
+        jQuery('#sf-result-js p.sold-out').remove();
     });
 
     $sfTooltip.click(function(){

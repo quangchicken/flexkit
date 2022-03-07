@@ -285,6 +285,21 @@
                         {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
                         {%- assign total_saving = saving | plus: total_saving -%}
                       {% endif %}
+                      {% assign min10pounds = false %}
+                      {% assign min05pounds = false %}
+                      {{ item }}
+                      {% for tag in item.product.tags %}
+                        {% if tag contains 'Min-10' %}
+                          {% assign min10pounds = true %}
+                        {% endif %}
+                        {% if tag contains 'Min-5' %}
+                          {% assign min05pounds = true %}
+                        {% endif %}
+                      {% endfor %}
+
+                      {% if product.handle contains "stone-series" %}
+                        {% assign min10pounds = true %}
+                      {% endif %}
 
                       <li class="mini-cart__item" data-cart-item data-line-id="{{ forloop.index }}" data-variant-id="{{ item.id }}">
                         <a href="{{ item.url }}">
@@ -298,7 +313,7 @@
                         <div class="mini-cart__item-content">
                           <div class="mini-cart__item-title">
                             <a href="{{ item.url }}">
-                              {{ item.product.title }}
+                              {{ item.product.title }} - {{ min10pounds }}
                             </a>
                             {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                               -
@@ -313,7 +328,7 @@
 
                             {% if item.properties %}
                               {% for p in item.properties %}
-                                {% if p.last != blank %}
+                                {% if p.last != blank and p.last != 'inputMinPounds' %}
                                   <div class="line-item">
                                     {{ p.first }}: {{ p.last }}
                                   </div>
@@ -360,7 +375,7 @@
                             {% endfor %}
                           {% endif %}
 
-                          <div class="product-quantity-box">
+                          <div class="product-quantity-box {% if min10pounds == true or min05pounds == true%}inputMinPounds{% endif %}">
                             <span class="ss-icon product-minus js-change-quantity" data-func="minus">
                               <span class="icon-minus"></span>
                             </span>
@@ -616,6 +631,9 @@
   div.header__logo span,
   .sticky_nav .menu-position--block .header__logo {
     max-width: {{ section.settings.logo_display_width | append: 'px' }};
+  }
+  .inputMinPounds{
+    pointer-events: none;
   }
 </style>
 
