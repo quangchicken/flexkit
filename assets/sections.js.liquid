@@ -1932,7 +1932,7 @@ window.productPage = {
           }
         }
       }
-      if($this.parents('.purchase-details').eq(0).hasClass('min10pounds') || $this.parents('.purchase-details').eq(0).hasClass('min05pounds')){
+      if($this.parents('.product-quantity-box').eq(0).hasClass('min10pounds') || $this.parents('.product-quantity-box').eq(0).hasClass('min05pounds')){
         if ($this.data('func') === 'plus') {
           if (val < valMax) $input.val(val + 5);
         } else {

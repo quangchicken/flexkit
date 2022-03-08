@@ -586,13 +586,17 @@ $(() => {
 
         let inputMinPounds = '';
         if (item.properties) {
+          console.log(item.properties);
           $.each(item.properties, (title, value) => {
             if (value) {
               // cartItemsHTML += `<div class="line-item">${title}: ${value} </div>`;
-              if(value == 'inputMinPounds'){
+              if(value == 'min10pounds'){
                 cartItemsHTML += ``;
-                inputMinPounds = 'inputMinPounds';
-              } else {
+                inputMinPounds = 'min10pounds';
+              } if(value == 'min05pounds'){
+                cartItemsHTML += ``;
+                inputMinPounds = 'min05pounds';
+              }else if(!value == 'min10pounds' || !value == 'min05pounds'){
                 cartItemsHTML += `<div class="line-item">${title}: ${value} </div>`;
               }
             }

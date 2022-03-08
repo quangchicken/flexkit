@@ -1,12 +1,8 @@
 {
   "sections": {
     "main": {
-      "type": "collection-flake-catalog-template",
-      "settings": {
-        "heading": "",
-        "content": "",
-        "text_color": "text-light"
-      }
+      "type": "page-terrazo-flake-template",
+      "settings": {}
     }
   },
   "order": [

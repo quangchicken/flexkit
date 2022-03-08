@@ -5,11 +5,7 @@
       "settings": {
         "featured_collection_image": false,
         "wide_display": true,
-        "image": "{{ collection.metafields.my_fields.banner_image.value }}",
         "mobile_image_crop": "none",
-        "heading": "{{ collection.metafields.my_fields.banner_heading.value }}",
-        "content": "<p>{{ collection.metafields.my_fields.banner_content | metafield_tag }}<\/p>",
-        "text_color": "text-light",
         "caption_content_background": "original",
         "display_collection_title": true,
         "collection_breadcrumb": true,

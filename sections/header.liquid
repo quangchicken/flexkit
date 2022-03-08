@@ -285,18 +285,17 @@
                         {%- assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity -%}
                         {%- assign total_saving = saving | plus: total_saving -%}
                       {% endif %}
+
                       {% assign min10pounds = false %}
                       {% assign min05pounds = false %}
-                      {{ item }}
                       {% for tag in item.product.tags %}
-                        {% if tag contains 'Min-10' %}
+                        {% if tag contains 'Min-10' %} 
                           {% assign min10pounds = true %}
                         {% endif %}
                         {% if tag contains 'Min-5' %}
                           {% assign min05pounds = true %}
                         {% endif %}
                       {% endfor %}
-
                       {% if product.handle contains "stone-series" %}
                         {% assign min10pounds = true %}
                       {% endif %}
@@ -313,7 +312,7 @@
                         <div class="mini-cart__item-content">
                           <div class="mini-cart__item-title">
                             <a href="{{ item.url }}">
-                              {{ item.product.title }} - {{ min10pounds }}
+                              {{ item.product.title }}
                             </a>
                             {% unless item.product.has_only_default_variant or item.variant.title contains "Title" %}
                               -
@@ -329,9 +328,11 @@
                             {% if item.properties %}
                               {% for p in item.properties %}
                                 {% if p.last != blank and p.last != 'inputMinPounds' %}
+                                  {% unless p.last != 'min10pounds' or p.last != 'min05pounds'%}
                                   <div class="line-item">
                                     {{ p.first }}: {{ p.last }}
                                   </div>
+                                  {% endunless %}
                                 {% endif %}
                               {% endfor %}
                             {% endif %}
@@ -375,12 +376,12 @@
                             {% endfor %}
                           {% endif %}
 
-                          <div class="product-quantity-box {% if min10pounds == true or min05pounds == true%}inputMinPounds{% endif %}">
+                          <div class="product-quantity-box {% if min10pounds == true %}min10pounds{% elsif min05pounds == true %}min05pounds{% endif %}">
                             <span class="ss-icon product-minus js-change-quantity" data-func="minus">
                               <span class="icon-minus"></span>
                             </span>
 
-                            <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-cart-quantity-input="mini-cart" {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %}/>
+                            <input type="number" min="{% if min10pounds == true %}10{% elsif min05pounds == true %}5{% else %}0{% endif %}" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-cart-quantity-input="mini-cart" {% if settings.limit_quantity and item.variant.inventory_management != blank and item.variant.inventory_quantity > 0 and item.variant.inventory_policy == "deny" %}max="{{ item.variant.inventory_quantity }}"{% endif %}/>
 
                             <span class="ss-icon product-plus js-change-quantity" data-func="plus">
                               <span class="icon-plus"></span>
@@ -632,7 +633,10 @@
   .sticky_nav .menu-position--block .header__logo {
     max-width: {{ section.settings.logo_display_width | append: 'px' }};
   }
-  .inputMinPounds{
+  .cart__item .product-quantity-box.min10pounds input, .cart__item .product-quantity-box.min05pounds input{
+    pointer-events: none;
+  }
+  .js-cart_items .product-quantity-box.min10pounds input, .js-cart_items .product-quantity-box.min05pounds input{
     pointer-events: none;
   }
 </style>
