@@ -168,6 +168,14 @@
   }
 }
 
+.sf-calculator__block.tooltip .sf-calculator__block--content > div {
+  display: none;
+}
+
+.sf-calculator__block.tooltip .sf-calculator__block--content > div.active {
+  display: block;
+}
+
 .sf-calculator__block.tooltip p {
   font-family: "Roboto", sans-serif;
   font-size: 20px;

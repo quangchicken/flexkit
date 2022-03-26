@@ -147,6 +147,14 @@
       }
   
       &.tooltip {
+        .sf-calculator__block--content{
+          >div{
+            display: none;
+            &.active{
+              display: block;
+            }
+          }
+        }
         p {
           font-family: "Roboto", sans-serif;
           font-size: 20px;
