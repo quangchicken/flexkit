@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="{{ 'owl.theme.default.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'owl.carousel.css' | asset_url }}" media="print" onload="this.media='all'">
+<script src="{{ 'owl.carousel.min.js' | asset_url }}"></script>
+{{ 'flake-catalog.min.css' | asset_url | stylesheet_tag }}
+
+<div class="flake-catalog">
+    {% if section.settings.image != blank or collection.image != blank %}
+    <div class="hero-banner">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-img {{ section.settings.text_color | escape }}">
+                    <div class="inner">
+                        {% if section.settings.image %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="{{ section.settings.image | img_url: '1920x' }}">
+                                {% if section.settings.mobile_image != blank %}
+                                <source srcset="{{ section.settings.mobile_image | img_url: 'master' }}">
+                                {% else %}
+                                <source srcset="{{ section.settings.image | img_url: '680x680', crop: 'center' }}">
+                                {% endif %}
+                                <img loading="lazy" importance="low" src="{{ section.settings.image | img_url: '1920x' }}" alt="" />
+                            </picture>
+                        {% else %}
+                            <picture>
+                                <source media="(min-width: 768px)" srcset="{{ collection.image | img_url: '1920x' }}">
+                                <source srcset="{{ collection.image | img_url: '680x680', crop: 'center' }}">
+                                <img loading="lazy" importance="low" src="{{ collection.image | img_url: '1920x' }}" alt="" />
+                            </picture>
+                        {% endif %}
+
+                        <div class="caption">	
+                            <div class="wrapper">
+                                <div class="content">
+                                    {% if section.settings.heading != blank %}
+                                        <h1 class="title">{{ section.settings.heading }}</h1>
+                                    {% else %}
+                                        <h1 class="title">{{ collection.title }}</h1>
+                                    {% endif %}
+
+                                    {% if section.settings.content != blank %}
+                                        <div class="text">{{ section.settings.content }}</div>
+                                    {% else %}
+                                        <div class="text">{{ collection.description }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="heading">
+            <div class="wrapper">
+                <div class="row">
+                    <h1>{{ collection.title }}</h1>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="variants-grid {% if collection.title contains 'Color Palette' %}color-palette{% endif %}">
+        <div class="wrapper">
+            <div class="row">
+                {%- for product in collection.products limit: 1-%}
+                    {% for image in product.images %}
+                        {% assign variantTitle = image.alt | split: " | "  %}
+                        {% assign variantType = image.alt | split: " | " | last | strip %}
+                        <div class="variant-item">
+                            <a class="photo-zoom image" title="{{ product_title | escape }}" href="{{ product.url | append: '?view=photos-zoom #product-photos-zoom' }}" data-index="{{ forloop.index0 }}">
+                                <div class="variant-image">
+                                    <picture>
+                                        <source srcset="{{ image | img_url: 'x680', crop: 'center' }}">
+                                        <img loading="lazy" importance="low" src="{{ image | img_url: 'master' }}" alt="" />
+                                    </picture>
+                                </div>
+                                <div class="variant-info">
+                                    <p class="name">{{ variantTitle[1] | strip }}</p>
+                                    <p class="type">{{ variantType }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% javascript %}
+jQuery(document).ready(function () {
+    jQuery('.photo-zoom').featherlight({
+        namespace: 'product-photos-zoom',
+        targetAttr: 'href',
+        closeIcon: 'Close',
+        type: 'ajax',
+        afterContent: function(e) {
+            var index = parseInt(this.$currentTarget.data('index'));
+            if (jQuery('#product-photos-zoom .photos-zoom-container .owl-carousel').length) {
+                jQuery('#product-photos-zoom .photos-zoom-container .owl-carousel').owlCarousel({
+                    animateOut: 'fadeOut',
+                    loop: true,
+                    items: 1,
+                    autoplayHoverPause: true,
+                    stopOnHover: true,
+                    margin: 0,
+                    mouseDrag: false,
+                    startPosition: index,
+                    nav: true,
+                    dots: true,
+                    navText: ['<span class="icon left-arrow"></span>', '<span class="icon right-arrow"></span>']
+                });
+            }
+
+            if (jQuery('#product-photos-zoom .photos-zoom-thumbnails .owl-carousel').length) {
+                jQuery('#product-photos-zoom .photos-zoom-thumbnails .owl-carousel').owlCarousel({
+                    loop: false,
+                    stopOnHover : true,
+                    items: 1,
+                    margin: 20,
+                    nav: false,
+                    dots: false,
+                    onInitialized: function(event){
+                        var el = jQuery(event.currentTarget);  
+                        el.find('.owl-item').eq(0).addClass('selected');
+                        el.find('.owl-item').click(function(e){
+                            el.find('.owl-item').not(jQuery(this)).removeClass('selected');
+                            jQuery(this).addClass('selected');
+                            var index = parseInt(jQuery(this).find('.item').data('index') - 1);
+                            $('#product-photos-zoom .photos-zoom-container .owl-carousel').trigger('to.owl.carousel', index);
+                            //jQuery('.plp-photos.owl-carousel .owl-dot').eq(jQuery(this).index()).trigger('click');
+                            e.preventDefault();
+                            console.log(index);
+                        });
+                    }
+                });
+            }
+        }
+    });
+});
+{% endjavascript %}
+
+{% schema %}
+    {
+        "name": "Terrazo Flake",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "mobile_image",
+                "label": "Mobile Image"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content"
+            },
+            {
+                "type": "select",
+                "id": "text_color",
+                "label": "Text color",
+                "options": [
+                    { "value": "text-light", "label": "Light" },
+                    { "value": "text-dark", "label": "Dark" }
+                ],
+                "default": "text-light"
+            }
+        ]
+    }
+{% endschema %}

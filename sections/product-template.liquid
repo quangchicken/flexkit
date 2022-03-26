@@ -71,23 +71,7 @@
   </div>
 </section>
 
-<!-- jQuery('.flakes .add_to_cart').on('click', blurChangeInputFlakes) -->
-{% javascript %}
-jQuery(document).ready(function() {
-  jQuery('.min10pounds input[type="number"]').val(10);
-  function blurChangeInputMin10pounds(e){
-    clearTimeout(blurChangeInputMin10pounds.timeout);
-    blurChangeInputFlakes.timeout = setTimeout(function(){
-      var minVal = jQuery('.min10pounds input[type="number"]').attr('min'),
-      currentVal = jQuery('.min10pounds input[type="number"]').val();
-      if(currentVal < 10){
-        jQuery('.min10pounds input[type="number"]').val(10);
-      }
-    }, 100);
-  }
-  jQuery('.min10pounds input[type="number"]').on('blur change', blurChangeInputMin10pounds);
-});
-{% endjavascript %}
+
 
 {% schema %}
 {
