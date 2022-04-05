@@ -109,6 +109,8 @@
       <div class="dropdown" data-autocomplete-{{ settings.enable_autocomplete }}>
         <form action="{{ routes.search_url }}" class="header_search_form">
           <input type="hidden" name="type" value="{{ settings.search_option }}" />
+          <input type="hidden" name="options[unavailable_products]" value="hide" />
+          <input type="hidden" name="options[prefix]" value="last" />
           <span class="icon-search search-submit"></span>
           <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
         </form>
@@ -550,6 +552,8 @@
             <div class="search-container" data-autocomplete-{{ settings.enable_autocomplete }}>
               <form action="{{ routes.search_url }}" class="search__form">
                 <input type="hidden" name="type" value="{{ settings.search_option }}" />
+                <input type="hidden" name="options[unavailable_products]" value="hide" />
+                <input type="hidden" name="options[prefix]" value="last" />
                 <span class="icon-search search-submit"></span>
                 <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and search.results.first.price %}{{ search.terms | replace: '*', '' }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
               </form>
@@ -607,6 +611,8 @@
           <div class="dropdown" data-autocomplete-{{ settings.enable_autocomplete }}>
             <form action="{{ routes.search_url }}" class="header_search_form">
               <input type="hidden" name="type" value="{{ settings.search_option }}" />
+              <input type="hidden" name="options[unavailable_products]" value="hide" />
+              <input type="hidden" name="options[prefix]" value="last" />
               <span class="icon-search search-submit"></span>
               <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
             </form>
