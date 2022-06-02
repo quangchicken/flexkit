@@ -17,7 +17,7 @@
   display: block;
   position: relative;
   left: 100%;
-  z-index: 999999;
+  z-index: 1;
 }
 
 #sf-calculator-btn:hover {
@@ -32,7 +32,7 @@
   bottom: 30px;
   height: 40px;
   width: 184px;
-  z-index: 999999;
+  z-index: 1;
 }
 
 #shopify-section-square-foot-calculator {

@@ -95,10 +95,11 @@
     "regular__font": "roboto_n4",
     "regular_font_style": "none",
     "regular_font_size": 15,
-    "footer_font_size": 13,
+    "footer_font_size": 14,
+    "mega_menu_1": false,
     "search_option": "products",
-    "product_form_style": "radio",
-    "show_dynamic_checkout_button": false,
+    "product_form_style": "select",
+    "show_dynamic_checkout_button": true,
     "display_product_quantity": true,
     "limit_quantity": true,
     "display_inventory_left": true,
@@ -117,7 +118,7 @@
     "free_price_text": "Out of stock",
     "collection_secondary_image": false,
     "align_height": true,
-    "collection_height": 200,
+    "collection_height": 170,
     "quick_shop_enabled": true,
     "cart_action": "ajax",
     "display_tos_checkbox": false,
@@ -691,7 +692,7 @@
           "phone_number": "1-866-608-7625",
           "top_bar_menu": "",
           "show_cart": true,
-          "cart_icon": "bag",
+          "cart_icon": "cart",
           "show_locale_selector": false,
           "show_currency_selector": false,
           "logo_display_width": 205,
@@ -731,7 +732,7 @@
             "type": "text",
             "settings": {
               "title": "COLORED EPOXIES BENEFITS:",
-              "content": "<p>Very Flexible - 100% Solids Zero VOC - Chemical Resistant -  Impact and Abrasion Resistant - Ultra Premium Non Cracking Resistant - Mold and Mildew Resistant  - Saves Time &amp; Money - Easy to Use DIY Kits - Available in Many Colors<\/p>",
+              "content": "<p>Very Flexible - 100% Solids Zero VOC - Chemical Resistant -  Impact and Abrasion Resistant - Ultra Premium - Non Cracking  - Mold and Mildew Resistant  - Saves Time & Money - Easy to Use DIY Kits - Available in Many Colors<\/p>",
               "social_icons_footer": false
             }
           }
@@ -2232,6 +2233,116 @@
           "tooltip_solid_color": "<p><strong>FLAKES<\/strong><\/p><p>1. Choose from one of the 7 custom flake systems.<\/p><p>2. Choose color.<\/p><p>3. Select size of flakes (1\/4” is standard)<\/p><p>4. Enter square footage.<\/p><p>5. Add to cart.<\/p><p>6. Before proceeding to check out you can change color on colored epoxy resin kit to closely match flake color.<\/p><p><\/p><p><strong>MARBELIZED METALLIC EPOXY<\/strong><\/p><p>1. Choose one of the 12 solid colors first this will be the primer and backdrop color.<\/p><p>2. Choose metallic pigments.<\/p><p>3. Enter your square footage.<\/p><p>4.Pending the size of your job you will be able to choose more than one pigment,  rule of thumb the more splash colors you add the better the effects.<\/p><p><\/p><p><strong>Solid Color<\/strong><\/p><p> 1. Pick any color, System will calculate enough epoxy for two rolled on applications. Day 1 the primer & Day 2 the final finish coat.<br\/>Divide the cost of goods by your square footage this will give you precise square foot cost.<br\/><\/p>",
           "product_colored_epoxy": "colored-epoxy-resin-kit-new-images",
           "product_clear_epoxy": "clear-epoxy-resin-kit"
+        }
+      },
+      "mega-menu-1": {
+        "type": "mega-menu-1",
+        "blocks": {
+          "mega-menu-1-0": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>Add description, images, menus and links to your mega menu<\/p>",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-1-1": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>A column with no settings can be used as a spacer<\/p>",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-1-2": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-1-3": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>Link to your collections, sales and even external links<\/p>",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          },
+          "mega-menu-1-4": {
+            "type": "column",
+            "settings": {
+              "richtext_top": "<p>Add up to five columns<\/p>",
+              "image_caption_top": "",
+              "image_link_top": "",
+              "menu_1": "",
+              "menu_1_link": "",
+              "menu_2": "",
+              "menu_2_link": "",
+              "menu_3": "",
+              "menu_3_link": "",
+              "menu_4": "",
+              "menu_4_link": "",
+              "image_caption_bottom": "",
+              "image_link_bottom": "",
+              "richtext_bottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "mega-menu-1-0",
+          "mega-menu-1-1",
+          "mega-menu-1-2",
+          "mega-menu-1-3",
+          "mega-menu-1-4"
+        ],
+        "settings": {
+          "parent": ""
         }
       }
     },

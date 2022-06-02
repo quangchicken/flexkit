@@ -6,7 +6,7 @@
     {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}
   "
   id="product-form-{{ product.id }}"
-  data-product-form
+
   data-money-format="{{ shop.money_format | strip_html }}"
   data-shop-currency="{{ shop.currency }}"
   data-options-size="{{ product.options.size }}"

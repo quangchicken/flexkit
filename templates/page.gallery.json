@@ -5,43 +5,73 @@
       "blocks": {
         "block-1": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-2": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-3": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-4": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-5": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-6": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-7": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-8": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-9": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         },
         "block-10": {
           "type": "image",
-          "settings": {}
+          "disabled": true,
+          "settings": {
+            "image_link": ""
+          }
         }
       },
       "block_order": [
@@ -56,7 +86,13 @@
         "block-9",
         "block-10"
       ],
-      "settings": {}
+      "settings": {
+        "show_divider": false,
+        "wide_display": false,
+        "gallery_type": "classic",
+        "grid-size": 4,
+        "enable_lightbox": true
+      }
     }
   },
   "order": [

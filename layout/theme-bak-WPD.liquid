@@ -16,13 +16,11 @@
     <title>
       {% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}
     </title>
-   
+
     {% if page_description %}
       <meta name="description" content="{% if template contains 'search' %} {{ page_title }} - {{ shop.name }} {% else %}{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}{% endif %}"/>
     {% endif %}
 
-
-    
     <!-- Preconnect Domains -->
     <link rel="preconnect" href="https://fonts.shopifycdn.com" />
     <link rel="preconnect" href="https://cdn.shopify.com" />
@@ -343,31 +341,7 @@
 
 
   {{ '//cdn.shopify.com/s/files/1/0194/1736/6592/t/1/assets/booster-page-speed-optimizer.js?23' | script_tag }}
-<!-- WPD Start -->
-                {% if customer.tags.size > 0 and template != 'cart' %}
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                      let checkoutbtninterval = setInterval(function(){
-                        var x=document.querySelectorAll("input[name='checkout'], button[name='checkout'], input[name='goto_pp'], button[name='goto_pp'], input[name='goto_gc'], button[name='goto_gc'], [href$='checkout']");
-                        var WPD_RedirectToCart = function(e) {
-                          	e.stopPropagation();
-                            e.preventDefault();
-                            window.location = '/cart';
-                            };
-                            for (var i = 0; i < x.length; i++) {
-                                x[i].addEventListener('click', WPD_RedirectToCart, false);
-                            }
-                        },500)
-                });
-              </script>
-               {% endif %}
-         
-
-               {% if customer.tags.size > 0 and template == 'cart' %}
-                 {% include 'wcp_cart' %}
-               {% endif %}
-               <!-- WPD End -->
-  </body>
+</body>
 </html>
 {% endcapture %}
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}

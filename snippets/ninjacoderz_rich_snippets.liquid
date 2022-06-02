@@ -21,8 +21,8 @@
             {%- assign reviewCount = object.metafields.vnreviews.reviewCount | plus:0 -%}
             {%- assign reviewRating = object.metafields.vnreviews.ratingValue -%}
         {%- elsif shop.metafields.judgeme.all_reviews_rating != blank and shop.metafields.richsnippets_app.reviewapp == blank or shop.metafields.richsnippets_app.reviewapp == 3 -%}
-            {%- assign reviewCount = object.metafields.judgeme.badge | split: "data-number-of-reviews='" | last | split: "'" |first | plus: 0 -%}
-            {%- assign reviewRating = object.metafields.judgeme.badge | split: "data-average-rating='" | last | split: "'" |first | plus: 0  -%}
+            {%- assign reviewCount = object.metafields.judgeme.badge | split: "data-number-of-reviews='" | last | split: "'" |first | plus:0   -%}
+            {%- assign reviewRating = object.metafields.judgeme.badge | split: "data-average-rating='" | last | split: "'" |first  -%}
         {%- elsif object.metafields.product_schema.th_ratingCount != blank and object.metafields.product_schema.th_ratingCount != blank and shop.metafields.richsnippets_app.reviewapp == blank or shop.metafields.richsnippets_app.reviewapp == 4 -%}
             {%- assign reviewCount = object.metafields.product_schema.th_ratingCount | plus:0 -%}
             {%- assign reviewRating = object.metafields.product_schema.th_ratingValue -%}

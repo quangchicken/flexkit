@@ -83,7 +83,7 @@
       "type": "featured-text",
       "settings": {
         "title": "America’s # 1 Epoxy D.I.Y. fast shipping",
-        "content": "",
+        "content": "<p> <\/p><p>Best Epoxy Kit 2022 as featured by ThisOldHouse.com <\/p>",
         "button_label": "",
         "button_link": "",
         "text_size": "regular_text",
@@ -95,21 +95,13 @@
     "featured-collection-1": {
       "type": "featured-collection",
       "settings": {
-        "title": "",
+        "title": "Bestsellers",
         "collection_description": false,
         "collection": "epoxies",
         "collection_style": "grid",
-        "products_per": 3,
-        "products_limit": 12,
+        "products_per": 4,
+        "products_limit": 13,
         "css_class": "home_featured_collection",
-        "custom_css": ""
-      }
-    },
-    "16323351559408be20": {
-      "type": "content-page",
-      "settings": {
-        "content_page": "reviews",
-        "css_class": "",
         "custom_css": ""
       }
     },
@@ -120,22 +112,9 @@
         "collection_description": true,
         "collection": "pigments",
         "collection_style": "slider",
-        "products_per": 5,
+        "products_per": 7,
         "products_limit": 48,
         "css_class": "metallic_pigments",
-        "custom_css": ""
-      }
-    },
-    "163233523963052cc7": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Flakes",
-        "collection_description": true,
-        "collection": "color-flakes",
-        "collection_style": "slider",
-        "products_per": 6,
-        "products_limit": 20,
-        "css_class": "home_flakes",
         "custom_css": ""
       }
     },
@@ -202,18 +181,19 @@
     "1632335326b72426ae": {
       "type": "featured-collection",
       "settings": {
-        "title": "More Additives",
+        "title": "Specialty Additives",
         "collection_description": true,
         "collection": "homepage-collection",
         "collection_style": "slider",
-        "products_per": 4,
-        "products_limit": 12,
+        "products_per": 5,
+        "products_limit": 19,
         "css_class": "more_additives",
         "custom_css": ""
       }
     },
     "16325008478edb06a5": {
       "type": "featured-product",
+      "disabled": true,
       "blocks": {
         "16325008478edb06a5-0": {
           "type": "title",
@@ -259,15 +239,24 @@
         "custom_css": ""
       }
     },
-    "newsletter-1": {
-      "type": "newsletter",
+    "163233523963052cc7": {
+      "type": "featured-collection",
+      "disabled": true,
       "settings": {
-        "wide_display": true,
-        "display_first_name": false,
-        "display_last_name": false,
-        "newsletter_title": "Subscribe",
-        "newsletter_text": "<p>Sign up to receive EXCLUSIVE EMAIL DEALS<\/p>",
-        "newsletter_section_text_align": "center",
+        "title": "Flakes",
+        "collection_description": true,
+        "collection": "color-flakes",
+        "collection_style": "grid",
+        "products_per": 7,
+        "products_limit": 10,
+        "css_class": "home_flakes",
+        "custom_css": ""
+      }
+    },
+    "16323351559408be20": {
+      "type": "content-page",
+      "settings": {
+        "content_page": "reviews",
         "css_class": "",
         "custom_css": ""
       }
@@ -472,6 +461,7 @@
     },
     "1642994017872f29d0": {
       "type": "list-of-videos",
+      "disabled": true,
       "blocks": {
         "164299401681a5552b-0": {
           "type": "video",
@@ -602,25 +592,38 @@
         "css_class": "",
         "custom_css": ""
       }
+    },
+    "newsletter-1": {
+      "type": "newsletter",
+      "settings": {
+        "wide_display": true,
+        "display_first_name": false,
+        "display_last_name": false,
+        "newsletter_title": "Subscribe",
+        "newsletter_text": "<p>Sign up to receive EXCLUSIVE EMAIL DEALS<\/p>",
+        "newsletter_section_text_align": "center",
+        "css_class": "",
+        "custom_css": ""
+      }
     }
   },
   "order": [
     "16323330574dcd1a9b",
     "featured-text-1",
     "featured-collection-1",
-    "16323351559408be20",
     "16323351616bb79103",
-    "163233523963052cc7",
     "featured-promotions-1",
     "1632335326b72426ae",
     "16325008478edb06a5",
-    "newsletter-1",
+    "163233523963052cc7",
+    "16323351559408be20",
     "16336401176d143c95",
     "16336405960bbc4bc0",
     "163364066202837e99",
     "1633640731f6175769",
     "1633640838bd38f005",
     "1633640888c8483fcb",
-    "1642994017872f29d0"
+    "1642994017872f29d0",
+    "newsletter-1"
   ]
 }
