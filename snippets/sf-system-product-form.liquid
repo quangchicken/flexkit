@@ -1,11 +1,8 @@
 <div
-  class="
-    product_form
-    init
-    smart-payment-button--{{ show_payment_button }}
-    {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}
-  "
+  class="product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}"
   id="product-form-{{ product.id }}"
+  data-product-form
+  {{ inputColorID }}
 
   data-money-format="{{ shop.money_format | strip_html }}"
   data-shop-currency="{{ shop.currency }}"
@@ -75,7 +72,7 @@
 {% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
 <div class="swatch_options sfc-swatch">
     {% for option in product.options %}
-        {% render 'sf-product-swatch', option: option, product: product %}
+        {% render 'sf-product-swatch', option: option, product: product, inputColorID: inputColorID %}
     {% endfor %}
 </div>
 {% endif %}

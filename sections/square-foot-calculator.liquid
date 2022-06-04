@@ -86,7 +86,6 @@
 
                                         <div class="sf-system__product--grid">
                                             {% if collection != '' %}
-
                                                 {% assign count = 0 %}
                                                 {% for product in collection.products %}                                                  
                                                     {% for i in (1..8) %}
@@ -113,11 +112,15 @@
                                                 {% assign product = all_products['colored-epoxy-resin-kit-new-images'] %}
                                                 <div class="sf-solid-color-epoxy-system metallic-pigments">
                                             {% endif %}
-                                                
-                                            
+
+
                                             {% if product != '' %}
-                                                <div class="sf-system__product--options">
-                                                    {% render 'sf-system-product-form', product: product, %}
+                                                <div class="sf-system__product--options {{ collection.title }} colored-test ">
+                                                    {% assign inputColorID = '' %}
+                                                    {% if collection.title == 'Metallic Pigments' %}
+                                                        {% assign inputColorID = 'mp'%}
+                                                    {% endif %}
+                                                    {% render 'sf-system-product-form', product: product, inputColorID: inputColorID %}
                                                 </div>
                                             {% endif %}
                                             {% if collection.title contains 'Metallic Pigments' %}</div>{% endif %}
@@ -133,7 +136,7 @@
                                                     </div>
                                                     {% endfor %}
                                                 {% endif %}
-                                                
+
                                                 {% if system_name contains 'Flakes' %}
                                                     {% for i in (1..8) %}
                                                         {% assign product_additives = 'product_link_' | append: i %}
@@ -150,11 +153,12 @@
                                                 {% endif %}
                                             </div>
                                             {% if collection.title contains 'Flakes' %}
+                                            {% assign inputColorID = 'fs' %}
                                             {% assign product = all_products['colored-epoxy-resin-kit-new-images'] %}
                                             <div class="sf-solid-color-epoxy-system flakes-system">
                                                 {% if product != '' %}
                                                     <div class="sf-system__product--options">
-                                                        {% render 'sf-system-product-form', product: product, %}
+                                                        {% render 'sf-system-product-form', product: product, inputColorID: 'fs' %}
                                                     </div>
                                                 {% endif %}
                                             </div>
