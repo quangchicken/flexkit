@@ -1,8 +1,8 @@
+{% if product.id != '' %}
 <div
   class="product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}"
   id="product-form-{{ product.id }}"
   data-product-form
-  {{ inputColorID }}
 
   data-money-format="{{ shop.money_format | strip_html }}"
   data-shop-currency="{{ shop.currency }}"
@@ -78,3 +78,4 @@
 {% endif %}
 {% endform %}
 </div>
+{% endif %}
