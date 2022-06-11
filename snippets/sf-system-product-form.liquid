@@ -1,4 +1,15 @@
 {% if product.id != '' %}
+{% assign min10pounds = false %}
+{% assign min05pounds = false %}
+
+{% for tag in product.tags %} 
+  {% if tag contains 'Min-10' %}
+    {% assign min10pounds = true %}
+  {% endif %}
+  {% if tag contains 'Min-5' %}
+    {% assign min05pounds = true %}
+  {% endif %}
+{% endfor %}
 <div
   class="product_form init smart-payment-button--{{ show_payment_button }} {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %}"
   id="product-form-{{ product.id }}"
@@ -72,10 +83,18 @@
 {% if settings.product_form_style == "radio" and product.variants.size > 1 or settings.product_form_style == "radio" and product.options[0] != "Title" %}
 <div class="swatch_options sfc-swatch">
     {% for option in product.options %}
-        {% render 'sf-product-swatch', option: option, product: product, inputColorID: inputColorID %}
+        {% render 'sf-product-swatch', option: option, product: product, inputColorID: inputColorID %} 
     {% endfor %}
 </div>
 {% endif %}
+{% if min10pounds == true or min05pounds == true%}
+    {% if min10pounds == true %}
+    <input type="hidden" value="min10pounds" id="properties[inputMinPounds]-{{ variant.id }}" name="properties[min10pounds]" />
+    {% endif %}
+    {% if min05pounds == true%}
+    <input type="hidden" value="min05pounds" id="properties[inputMinPounds]-{{ variant.id }}" name="properties[min05pounds]" />
+    {% endif %}
+  {% endif %}
 {% endform %}
 </div>
 {% endif %}

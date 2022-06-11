@@ -98,7 +98,7 @@
     "footer_font_size": 14,
     "mega_menu_1": false,
     "search_option": "products",
-    "product_form_style": "select",
+    "product_form_style": "radio",
     "show_dynamic_checkout_button": true,
     "display_product_quantity": true,
     "limit_quantity": true,
